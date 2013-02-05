@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="Rock-Tiles-Base" tilewidth="64" tileheight="64">
+  <image source="../../../HeroBash/Code/HeroBash/HeroBashContent/maps/Rock-Tiles-Base.png" width="192" height="192"/>
+  <tile id="0">
+   <properties>
+    <property name="CollisionSet" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="10" name="Rock-Tiles-Extra" tilewidth="64" tileheight="64">
+  <image source="../../../HeroBash/Code/HeroBash/HeroBashContent/maps/Rock-Tiles-Extra.png" width="192" height="384"/>
+  <tile id="0">
+   <properties>
+    <property name="CollisionSet" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Collision" width="50" height="50">
+  <properties>
+   <property name="Collision" value="On"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3PwQnAMBADwSPYwf1XbFxDovt4BPPXzqqaAAAARK1GqYa3ejd+/K7j+3ToSEyHjsR06EhMh47EdOhILNVxPI1SDQAA3GEDo3YuChAnAAA=
+  </data>
+ </layer>
+ <objectgroup name="Spawn" width="50" height="50">
+  <object x="1665" y="2239" width="64" height="65"/>
+ </objectgroup>
+</map>

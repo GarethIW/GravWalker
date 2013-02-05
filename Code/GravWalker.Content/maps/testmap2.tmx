@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="128" tileheight="128">
+ <tileset firstgid="1" name="testtiles" tilewidth="128" tileheight="128">
+  <image source="testtiles.png" width="1024" height="2048"/>
+  <tile id="0">
+   <properties>
+    <property name="CollisionSet" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="129" name="grass" tilewidth="128" tileheight="128">
+  <image source="grass.png" width="1536" height="1280"/>
+ </tileset>
+ <layer name="Collision" width="100" height="100">
+  <properties>
+   <property name="Collision" value="On"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3awUqCQRSG4UlqEbQx6AKiVctw2cr7v6lGWhTmb/6anU/neeCAoAuZl5nVaQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBD3fZ56fNU/UdCLPs8Tsyqz+LEmTLnt6O4aaef97E9+Om+6ZHmoc9rn/f2N2erR42ps9aj1vaZ65FFj3qLrc965NCjnvuRS48setTzXuXSo577kUuPeu5HLj2y6FHPe5VLj3ruRy49suhRz3uVS496+3YaOL/Njulqz/d6fNm1j/vWPveVv8+6zdsznLMfd809NvvfdzvmuZ1n/1mPaf+x76zHYdJbXNNZ/+YSWozS4xJajCK5xWhSW4woscVIPgBc6OD0QJwAAA==
+  </data>
+ </layer>
+ <layer name="Non-Collision" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3ZMQrCQBCG0SGNCPaewTN4jhTew/tjCisJrBF2/Iv3YAkh3XxsEpIqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgLHlwGI+Peb5Za56zHPZ1m1b9/f5NzPVo8e59EjzLD2SPEqPJNcaz1KPXqN56tFLjyzLx3Hvuh59zDOLHln0yDJ6ftBLjyzuV1n0yKJHFj2y6JHF+1UWPbLokeNUeiRZy3fzJP5lZNEii/2RQ4ssWmTRIIcGAP/xApXQwfBAnAAA
+  </data>
+ </layer>
+ <layer name="Decals" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3aX0rDQBAH4GXvZu+ot1B6CcVT+CC+6IN4AHfVhVWSUvzTmdrvgyGFvmzyY7IJmVIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADY10Or21bn0QtJ4r7V5UptWz3+sNaM/19++4SO2F2r5+hFwD90Fr0APhl7g1xy2bVnE2P0SA1dBUPvkToVsTZFHpnoj1xqkUcm834uj3jjmVceOWw+jvKI16//3B/E6hl4H8xDf+RSV34Tw/0qH/erXPRHLvojl/rlSBz7eS7eP3LpGczfo4g3f4/i8PqM6TZ6EUdiaR73qrzPK891Ub4/k3vKM6Z9/vt6oW7K8vzzKV+rv9bnnc1/59CzeIpeBG9kkYcs8pBFHrLIQxaxXgEfyiwHQJwAAA==
+  </data>
+ </layer>
+ <objectgroup name="Paths" width="100" height="100">
+  <object x="1459" y="11895">
+   <polyline points="-44,10 77,-21 204,-21 333,-21 461,-21 589,-21 717,-21 845,-53 1357,-53 1612,-182 2124,-182 2253,-214 2763,-214 2892,-245 3341,-245 3789,-245 4238,-245 4686,-245 4943,-375 5037,-499 5071,-628 5071,-1140 5071,-1653 5071,-2165 5071,-2678 5007,-2935 4942,-3062 4815,-3191 4686,-3257 4559,-3289 4431,-3320 3919,-3320 3406,-3320 3278,-3383 3022,-3448 2895,-3574 3021,-3702 3149,-3766 3277,-3766 3598,-3766 3919,-3766 4045,-3829 4557,-3829 5068,-3829 5580,-3830 6093,-3833 6224,-3801 6351,-3787 6479,-3788 6605,-3787 6733,-3795 6862,-3832 6990,-3832 7118,-3832 7245,-3864 7373,-3926 7499,-3926"/>
+  </object>
+  <object x="6660" y="9219">
+   <polyline points="0,0 21,0 51,0 89,0"/>
+  </object>
+  <object x="6659" y="9603">
+   <polyline points="0,0 36,0 79,-1 117,-1"/>
+  </object>
+  <object x="6659" y="9858">
+   <polyline points="0,0 17,0 51,0 107,0 174,-1 216,1 246,1"/>
+  </object>
+  <object x="6659" y="10112">
+   <polyline points="0,0 39,1 74,1 120,1"/>
+  </object>
+  <object x="6651" y="10498">
+   <polyline points="0,0 38,2 60,1 90,0 117,1"/>
+  </object>
+  <object x="6661" y="10753">
+   <polyline points="0,0 23,0 49,1 89,0 115,1"/>
+  </object>
+  <object x="6659" y="11136">
+   <polyline points="0,0 35,0 63,0 80,-1 111,0"/>
+  </object>
+  <object x="6661" y="11395">
+   <polyline points="0,0 23,-1 54,0 97,-1 116,0"/>
+  </object>
+  <object x="6683" y="8963">
+   <polyline points="0,0 21,0 51,0 89,0"/>
+  </object>
+  <object x="6557" y="8707">
+   <polyline points="0,0 21,0 51,0 89,0"/>
+  </object>
+  <object x="6304" y="8579">
+   <polyline points="0,0 21,0 51,0 89,0"/>
+  </object>
+  <object type="Dude" x="3534" y="11667" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="3557" y="11680" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="3673" y="11628" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Spawn" width="100" height="100">
+  <object x="1512" y="11838" width="40" height="64"/>
+ </objectgroup>
+ <objectgroup name="EnemySpawns" width="100" height="100">
+  <object type="Dude" x="3056" y="11663" width="78" height="74">
+   <properties>
+    <property name="Distance" value="7"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="3033" y="11650" width="78" height="74">
+   <properties>
+    <property name="Distance" value="7"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6341" y="8523" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6596" y="8653" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6728" y="8909" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6692" y="9165" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6724" y="9549" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6692" y="9798" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6727" y="10055" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6725" y="10695" width="36" height="61">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6727" y="10442" width="36" height="61">
+   <properties>
+    <property name="Distance" value="800"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6694" y="11336" width="36" height="61">
+   <properties>
+    <property name="Distance" value="700"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6734" y="11079" width="36" height="61">
+   <properties>
+    <property name="Distance" value="700"/>
+    <property name="Number" value="10"/>
+    <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5830" y="8530" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5758" y="8506" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5678" y="8539" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5584" y="8520" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5519" y="8539" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5383" y="8519" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5284" y="8536" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5333" y="8497" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5166" y="8535" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5136" y="8512" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5111" y="8514" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5070" y="8537" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="5009" y="8511" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4938" y="8533" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4879" y="8500" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4802" y="8508" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4730" y="8471" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4676" y="8462" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4611" y="8442" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4546" y="8428" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4469" y="8373" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="4406" y="8325" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4182" y="11630" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="1"/>
+    <property name="SceneDelay" value="3000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4312" y="11602" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="1"/>
+    <property name="SceneDelay" value="5000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4760" y="11598" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="1"/>
+    <property name="SceneDelay" value="7500"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4783" y="11612" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5194" y="11597" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5217" y="11610" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5638" y="11593" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5661" y="11606" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6098" y="11601" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="0"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5458" y="8013" width="78" height="74">
+   <properties>
+    <property name="Distance" value="5"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5481" y="8026" width="78" height="74">
+   <properties>
+    <property name="Distance" value="5"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5045" y="8092" width="78" height="74">
+   <properties>
+    <property name="Distance" value="5"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5022" y="8079" width="78" height="74">
+   <properties>
+    <property name="Distance" value="5"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6003" y="8036" width="78" height="74">
+   <properties>
+    <property name="Distance" value="5"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="5980" y="8023" width="78" height="74">
+   <properties>
+    <property name="Distance" value="5"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="6319" y="10318" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1200,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="6351" y="9806" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1200,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="6333" y="10786" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1200,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="6341" y="9280" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1200,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="6195" y="8822" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1200,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="4393" y="8536" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1000,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="5749" y="7912" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="0,-800"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="4233" y="8120" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="-1000,0"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="6353" y="7902" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="0,-800"/>
+    <property name="Rate" value="100"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6479" y="8020" width="78" height="74">
+   <properties>
+    <property name="Distance" value="3"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6503" y="8034" width="78" height="74">
+   <properties>
+    <property name="Distance" value="3"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6989" y="8029" width="78" height="74">
+   <properties>
+    <property name="Distance" value="3"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="5"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+   </properties>
+  </object>
+  <object type="Dude" x="7012" y="8041" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+   </properties>
+  </object>
+  <object type="Dude" x="1881" y="11820" width="78" height="74">
+   <properties>
+    <property name="Distance" value="1"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="1"/>
+    <property name="SceneDelay" value="0"/>
+   </properties>
+  </object>
+  <object type="Dude" x="2007" y="11818" width="78" height="74">
+   <properties>
+    <property name="Distance" value="1"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="1"/>
+    <property name="SceneDelay" value="10000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6350" y="11473" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="5000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6378" y="11489" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="500"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="5000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4172" y="11633" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="300"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="2000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4200" y="11649" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="500"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="7000"/>
+   </properties>
+  </object>
+  <object type="Chopper" x="5095" y="11468" width="102" height="91">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="0,-800"/>
+    <property name="Rate" value="100"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="12000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="4178" y="11652" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="10"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="500"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="0"/>
+   </properties>
+  </object>
+  <object type="Dude" x="6332" y="11479" width="78" height="74">
+   <properties>
+    <property name="Distance" value="4"/>
+    <property name="IsPathSpawn" value="True"/>
+    <property name="Number" value="6"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="600"/>
+    <property name="Scene" value="2"/>
+    <property name="SceneDelay" value="5000"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Water" width="100" height="100">
+  <object x="-26" y="11929" width="7554" height="738">
+   <properties>
+    <property name="BottomColor" value="0,0,0"/>
+    <property name="TopColor" value="50,128,255"/>
+   </properties>
+  </object>
+  <object x="7551" y="8145" width="770" height="765">
+   <properties>
+    <property name="BottomColor" value="0,0,0"/>
+    <property name="TopColor" value="50,128,255"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Scenes" width="100" height="100">
+  <object name="1" x="3306" y="11648" width="26" height="82"/>
+  <object name="2" x="5236" y="11586" width="26" height="82"/>
+ </objectgroup>
+</map>

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6519C949-AC4D-4D2B-9FC1-CD4933009D74}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GravWalker.Mono.Windows</RootNamespace>
+    <AssemblyName>GravWalker.Mono.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>GravWalker.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\blank-white.xnb">
+      <Link>GravWalker.Content\blank-white.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\blank.xnb">
+      <Link>GravWalker.Content\blank.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\gamefont.xnb">
+      <Link>GravWalker.Content\gamefont.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\maps\testmap.xnb">
+      <Link>GravWalker.Content\maps\testmap.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\menufont.xnb">
+      <Link>GravWalker.Content\menufont.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Rock-Tiles-Base.xnb">
+      <Link>GravWalker.Content\Rock-Tiles-Base.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Rock-Tiles-Extra.xnb">
+      <Link>GravWalker.Content\Rock-Tiles-Extra.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Enemies\dude.xnb">
+      <Link>GravWalker.Content\enemies\dude.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\testtiles.xnb">
+      <Link>GravWalker.Content\testtiles.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\maps\testmap2.xnb">
+      <Link>GravWalker.Content\maps\testmap2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\projectiles.xnb">
+      <Link>GravWalker.Content\projectiles.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\particles.xnb">
+      <Link>GravWalker.Content\particles.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\walker.xnb">
+      <Link>GravWalker.Content\walker.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\grass.xnb">
+      <Link>GravWalker.Content\grass.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Enemies\ropedude.xnb">
+      <Link>GravWalker.Content\enemies\ropedude.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Enemies\Chopper.xnb">
+      <Link>GravWalker.Content\enemies\Chopper.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\..\MonoGame\MonoGame.Framework\bin\WindowsGL\Debug\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TiledLib.MonoWindows\TiledLib.MonoWindows.csproj">
+      <Project>{f311c413-e175-485e-8a93-799ab971ca09}</Project>
+      <Name>TiledLib.MonoWindows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GravWalker.Main\Enemies\Chopper.cs">
+      <Link>Enemies\Chopper.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Dude.cs">
+      <Link>Enemies\Dude.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\RopeDude.cs">
+      <Link>Enemies\RopeDude.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\_Enemy.cs">
+      <Link>Enemies\_Enemy.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\_PathingEnemy.cs">
+      <Link>Enemies\_PathingEnemy.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\EnemyController.cs">
+      <Link>EnemyController.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\GameManager.cs">
+      <Link>GameManager.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\GravWalker.cs">
+      <Link>GravWalker.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Hero.cs">
+      <Link>Hero.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\ParallaxManager.cs">
+      <Link>ParallaxManager.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\ParticleController.cs">
+      <Link>ParticleController.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\PrimitiveBatch.cs">
+      <Link>PrimitiveBatch.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\ProjectileManager.cs">
+      <Link>ProjectileManager.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\ScreenManager\GameScreen.cs">
+      <Link>ScreenManager\GameScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\ScreenManager\InputState.cs">
+      <Link>ScreenManager\InputState.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\ScreenManager\ScreenManager.cs">
+      <Link>ScreenManager\ScreenManager.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\BackgroundScreen.cs">
+      <Link>Screens\BackgroundScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\GameplayScreen.cs">
+      <Link>Screens\GameplayScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\LoadingScreen.cs">
+      <Link>Screens\LoadingScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\MainMenuScreen.cs">
+      <Link>Screens\MainMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\MenuEntry.cs">
+      <Link>Screens\MenuEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\MenuScreen.cs">
+      <Link>Screens\MenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\MessageBoxScreen.cs">
+      <Link>Screens\MessageBoxScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\PauseBackgroundScreen.cs">
+      <Link>Screens\PauseBackgroundScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\PauseMenuScreen.cs">
+      <Link>Screens\PauseMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\PlayerIndexEventArgs.cs">
+      <Link>Screens\PlayerIndexEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Spawner.cs">
+      <Link>Spawner.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\SpawnerController.cs">
+      <Link>SpawnerController.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Water.cs">
+      <Link>Water.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\WaterController.cs">
+      <Link>WaterController.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
