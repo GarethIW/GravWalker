@@ -67,7 +67,7 @@ namespace GravWalker
             fireCountdown -= gameTime.ElapsedGameTime.TotalMilliseconds;
             if (fireCountdown <= 0)
             {
-                fireCountdown = fireRate;
+                fireCountdown = fireRate + (EnemyController.randomNumber.NextDouble() * (fireRate/10));
                 DoFire();
             }
 

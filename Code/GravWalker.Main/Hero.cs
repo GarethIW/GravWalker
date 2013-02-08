@@ -23,6 +23,9 @@ namespace GravWalker
         public Vector2 Target;
         public Vector2 Velocity = new Vector2(0,0);
 
+        public float HP;
+        public float Heat;
+
         Vector2 frameSize = new Vector2(64, 64);
         Vector2 frameOffset = new Vector2(32, 64);
         Texture2D spriteSheet;
@@ -55,6 +58,7 @@ namespace GravWalker
         float gunAngle;
         Vector2 gunPos;
 
+        float muzzleAlpha = 0f;
 
         List<int> ScenesTriggered = new List<int>();
 
@@ -97,7 +101,8 @@ namespace GravWalker
 
             //spriteRot = Helper.AngleBetween(Position, Target);
 
-
+            HP = 100f;
+            Heat = 0f;
            
             spriteRot = Helper.TurnToFace(Position, Target, spriteRot, currentDirection, 1f);
 
@@ -117,6 +122,8 @@ namespace GravWalker
         {
             updateTime += gameTime.ElapsedGameTime.TotalMilliseconds;
             fireRateCooldown -= gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (muzzleAlpha > 0f) muzzleAlpha -= 0.1f;
 
             if (isAnimating)
             {
@@ -185,10 +192,12 @@ namespace GravWalker
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle((isAnimating?animFrame:5) * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White, spriteRot , frameOffset, 1f, faceDirection==-1?SpriteEffects.FlipHorizontally:SpriteEffects.None, 1);
-            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(0, (int)frameSize.Y, (int)frameSize.X, (int)frameSize.Y), Color.White, spriteRot, frameOffset, 1f, faceDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
+            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(0, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 10), Color.White, spriteRot, new Vector2(32, 59), 1f, faceDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
 
-            
-            spriteBatch.Draw(spriteSheet, gunPos, new Rectangle((int)frameSize.X, (int)frameSize.Y, (int)frameSize.X, (int)frameSize.Y), Color.White, gunAngle, new Vector2(32, 32), 1f, SpriteEffects.None, 1);
+            Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle+((float)randomNumber.NextDouble()*0.2f)-0.1f)), 15f);
+            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X*2, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
+
+            spriteBatch.Draw(spriteSheet, gunPos, new Rectangle((int)frameSize.X, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
 
         }
 
@@ -279,7 +288,7 @@ namespace GravWalker
 
         internal void Fire(Vector2 mousePos)
         {
-            if (fireRateCooldown <= 0)
+            if (fireRateCooldown <= 0 && Heat < 100f)
             {
                 fireRateCooldown = 100;
                 Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle(gunAngle), 10f);
@@ -290,10 +299,29 @@ namespace GravWalker
                 Vector2 speed = vect * 15f;
                 Vector2 pos = barrelPos + (speed);//Position + (Helper.AngleToVector(Helper.WrapAngle(spriteRot - MathHelper.PiOver2), 48f)) + (speed * 2f);
                 //pos = Vector2.Transform(pos, Matrix.CreateRotationZ(spriteRot));
-   
+
 
                 GameManager.ProjectileManager.Add(pos, speed, 500, true, ProjectileType.WalkerGun);
+                muzzleAlpha = 1f;
+
+                Heat += 4f;
+
+
+                AudioController.PlaySFX("machinegun", 1f, -1f, -0.7f, Position);
             }
+            else
+            {
+                if (Heat >= 100f)
+                {
+                    Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle(gunAngle), (float)randomNumber.NextDouble()*10f);
+                    GameManager.ParticleController.AddSpark(barrelPos, Vector2.Zero);
+                }
+            }
+        }
+
+        internal void NotFiring()
+        {
+            if (fireRateCooldown <= 0 && Heat > 0f) Heat -= 1f;
         }
 
         public bool CheckHit(Vector2 pos, Vector2 speed)
@@ -306,9 +334,14 @@ namespace GravWalker
             {
                 
                 isHit = true;
+
+                HP -= 0.2f;
+                GameManager.ParticleController.AddMetalDebris(pos, speed*0.2f);
             }
 
             return isHit;
         }
+
+       
     }
 }

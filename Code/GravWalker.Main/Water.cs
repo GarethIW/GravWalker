@@ -179,7 +179,7 @@ namespace GravWalker
                 rippleTime = 0;
                 rippleX += 10;
                 if (rippleX >= 500 || rippleX>bounds.Width) rippleX = 0;
-                for (int x = rippleX; x < bounds.Width; x += 500) Splash((float)x, 20f);
+                for (int x = rippleX; x < bounds.Width; x += 500) Splash((float)x + bounds.X, 20f);
             }
             //if (rippleX >= (gameMap.Width * gameMap.TileWidth)) rippleX -= (gameMap.Width * gameMap.TileWidth);
 

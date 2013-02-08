@@ -60,6 +60,7 @@ namespace GravWalker
         {
             HP--;
             GameManager.ParticleController.AddGSW(pos, speed*0.1f);
+            AudioController.PlaySFX("hit", 0.4f, 0.3f, 0.6f, Position);
             base.DoHit(pos, speed);
         }
 
@@ -74,6 +75,9 @@ namespace GravWalker
                 Vector2 pos = centerPosition + (speed);
 
                 GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
+
+                if(EnemyController.randomNumber.Next(2)==1)
+                    AudioController.PlaySFX("pistol", 0.4f, 0.3f, 0.6f, Position);
             }
 
             base.DoFire();

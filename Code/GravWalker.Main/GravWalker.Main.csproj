@@ -60,6 +60,8 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioController.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="Enemies\Chopper.cs" />
     <Compile Include="WaterController.cs" />
     <Compile Include="Enemies\RopeDude.cs" />

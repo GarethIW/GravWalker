@@ -23,6 +23,7 @@ namespace GravWalker
 
         public static Hero Hero;
 
+        public static HUD HUD;
 
         public static int CurrentScene;
         public static double SceneTime;

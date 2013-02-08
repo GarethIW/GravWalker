@@ -100,6 +100,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\GravWalker.Main\AudioController.cs">
+      <Link>AudioController.cs</Link>
+    </Compile>
     <Compile Include="..\GravWalker.Main\Enemies\Chopper.cs">
       <Link>Enemies\Chopper.cs</Link>
     </Compile>
@@ -129,6 +132,9 @@
     </Compile>
     <Compile Include="..\GravWalker.Main\Hero.cs">
       <Link>Hero.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\HUD.cs">
+      <Link>HUD.cs</Link>
     </Compile>
     <Compile Include="..\GravWalker.Main\ParallaxManager.cs">
       <Link>ParallaxManager.cs</Link>
@@ -264,6 +270,38 @@
     </Content>
     <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Enemies\Chopper.xnb">
       <Link>GravWalker.Content\enemies\Chopper.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\explode.xnb">
+      <Link>GravWalker.Content\sfx\explode.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\hit.xnb">
+      <Link>GravWalker.Content\sfx\hit.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\machinegun.xnb">
+      <Link>GravWalker.Content\sfx\machinegun.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\mortar.xnb">
+      <Link>GravWalker.Content\sfx\mortar.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\pistol.xnb">
+      <Link>GravWalker.Content\sfx\pistol.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\shotgun.xnb">
+      <Link>GravWalker.Content\sfx\shotgun.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\smg.xnb">
+      <Link>GravWalker.Content\sfx\smg.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\gravwalker.main\bin\windows phone\debug\gravwalker.content\sfx\sniper.xnb">
+      <Link>GravWalker.Content\sfx\sniper.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="GravWalker.Mono.Windows8_TemporaryKey.pfx" />

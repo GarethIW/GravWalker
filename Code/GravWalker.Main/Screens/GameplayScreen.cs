@@ -44,6 +44,8 @@ namespace GravWalker
 
         Hero gameHero;
 
+        HUD gameHUD;
+
         ParallaxManager parallaxManager;
         //Water gameWater;
 
@@ -114,10 +116,12 @@ namespace GravWalker
             gameWaterController = new WaterController(ScreenManager.GraphicsDevice, gameMap);
             GameManager.WaterController = gameWaterController;
 
-            //gameWater = new Water(ScreenManager.GraphicsDevice, gameMap);
-            //GameManager.Water = gameWater;
+            gameHUD = new HUD(ScreenManager.GraphicsDevice.Viewport);
+            gameHUD.LoadContent(content);
 
             parallaxManager = new ParallaxManager(ScreenManager.GraphicsDevice.Viewport);
+
+            AudioController.LoadContent(content);
 
             ScreenManager.Game.ResetElapsedTime();
         }
@@ -163,6 +167,9 @@ namespace GravWalker
                 gameHero.Update(gameTime, mousePos);
                 gameProjectileManager.Update(gameTime);
                 gameParticleController.Update(gameTime);
+
+                gameHUD.Update(gameTime);
+
             }
            
             parallaxManager.Update(gameTime, gameCamera.Position);
@@ -228,11 +235,12 @@ namespace GravWalker
 
                 foreach(TouchLocation tl in TouchPanel.GetState())
                 {
-                    if (tl.State == TouchLocationState.Pressed|| tl.State == TouchLocationState.Moved)
+                    if (tl.State == TouchLocationState.Pressed || tl.State == TouchLocationState.Moved)
                     {
                         mousePos = Vector2.Transform(tl.Position, Matrix.Invert(gameCamera.CameraMatrix));
                         gameHero.Fire(mousePos);
                     }
+                    else gameHero.NotFiring();
                 }
 #else
 
@@ -242,10 +250,12 @@ namespace GravWalker
                     mousePos = Vector2.Transform(mousePos, Matrix.Invert(gameCamera.CameraMatrix));
 
 #endif
-               
+
 
                 if (input.CurrentMouseState.LeftButton == ButtonState.Pressed)
                     gameHero.Fire(mousePos);
+                else
+                    gameHero.NotFiring();
 
                 if (input.CurrentKeyboardStates[0].IsKeyDown(Keys.A)) gameHero.MoveBackward();
                 if (input.CurrentKeyboardStates[0].IsKeyDown(Keys.D)) gameHero.MoveForward();
@@ -255,6 +265,7 @@ namespace GravWalker
                     if (input.AccelerometerVect.X<0) gameHero.MoveBackward();
                     if (input.AccelerometerVect.X>0) gameHero.MoveForward();
                 }
+
 
             }
         }
@@ -313,6 +324,10 @@ namespace GravWalker
             //spriteBatch.Begin();
             //spriteBatch.Draw(gameRenderTarget, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height-200), null, Color.White, -gameCamera.Rotation, new Vector2(gameRenderTarget.Width, gameRenderTarget.Height) / 2, 1f, SpriteEffects.None, 1);
             //spriteBatch.End();
+
+            spriteBatch.Begin();
+            gameHUD.Draw(spriteBatch);
+            spriteBatch.End();
 
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition >= 0f)

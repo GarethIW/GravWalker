@@ -97,7 +97,7 @@ namespace GravWalker
             Vector2 pos = gunPos + (speed);
 
             GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
-            
+            AudioController.PlaySFX("smg", 0.5f, 0.3f, 0.6f, Position);
 
             base.DoFire();
         }
@@ -108,6 +108,7 @@ namespace GravWalker
             GameManager.ParticleController.AddGibs(centerPosition);
             GameManager.ParticleController.AddChopperGibs(centerPosition);
             GameManager.ParticleController.AddExplosion(centerPosition);
+            AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, Position);
             base.Die();
         }
     }

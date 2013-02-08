@@ -143,6 +143,12 @@ namespace GravWalker
             //}
         }
 
+        public void AddSpark(Vector2 pos, Vector2 velocity)
+        {
+            Add(pos, (velocity * 2f) + new Vector2((float)(Rand.NextDouble()) - 0.5f, (float)(Rand.NextDouble()) - 0.5f), 100, true, true, new Rectangle(8, 0, 8, 8), 0f,
+                   new Color(0.9f + ((float)Rand.NextDouble() * 0.1f), (float)Rand.NextDouble() * 0.5f + 0.5f, 0f));
+        }
+
         public void AddExplosion(Vector2 pos)
         {
             Vector2 tempV = pos;
