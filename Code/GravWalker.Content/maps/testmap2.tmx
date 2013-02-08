@@ -16,22 +16,25 @@
    <property name="Collision" value="On"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3a0WkCQRSG0TFoAQmkALECsQL7ryU9ZJc8KOKYSFjvr3MO3BdXROZj9um2BgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwF+tp9lN81n9R0K8T/PRmcM0b/+cnnu+O4rVAr/pjLPokUWPGl+dz/WoddlFjyx61Du/I3pk0aOe+5FLjyx61PO+yqVHPfcjlx713I9cemTRo573VS496rkfufTIokc976tcetS7tdPA8uYd08ON53qcXNvH3beffeXzObbH7Oa+mnn/e3Nltm2Z/Wc9+uZ950eerx596S1e6ax/8wwtRunxDC1GkdxiNKktRpTYYiTfXxlli0CcAAA=
+   H4sIAAAAAAAAC+3aS07jQBRA0eI/gAE0arqHfEeMWrABmPUCWAZLZw+URSIMikMIsd9LfI70FEFQVPKNjRJXKQAAAAAAAAAAAAAA+RxHL4AP9MhFj1z0GMb2gqPHMPSA1WjOk8c613X2g9cyZgfl7Xp1VOe2zv86h6ErGrc/df5GLwIAYA3s1rmq81Bmfyb3WWP1mmN+Uxb/XqRrdoZe+AaZ975fhCarczB5/M7x/4omy3uaPK6qRdu0yX2d0x5en+XMupZplEfX/xuN8mh3OY9dChPTHs/RCwEAAABYwvQe1u/WTO9nPU5+Pgtb3fBO6vzqmLvy8/utXb7zt43mO9vLstn31Ld6eM1l7tPSHz1y0SPGS8fv9Yj1uYseuegRr32O6JGLHvGcH3npkYse8Vyv8tIjnvMjLz3iOT/y0iMXPeK5XuWlRzznR1565KJHPNervPSIN29PA/1r9pjezXlej3ez9uP+Kx/3K7f3LPe9N3fTNPu/92bMReln/7Me3Zr9zkMeXz26ZW+xScf6K+vQYiw91qHFWGRuMTZZW4xRxhZj8gpNKcSbQJwAAA==
   </data>
  </layer>
  <layer name="Non-Collision" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3ZQQrCMBRF0U8nIjh3Da7BdThwH+4fOw5KBO33oedA6CDQQS5JS1sFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/ILlw+Od+/+7femR5rCO0zrOtU0TPbbzSruRHj2enXUjPfrcSo8k19IjybHma6lHr9l66tFLjyzLcH00r0cf65lFjyx6ZJk9P+hlf2TRI4seWfTIokcWPbJ4382iRxbnVY5d2R9JLuW7eRL/MrJokcX+yKFFFi2yaJBDA4DvuAM43IXvQJwAAA==
+   H4sIAAAAAAAAC+3czUrDQBSA0aEKKoq4U8GdKze6FlcufQAXPoYg+Pqmi1o6JCRtMpnb9hy4FBRDMp/TX2hKAAAAAAAAAAAAAAAAAAAAAMC+OK19AlDB8v/+sZn37OeLLYZpnKX1em6z/tqU8Zmm66DLeKVa6LKbOXroM1yNHjp1+031O2iy9p3qN2ib85IXHdhLqr/2bXNT8qKD+0n111+PtYh75Jh7LN0389rMR6rfQo9NF0mPiK6aeWrmLXWv23Mz1x1/P2bP3ZW4IP5ts+cuK53jsXlI/XtFC6CGRe0TmNHUzy/HHH/oeZ7scqF7oMTrg9xUPfJjHmqTIa8NxjQp0WN13ENtMtSQdrlSPVbHPvYmK133dbmSPdjU9v56To/5fCU9IrlN/Wupx7z61lOPeekRyyK7bfu9HvOxnrHoEYsesfQ9fjAv+yMWPWLRIxY9YtEjFj1i8Xw3Fj1icX8VR/6dDNTV9Z0M1OGzjFi0iMX+iEOLWLSIRYM4NACo4w/UCMr/QJwAAA==
   </data>
  </layer>
  <layer name="Decals" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3aX0rDQBAH4GXvZu+ot1B6CcVT+CC+6IN4AHfVhVWSUvzTmdrvgyGFvmzyY7IJmVIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADY10Or21bn0QtJ4r7V5UptWz3+sNaM/19++4SO2F2r5+hFwD90Fr0APhl7g1xy2bVnE2P0SA1dBUPvkToVsTZFHpnoj1xqkUcm834uj3jjmVceOWw+jvKI16//3B/E6hl4H8xDf+RSV34Tw/0qH/erXPRHLvojl/rlSBz7eS7eP3LpGczfo4g3f4/i8PqM6TZ6EUdiaR73qrzPK891Ub4/k3vKM6Z9/vt6oW7K8vzzKV+rv9bnnc1/59CzeIpeBG9kkYcs8pBFHrLIQxaxXgEfyiwHQJwAAA==
+   H4sIAAAAAAAAC+3cS07DMBDG8aEsEGLBkmtwCXoMbsFhALHgCKByCJ6HKOK1AMRzjU2JcFqnTRMnM23+P2lUsomMvzpusY0IAAAAAAAAAAAAAAAAqujNKLRrVh7k1C7ysKVqHk1Wl2n3PXnkafc9efxbk9Hvv+FqXfRz6Hoem672gmvtHLqeyZar7eBaO4Ou5zFOOwPyyEvVZ+SRhlZ/jd97I/H9F5XWe5cs4rSeI9lnbbKYpPFMXxGymKbt+XW34fsDAAAAqT26unJ14Oo5Uoeurl09aTVwCfk+v5F4f3+WvMeXq9tGWtcN4fu+bJ/P8ipkUlWqDMaRiT0+kzNXD9oNQc6H5OciMrKHjOzzGX1rNwIAAAAocKzdAAAAUFq2hrUflF/POpLRuq2/vlNrXfvuXZ0U1EDi663zVJHY2m3R3uA3Gf3N9lKWe0196OpduxGBMnvoWVNvT9kzJqzfTtpp4J7znMEik7xsbkiVS5VzhGQyadqcXVbd852rCdqwTLIxUvVsTt08mj4TtGj8GKnaNymyII+8vqTpG7JIo874CJFHGqn6hzzSCOfzunmgvuwzL+9XG/p/r+Shz/d/OD6gy2dQ9/sg0mF82NIr+Bk6eF7Zw/PKFsaHLYwPW3pjr9DDfG4L3z9s8RmE61HQF65HoX1+j+lAuxELIrYf91Ty+5WzPctV9+Ra2mPaNr//+zxSFxLf/9zlvmraUJr7H0aYj8/iRbsR+EUWdpCFHWRhB1nYQRa6fgAcKtXzQJwAAA==
   </data>
  </layer>
  <objectgroup name="Paths" width="100" height="100">
   <object x="1459" y="11895">
-   <polyline points="-44,10 77,-21 204,-21 333,-21 461,-21 589,-21 717,-21 845,-53 1357,-53 1612,-182 2124,-182 2253,-214 2763,-214 2892,-245 3341,-245 3789,-245 4238,-245 4686,-245 4943,-375 5037,-499 5071,-628 5071,-1140 5071,-1653 5071,-2165 5071,-2678 5007,-2935 4942,-3062 4815,-3191 4686,-3257 4559,-3289 4431,-3320 3919,-3320 3406,-3320 3278,-3383 3022,-3448 2895,-3574 3021,-3702 3149,-3766 3277,-3766 3598,-3766 3919,-3766 4045,-3829 4557,-3829 5068,-3829 5580,-3830 6093,-3833 6224,-3801 6351,-3787 6479,-3788 6605,-3787 6733,-3795 6862,-3832 6990,-3832 7118,-3832 7245,-3864 7373,-3926 7499,-3926"/>
+   <properties>
+    <property name="Looping" value="False"/>
+   </properties>
+   <polyline points="-44,10 77,-21 204,-21 333,-21 461,-21 589,-21 717,-21 845,-53 1357,-53 1612,-182 2124,-182 2253,-214 2763,-214 2892,-245 3341,-245 3789,-245 4238,-245 4686,-245 4943,-375 5037,-499 5071,-628 5071,-1140 5071,-1653 5071,-2165 5071,-2678 5007,-2935 4942,-3062 4815,-3191 4686,-3257 4559,-3289 4431,-3320 3919,-3320 3406,-3320 3278,-3383 3022,-3448 2895,-3574 3021,-3702 3149,-3766 3277,-3766 3598,-3766 3919,-3766 4045,-3829 4557,-3829 5068,-3829 5580,-3830 6093,-3833 6224,-3801 6351,-3787 6479,-3788 6605,-3787 6733,-3795 6862,-3832 6990,-3832 7118,-3832 7245,-3864 7373,-3926 7597,-3926 7760,-3927 7888,-3961 7951,-3961 8013,-3961 8143,-3926 8268,-3926 8399,-3829 8524,-3766 8653,-3734 8729,-3718"/>
   </object>
   <object x="6660" y="9219">
    <polyline points="0,0 21,0 51,0 89,0"/>
@@ -92,6 +95,12 @@
     <property name="OtherPath" value="False"/>
     <property name="Rate" value="200"/>
    </properties>
+  </object>
+  <object x="8833" y="5505">
+   <properties>
+    <property name="Looping" value="True"/>
+   </properties>
+   <polyline points="0,0 387,0 513,32 641,97 767,128 1152,511 1404,640 1793,640 2048,769 2433,771 2688,897 2819,1156 2849,1277 2847,1917 2817,2044 2564,2304 1664,2304 1537,2273 1411,2177 1283,2048 1025,1984 899,1920 579,1919 260,1919 129,1952 1,2048 -765,2048 -895,1984 -1152,1923 -1279,1923 -1407,1792 -1663,1728 -1788,1665 -1983,1279 -2047,1025 -2045,639 -1949,509 -1919,384 -1791,355 -1660,288 -1536,257 -1408,225 -1281,128 -640,127 -512,96 -380,31 -256,0 -1,0"/>
   </object>
  </objectgroup>
  <objectgroup name="Spawn" width="100" height="100">
@@ -868,6 +877,7 @@
     <property name="TopColor" value="50,128,255"/>
    </properties>
   </object>
+  <object x="10246" y="8192" width="2700" height="966"/>
  </objectgroup>
  <objectgroup name="Scenes" width="100" height="100">
   <object name="1" x="3306" y="11648" width="26" height="82"/>
@@ -877,5 +887,19 @@
   <object name="5" x="6308" y="8750" width="82" height="66"/>
   <object name="6" x="5234" y="8544" width="82" height="66"/>
   <object name="7" x="5442" y="8064" width="36" height="62"/>
+ </objectgroup>
+ <objectgroup name="GravPads" width="100" height="100">
+  <object name="1" x="9350" y="7900" width="117" height="58">
+   <properties>
+    <property name="Dir" value="Up"/>
+    <property name="Opposite" value="2"/>
+   </properties>
+  </object>
+  <object name="2" x="9349" y="7414" width="117" height="37">
+   <properties>
+    <property name="Dir" value="Down"/>
+    <property name="Opposite" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
