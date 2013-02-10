@@ -38,6 +38,7 @@ namespace GravWalker
                     int number = 10;
                     Vector2 position = Vector2.Zero;
                     List<Point> path = new List<Point>();
+                    bool pathLoops = false;
                     int pathnode = 0;
                     bool isPathSpawn = false;
                     bool otherpath = false;
@@ -70,6 +71,7 @@ namespace GravWalker
                             if (o.Location.Contains(p))
                             {
                                 path = mappath.LinePoints;
+                                pathLoops = bool.Parse(mappath.Properties["Looping"]);
                                 pathnode = mappath.LinePoints.IndexOf(p);
                                 position = Helper.PtoV(p);
                                 found = true;
@@ -83,7 +85,7 @@ namespace GravWalker
                         position = Helper.PtoV(o.Location.Center);
                     }
 
-                    Spawners.Add(new Spawner(type, position, path, pathnode, distance, rate, number, isPathSpawn, otherpath, offset, scene, scenedelay));
+                    Spawners.Add(new Spawner(type, position, path, pathLoops, pathnode, distance, rate, number, isPathSpawn, otherpath, offset, scene, scenedelay));
 
                     if (!RequiredTypes.Contains(type)) RequiredTypes.Add(type);
                 }
@@ -117,8 +119,12 @@ namespace GravWalker
                 {
                     if (e.Scene == GameManager.CurrentScene && e.Active) found = true;
                 }
-                
-                if(!found) GameManager.CurrentScene = 0;
+
+                if (!found)
+                {
+                    GameManager.CurrentScene = 0;
+                    AudioController.StopMusic();
+                }
             }
         }
 

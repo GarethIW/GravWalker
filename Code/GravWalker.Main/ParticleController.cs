@@ -156,7 +156,7 @@ namespace GravWalker
             Vector2 velocity = new Vector2(0, 0f);
             while (amount < 1f)
             {
-                Add(tempV, (velocity) + new Vector2((float)(Rand.NextDouble() * 8) - 4f, (float)(Rand.NextDouble() * 8) - 4f), 1000, true, true, new Rectangle(8, 0, 8, 8), 0f, 
+                Add(tempV, (velocity) + new Vector2((float)(Rand.NextDouble() * 8) - 4f, (float)(Rand.NextDouble() * 8) - 4f), 1000, true, false, new Rectangle(8, 0, 8, 8), 0f, 
                     new Color(0.9f+((float)Rand.NextDouble()*0.1f), (float)Rand.NextDouble()*0.5f + 0.5f, 0f));
                 tempV = Vector2.Lerp(pos, pos + velocity, amount);
                 amount += 0.01f;

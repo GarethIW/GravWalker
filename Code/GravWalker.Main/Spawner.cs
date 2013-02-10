@@ -20,6 +20,7 @@ namespace GravWalker
         public double SceneDelay;
 
         List<Point> Path;
+        bool pathLoops;
         int PathNode;
 
         double currentTime;
@@ -27,11 +28,12 @@ namespace GravWalker
 
         double currentDelay;
 
-        public Spawner(EnemyType type, Vector2 position, List<Point> path, int pathnode, float distance, double rate, int number, bool pathspawn, bool otherpath, Vector2 offset, int scene, double scenedelay)
+        public Spawner(EnemyType type, Vector2 position, List<Point> path, bool loop, int pathnode, float distance, double rate, int number, bool pathspawn, bool otherpath, Vector2 offset, int scene, double scenedelay)
         {
             Type = type;
             Position = position;
             Path = path;
+            pathLoops = loop;
             PathNode = pathnode;
             Distance = distance;
             Rate = rate;
@@ -63,7 +65,7 @@ namespace GravWalker
                             if (currentTime >= Rate - EnemyController.randomNumber.Next(100))
                             {
                                 currentTime = 0;
-                                GameManager.EnemyController.Spawn(Type, Position + SpawnOffset, Path, PathNode, Scene);
+                                GameManager.EnemyController.Spawn(Type, Position + SpawnOffset, Path, pathLoops, PathNode, Scene);
                                 currentNumber--;
                             }
                         }
