@@ -124,6 +124,9 @@
     <Compile Include="..\GravWalker.Main\GameManager.cs">
       <Link>GameManager.cs</Link>
     </Compile>
+    <Compile Include="..\GravWalker.Main\GravPadController.cs">
+      <Link>GravPadController.cs</Link>
+    </Compile>
     <Compile Include="..\GravWalker.Main\GravWalker.cs">
       <Link>GravWalker.cs</Link>
     </Compile>

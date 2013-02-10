@@ -12,7 +12,8 @@ namespace GravWalker
     public enum ProjectileType
     {
         WalkerGun,
-        DudePistol
+        DudePistol,
+        Grenade
     }
 
     public class Projectile
@@ -108,12 +109,24 @@ namespace GravWalker
                             Projectiles[p].Life -= gameTime.ElapsedGameTime.TotalMilliseconds;
                             if (Projectiles[p].Life <= 0)
                             {
+                                if (Projectiles[p].Type == ProjectileType.Grenade) ExplodeGrenade(Projectiles[p], false);
+
                                 Projectiles[p].alpha -= 0.1f;
                                 if (Projectiles[p].alpha <= 0f) Projectiles[p].Active = false;
                             }
 
                             if (Projectiles[p].Life > 0 || Projectiles[p].alpha > 0)
                             {
+                                if (Projectiles[p].Type == ProjectileType.Grenade)
+                                {
+                                    Projectiles[p].Speed.Y += 0.1f;
+                                    GameManager.ParticleController.Add(Projectiles[p].Position + new Vector2(((float)randomNumber.NextDouble() * 5f) - 2.5f, ((float)randomNumber.NextDouble() * 5f) - 2.5f), Vector2.Zero, 100f, false, false, new Rectangle(8,0,8,8), 0f, Color.Gray);
+
+                                    for (int i = 0; i < Projectiles.Count; i++)
+                                        if (Projectiles[i].OwnedByHero && Projectiles[i].Active)
+                                            if ((Projectiles[i].Position - Projectiles[p].Position).Length() <= 8) ExplodeGrenade(Projectiles[p], true);
+                                }
+
                                 // do collision checks
                                 if (Projectiles[p].OwnedByHero)
                                 {
@@ -129,7 +142,12 @@ namespace GravWalker
                                 }
                                 else
                                 {
-                                    if (GameManager.Hero.CheckHit(Projectiles[p].Position, Projectiles[p].Speed)) Projectiles[p].Active = false;
+                                    if (GameManager.Hero.CheckHit(Projectiles[p].Position, Projectiles[p].Speed, Projectiles[p].Type, false))
+                                    {
+                                        Projectiles[p].Active = false;
+                                        if (Projectiles[p].Type == ProjectileType.Grenade) ExplodeGrenade(Projectiles[p], false);
+                                    }
+                                    
                                 }
                             }
                         }
@@ -143,9 +161,42 @@ namespace GravWalker
         {
             foreach (Projectile p in Projectiles)
             {
-                if(p.Active)
+                if (p.Active)
+                {
                     spriteBatch.Draw(spriteSheet, p.Position, new Rectangle((int)p.Type * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White * p.alpha, p.rot, frameSize / 2, 1f, SpriteEffects.None, 1);
+                }
             }
+        }
+
+        void ExplodeGrenade(Projectile p, bool hurtsEnemies)
+        {
+            p.Active = false;
+            p.alpha = 0;
+            p.Life = 0;
+
+            for (float r = 0; r < 200; r += 20f)
+            {
+                for (float circ = 0; circ < MathHelper.TwoPi; circ += 0.25f)
+                {
+                    Vector2 checkPos = p.Position + Helper.AngleToVector(circ, r);
+
+                    Vector2 speed = (p.Position - checkPos);
+                    speed.Normalize();
+
+                    if(!hurtsEnemies)
+                        GameManager.Hero.CheckHit(checkPos, speed * 2f, ProjectileType.Grenade, true);
+
+                    if(hurtsEnemies)
+                        foreach (Enemy e in GameManager.EnemyController.Enemies)
+                            e.CheckHit(checkPos, speed);
+                 }
+            }
+
+            GameManager.ParticleController.AddExplosion(p.Position);
+            AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, p.Position);
+
+            if (hurtsEnemies)
+                GameManager.HUD.AddScore(ScorePartType.Grenade);
         }
     }
 }

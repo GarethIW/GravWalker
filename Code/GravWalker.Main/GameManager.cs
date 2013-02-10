@@ -16,6 +16,7 @@ namespace GravWalker
         public static SpriteFont Font;
 
         public static SpawnerController SpawnerController;
+        public static GravPadController GravPadController;
         public static EnemyController EnemyController;
         public static ProjectileManager ProjectileManager;
         public static ParticleController ParticleController;

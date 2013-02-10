@@ -46,6 +46,7 @@ namespace GravWalker
         Vector2 LastPosition;
 
         public List<Point> currentPath;
+        public bool currentPathLoops;
         public int forwardNode;
         public int backwardNode;
         int currentDirection = 1;
@@ -61,6 +62,10 @@ namespace GravWalker
         float muzzleAlpha = 0f;
 
         List<int> ScenesTriggered = new List<int>();
+
+        bool isFlipping;
+
+        float scale = 1.5f;
 
         public Hero()
         {
@@ -87,6 +92,7 @@ namespace GravWalker
                             if (o.Location.Contains(p))
                             {
                                 currentPath = path.LinePoints;
+                                currentPathLoops = bool.Parse(path.Properties["Looping"]);
                                 forwardNode = path.LinePoints.IndexOf(p) +1;
                                 backwardNode = path.LinePoints.IndexOf(p);
                                 Position = Helper.PtoV(p);
@@ -134,11 +140,30 @@ namespace GravWalker
                     animFrame += (currentDirection!=faceDirection?-1:1);
                     if (animFrame == numFrames) animFrame = 0;
                     if (animFrame == -1) animFrame = numFrames-1;
+
+                    if (animFrame == 1 || animFrame == 6)
+                    {
+                        Stomp();
+                        AudioController.PlaySFX("walk", 0.1f, 0f, 0.3f, Position);
+                    }
                 }
             }
 
-            
-            spriteRot = Helper.TurnToFace(Position, Target, spriteRot,currentDirection, 0.1f);
+            if (isFlipping)
+            {
+                Position = Vector2.Lerp(Position, Target, 0.05f);
+                if ((Position - Target).Length() < 1f)
+                {
+                    Target = GetPathVector(forwardNode);
+                    isFlipping = false;
+                }
+
+                spriteRot = Helper.TurnToFace(Position, Helper.PtoV(currentPath[forwardNode]), spriteRot, currentDirection, 0.1f);
+                //spriteRot = Helper.TurnToFace(Position, Helper.PtoV(currentPath[forwardNode]), spriteRot, currentDirection, 0.1f);
+
+            }
+            else
+                spriteRot = Helper.TurnToFace(Position, Target, spriteRot,currentDirection, 0.1f);
 
             mouseAngle = Helper.V2ToAngle((mousePos - Position)) - spriteRot;
             if (Helper.WrapAngle(mouseAngle+MathHelper.PiOver2)<0f)
@@ -146,14 +171,13 @@ namespace GravWalker
             else
                 faceDirection = 1;
 
-            CenterPosition = Position + (Helper.AngleToVector(Helper.WrapAngle(spriteRot - MathHelper.PiOver2), 32f));
-            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f));
+            CenterPosition = Position + ((Helper.AngleToVector(Helper.WrapAngle(spriteRot - MathHelper.PiOver2), 32f))) * scale;
+            gunPos = Position + ((Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f))) * scale;
             gunAngle = Helper.V2ToAngle((mousePos - gunPos));// -spriteRot;
 
             isAnimating = false;
 
-
-
+            
             CheckSceneTriggers(gameTime);
             
         }
@@ -179,6 +203,7 @@ namespace GravWalker
                                 ScenesTriggered.Add(scene);
                                 GameManager.CurrentScene = scene;
                                 GameManager.SceneTime = 0;
+                                AudioController.PlayMusic(randomNumber.Next(3).ToString());
 
                             }
                         }
@@ -191,18 +216,20 @@ namespace GravWalker
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle((isAnimating?animFrame:5) * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White, spriteRot , frameOffset, 1f, faceDirection==-1?SpriteEffects.FlipHorizontally:SpriteEffects.None, 1);
-            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(0, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 10), Color.White, spriteRot, new Vector2(32, 59), 1f, faceDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
+            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle((isAnimating?animFrame:5) * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White, spriteRot , frameOffset, scale, faceDirection==-1?SpriteEffects.FlipHorizontally:SpriteEffects.None, 1);
+            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(0, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 10), Color.White, spriteRot, new Vector2(32, 59), scale, faceDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
 
             Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle+((float)randomNumber.NextDouble()*0.2f)-0.1f)), 15f);
-            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X*2, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
+            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X*2, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), scale, SpriteEffects.None, 1);
 
-            spriteBatch.Draw(spriteSheet, gunPos, new Rectangle((int)frameSize.X, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
+            spriteBatch.Draw(spriteSheet, gunPos, new Rectangle((int)frameSize.X, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White, gunAngle, new Vector2(32, 27), scale, SpriteEffects.None, 1);
 
         }
 
         public void MoveForward()
         {
+            if (isFlipping) return;
+
             if (currentDirection == -1)
             {
                 //spriteRot = spriteRot + MathHelper.Pi;
@@ -223,7 +250,19 @@ namespace GravWalker
                     moveVect = Target - Position;
                     moveVect.Normalize();
 
-                    if((GameManager.Camera.Position - (Position+ (moveVect *4f))).Length()<(GameManager.Camera.Width * 0.4f))
+                    if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (600f))
+                        Position += moveVect * 4f;
+                }
+                else if(currentPathLoops)
+                {
+                    backwardNode = forwardNode;
+                    forwardNode = 0;
+                    Target = GetPathVector(forwardNode);
+
+                    moveVect = Target - Position;
+                    moveVect.Normalize();
+
+                    if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (600f))
                         Position += moveVect * 4f;
                 }
             }
@@ -231,17 +270,19 @@ namespace GravWalker
             {
                 moveVect = Target - Position;
                 moveVect.Normalize();
-                if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (GameManager.Camera.Width * 0.4f))
+                if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (600f))
                     Position += moveVect * 4f;
             }
 
-            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f));
+            gunPos = Position + ((Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f)) * scale);
 
             isAnimating = true;
         }
 
         public void MoveBackward()
         {
+            if (isFlipping) return;
+
             if (currentDirection == 1)
             {
                 //spriteRot = spriteRot - MathHelper.Pi;
@@ -261,7 +302,18 @@ namespace GravWalker
 
                     moveVect = Target - Position;
                     moveVect.Normalize();
-                    if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (GameManager.Camera.Width * 0.4f))
+                    if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (600f))
+                        Position += moveVect * 4f;
+                }
+                else if (currentPathLoops)
+                {
+                    forwardNode = backwardNode;
+                    backwardNode = currentPath.Count-1;
+                    Target = GetPathVector(backwardNode);
+
+                    moveVect = Target - Position;
+                    moveVect.Normalize();
+                    if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (600f))
                         Position += moveVect * 4f;
                 }
             }
@@ -269,11 +321,11 @@ namespace GravWalker
             {
                 moveVect = Target - Position;
                 moveVect.Normalize();
-                if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (GameManager.Camera.Width * 0.4f))
+                if ((GameManager.Camera.Position - (Position + (moveVect * 4f))).Length() < (600f))
                     Position += moveVect * 4f;
             }
 
-            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f));
+            gunPos = Position + ((Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f)) * scale);
 
             isAnimating = true;
         }
@@ -288,35 +340,41 @@ namespace GravWalker
 
         internal void Fire(Vector2 mousePos)
         {
-            if (fireRateCooldown <= 0 && Heat < 100f)
+            if (fireRateCooldown <= 0)
             {
                 fireRateCooldown = 100;
-                Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle(gunAngle), 10f);
 
-                Vector2 vect = (mousePos + new Vector2(5f - ((float)randomNumber.NextDouble() * 10f), 5f - ((float)randomNumber.NextDouble() * 10f))) - gunPos;
-                vect.Normalize();
-
-                Vector2 speed = vect * 15f;
-                Vector2 pos = barrelPos + (speed);//Position + (Helper.AngleToVector(Helper.WrapAngle(spriteRot - MathHelper.PiOver2), 48f)) + (speed * 2f);
-                //pos = Vector2.Transform(pos, Matrix.CreateRotationZ(spriteRot));
-
-
-                GameManager.ProjectileManager.Add(pos, speed, 500, true, ProjectileType.WalkerGun);
-                muzzleAlpha = 1f;
-
-                Heat += 4f;
-
-
-                AudioController.PlaySFX("machinegun", 1f, -1f, -0.7f, Position);
-            }
-            else
-            {
-                if (Heat >= 100f)
+                if (Heat < 100f)
                 {
-                    Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle(gunAngle), (float)randomNumber.NextDouble()*10f);
-                    GameManager.ParticleController.AddSpark(barrelPos, Vector2.Zero);
+                    Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle(gunAngle), 10f);
+
+                    Vector2 vect = (mousePos + new Vector2(5f - ((float)randomNumber.NextDouble() * 10f), 5f - ((float)randomNumber.NextDouble() * 10f))) - gunPos;
+                    vect.Normalize();
+
+                    Vector2 speed = vect * 15f;
+                    Vector2 pos = barrelPos + (speed);//Position + (Helper.AngleToVector(Helper.WrapAngle(spriteRot - MathHelper.PiOver2), 48f)) + (speed * 2f);
+                    //pos = Vector2.Transform(pos, Matrix.CreateRotationZ(spriteRot));
+
+
+                    GameManager.ProjectileManager.Add(pos, speed, 500, true, ProjectileType.WalkerGun);
+                    muzzleAlpha = 1f;
+
+                    Heat += 4f;
+
+
+                    AudioController.PlaySFX("machinegun", 0.7f, -1f, -0.7f, Position);
                 }
+                else
+                {
+                    Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle(gunAngle), (float)randomNumber.NextDouble() * 10f);
+                    GameManager.ParticleController.AddSpark(barrelPos, Vector2.Zero);
+
+                    if(randomNumber.Next(2)==1)
+                        AudioController.PlaySFX("gunclick", 0.5f, 0f, 0f, Position);
+                }
+
             }
+            
         }
 
         internal void NotFiring()
@@ -324,19 +382,74 @@ namespace GravWalker
             if (fireRateCooldown <= 0 && Heat > 0f) Heat -= 1f;
         }
 
-        public bool CheckHit(Vector2 pos, Vector2 speed)
+        void Stomp()
+        {
+            Vector2 checkPos = Position + (Helper.AngleToVector(Helper.WrapAngle(spriteRot - MathHelper.PiOver2), 10f));
+
+            foreach (Enemy e in GameManager.EnemyController.Enemies)
+            {
+                if (e.Type == EnemyType.Dude)
+                {
+                    if (e.CheckHit(checkPos, Vector2.Zero))
+                    {
+                        GameManager.HUD.AddScore(ScorePartType.Stomped);
+                    }
+                }
+            }
+        }
+
+        public void DoGravFlip()
+        {
+            foreach (GravPad g in GameManager.GravPadController.GravPads.Values)
+            {
+                if(g.Location.Contains(Helper.VtoP(Position)))
+                {
+                    isFlipping = true;
+
+                    MoveBackward();
+
+                    GravPad target = GameManager.GravPadController.GravPads[g.Opposite];
+                    currentPath = target.Path;
+                    currentPathLoops = target.pathLoops;
+                    Target = Helper.PtoV(currentPath[target.PathNode]);
+                    forwardNode = target.PathNode+1;
+                    backwardNode = target.PathNode;
+
+                    currentDirection = 1;
+
+                    if (!g.hasHealed)
+                    {
+                        HP = 100f;
+                        g.hasHealed = true;
+                        target.hasHealed = true;
+                    }
+
+                    AudioController.PlaySFX("gravflip");
+
+                    GameManager.HUD.AddScore(ScorePartType.Flip);
+                }
+            }
+        }
+
+        public bool CheckHit(Vector2 pos, Vector2 speed, ProjectileType type, bool grenade)
         {
             //if (!Active) return false;
 
             bool isHit = false;
 
-            if ((pos - CenterPosition).Length() <= 15)
+            if ((pos - CenterPosition).Length() <= (type!= ProjectileType.Grenade?(15 * scale):(20*scale)))
             {
                 
                 isHit = true;
 
-                HP -= 0.2f;
+                HP -= (!grenade?0.2f:0.1f);
                 GameManager.ParticleController.AddMetalDebris(pos, speed*0.2f);
+                if(!grenade)
+                    AudioController.PlaySFX("metalhit" + (randomNumber.Next(4) +1), 0.5f, 0f, 0.3f, Position);
+                if(randomNumber.Next(20)==1)
+                    AudioController.PlaySFX("ricochet", 0.4f, 0f, 0.3f, Position);
+
+
             }
 
             return isHit;

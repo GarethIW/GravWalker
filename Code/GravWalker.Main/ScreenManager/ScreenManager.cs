@@ -40,6 +40,8 @@ namespace GravWalker
         SpriteFont font;
         Texture2D blankTexture;
 
+        Texture2D texCrosshair;
+
         bool isInitialized;
 
         bool traceEnabled;
@@ -124,6 +126,8 @@ namespace GravWalker
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = content.Load<SpriteFont>("menufont");
             blankTexture = content.Load<Texture2D>("blank");
+
+            texCrosshair = content.Load<Texture2D>("crosshair");
 
             GameManager.Font = font;
 
@@ -233,6 +237,10 @@ namespace GravWalker
 
                 screen.Draw(gameTime);
             }
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(texCrosshair, new Vector2(input.CurrentMouseState.X, input.CurrentMouseState.Y), null, Color.White, 0f, new Vector2(23,23), 1f, SpriteEffects.None, 1);
+            spriteBatch.End();
         }
 
 

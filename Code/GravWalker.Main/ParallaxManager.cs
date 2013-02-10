@@ -40,11 +40,12 @@ namespace GravWalker
 
         public void Update(GameTime gameTime, Vector2 scrollPos)
         {
-            scrollPosition = scrollPos;
+            scrollPosition = scrollPos;// -new Vector2(GameManager.Camera.Width, GameManager.Camera.Height) / 2;
 
             foreach (ParallaxLayer l in Layers)
             {
-                l.Position.X = scrollPos.X * l.ScrollSpeed;
+                l.Position.Y = scrollPosition.Y;
+                l.Position.X = scrollPosition.X * l.ScrollSpeed;
             }
         }
 
@@ -55,11 +56,11 @@ namespace GravWalker
             foreach (ParallaxLayer l in Layers)
             {
 
-                for (float x = l.Position.X; x < scrollPosition.X + spriteBatch.GraphicsDevice.Viewport.Width; x += l.Texture.Width)
+                for (float x = l.Position.X-600; x < scrollPosition.X + spriteBatch.GraphicsDevice.Viewport.Width; x += l.Texture.Width)
                 {
                     if (l.Position.X + x > -l.Texture.Width)
                     {
-                        spriteBatch.Draw(l.Texture, (l.PositionFromBottom?new Vector2(l.Position.X,spriteBatch.GraphicsDevice.Viewport.Height-l.Position.Y):l.Position) + new Vector2(x, 0), null, new Color(150, 150, 150));
+                        spriteBatch.Draw(l.Texture, (l.PositionFromBottom?new Vector2(l.Position.X,spriteBatch.GraphicsDevice.Viewport.Height-l.Position.Y):l.Position) + new Vector2(x, 0), null, Color.White, 0f, new Vector2(l.Texture.Width, l.Texture.Height)/2, 1f, SpriteEffects.None, 1);
                     }
                 }
                   

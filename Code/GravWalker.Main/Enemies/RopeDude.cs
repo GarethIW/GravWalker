@@ -69,6 +69,10 @@ namespace GravWalker
 
             if (!Active) return;
 
+            Vector2 barrelPos = centerPosition + Helper.AngleToVector(Helper.WrapAngle(((SpriteRot + (MathHelper.Pi * (GameManager.Hero.Position.X < Position.X ? 1 : 0))) + ((float)EnemyController.randomNumber.NextDouble() * 0.2f) - 0.1f)), 6f);
+            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle(0, 21, 16, 3), Color.White * muzzleAlpha, SpriteRot, new Vector2(8, 1), 1f, GameManager.Hero.Position.X < Position.X ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
+
+
             base.Draw(spriteBatch);
         }
 
@@ -81,16 +85,21 @@ namespace GravWalker
         }
 
         public override void DoFire()
-        {            
-            Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - centerPosition;
-            vect.Normalize();
+        {
+            if ((GameManager.Hero.Position - Position).Length() < 600)
+            {
+                Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - centerPosition;
+                vect.Normalize();
 
-            Vector2 speed = vect * 10f;
-            Vector2 pos = centerPosition + (speed);
+                Vector2 speed = vect * 10f;
+                Vector2 pos = centerPosition + (speed);
 
-            GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
-            
-            AudioController.PlaySFX("pistol", 0.4f, 0.3f, 0.6f, Position);
+                GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
+
+                AudioController.PlaySFX("pistol", 0.4f, 0.3f, 0.6f, Position);
+
+                muzzleAlpha = 1f;
+            }
 
             base.DoFire();
         }
@@ -99,6 +108,8 @@ namespace GravWalker
         {
             GameManager.ParticleController.AddGSW(Position + Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 10f), Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 1f));
             GameManager.ParticleController.AddGibs(centerPosition);
+            AudioController.PlaySFX("death" + (EnemyController.randomNumber.Next(4) + 1), 1f, -0.1f, 0.1f, Position);
+
             base.Die();
         }
     }

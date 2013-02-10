@@ -140,6 +140,90 @@
       <Link>GravWalker.Content\sfx\sniper.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\moretiles.xnb">
+      <Link>GravWalker.Content\moretiles.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\walk.xnb">
+      <Link>GravWalker.Content\sfx\walk.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\chopper.xnb">
+      <Link>GravWalker.Content\sfx\chopper.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\gunclick.xnb">
+      <Link>GravWalker.Content\sfx\gunclick.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\bg\bg1.xnb">
+      <Link>GravWalker.Content\bg\bg1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\crosshair.xnb">
+      <Link>GravWalker.Content\crosshair.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\death1.xnb">
+      <Link>GravWalker.Content\sfx\death1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\death2.xnb">
+      <Link>GravWalker.Content\sfx\death2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\death3.xnb">
+      <Link>GravWalker.Content\sfx\death3.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\death4.xnb">
+      <Link>GravWalker.Content\sfx\death4.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\gravflip.xnb">
+      <Link>GravWalker.Content\sfx\gravflip.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\splash.xnb">
+      <Link>GravWalker.Content\sfx\splash.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\ricochet.xnb">
+      <Link>GravWalker.Content\sfx\ricochet.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\scorestinger.xnb">
+      <Link>GravWalker.Content\sfx\scorestinger.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\metalhit1.xnb">
+      <Link>GravWalker.Content\sfx\metalhit1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\metalhit2.xnb">
+      <Link>GravWalker.Content\sfx\metalhit2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\metalhit3.xnb">
+      <Link>GravWalker.Content\sfx\metalhit3.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\metalhit4.xnb">
+      <Link>GravWalker.Content\sfx\metalhit4.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\music\1.xnb">
+      <Link>GravWalker.Content\music\1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\music\2.xnb">
+      <Link>GravWalker.Content\music\2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\music\3.xnb">
+      <Link>GravWalker.Content\music\3.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +262,9 @@
     </Compile>
     <Compile Include="..\GravWalker.Main\GameManager.cs">
       <Link>GameManager.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\GravPadController.cs">
+      <Link>GravPadController.cs</Link>
     </Compile>
     <Compile Include="..\GravWalker.Main\GravWalker.cs">
       <Link>GravWalker.cs</Link>

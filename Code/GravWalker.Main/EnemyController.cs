@@ -32,6 +32,10 @@ namespace GravWalker
 
         public Dictionary<EnemyType, Texture2D> SpriteSheets = new Dictionary<EnemyType, Texture2D>();
 
+        public int grenadeProbability = 10000;
+        double probabilityTick = 0;
+        public double totalGameTime = 0;
+
         public EnemyController() 
         {
             
@@ -46,12 +50,12 @@ namespace GravWalker
             }
         }
 
-        internal void Spawn(EnemyType type, Vector2 position, List<Point> path, int pathNode, int scene)
+        internal void Spawn(EnemyType type, Vector2 position, List<Point> path, bool pathLoops, int pathNode, int scene)
         {
             switch(type)
             {
                 case EnemyType.Dude:
-                    Enemies.Add(new Dude(type, position, SpriteSheets[type], path, pathNode, scene));
+                    Enemies.Add(new Dude(type, position, SpriteSheets[type], path, pathLoops, pathNode, scene));
                     break;
                 case EnemyType.RopeDude:
                     Enemies.Add(new RopeDude(type, position, SpriteSheets[type], scene));
@@ -68,6 +72,17 @@ namespace GravWalker
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Update(GameTime gameTime)
         {
+            totalGameTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            probabilityTick += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (probabilityTick >= 1000)
+            {
+                if(grenadeProbability>1000)
+                    grenadeProbability -= 10;
+
+                probabilityTick = 0;
+            }
+
             foreach (Enemy e in Enemies)
                 e.Update(gameTime);
 

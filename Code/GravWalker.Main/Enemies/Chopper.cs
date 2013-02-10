@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace GravWalker
         Vector2 gunPos;
         float gunAngle;
         double gunCooldown = 5000;
+
+        SoundEffectInstance chopperSound;
 
         public Chopper(EnemyType type, Vector2 position, Texture2D sheet, int scene)
             : base(type, position, sheet, scene)
@@ -36,7 +39,10 @@ namespace GravWalker
 
             Target = GameManager.Hero.Position + Helper.AngleToVector(GameManager.Hero.spriteRot, 400f);
 
-            
+            chopperSound = AudioController.effects["chopper"].CreateInstance();
+            chopperSound.Volume = 0f;
+            chopperSound.IsLooped = true;
+            chopperSound.Play();
         }
 
         public override void Update(GameTime gameTime)
@@ -66,6 +72,10 @@ namespace GravWalker
             gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((SpriteRot + ((MathHelper.PiOver2 + 0.3f) * faceDirection)) - MathHelper.PiOver2)), 20f));
             gunAngle = Helper.V2ToAngle((GameManager.Hero.Position - gunPos));
 
+            Vector2 screenPos = Vector2.Transform(Position, GameManager.Camera.CameraMatrix);
+            chopperSound.Pan = MathHelper.Clamp((screenPos.X - (GameManager.Camera.Width / 2)) / (GameManager.Camera.Width / 2), -1f, 1f);
+            chopperSound.Volume = MathHelper.Clamp(((1f / 1200) * (1200 - (GameManager.Hero.Position - Position).Length())), 0f, 1f);
+
             base.Update(gameTime);
         }
 
@@ -73,6 +83,9 @@ namespace GravWalker
         {
 
             if (!Active) return;
+
+            Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle + ((float)EnemyController.randomNumber.NextDouble() * 0.2f) - 0.1f)), 15f);
+            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X * 1, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
 
             spriteBatch.Draw(spriteSheet, gunPos, new Rectangle(0,64,64,64), Color.White, gunAngle, new Vector2(32, 32), 1f, SpriteEffects.None, 1);
 
@@ -83,6 +96,9 @@ namespace GravWalker
         {
             HP--;
             GameManager.ParticleController.AddMetalDebris(pos, speed*0.1f);
+            AudioController.PlaySFX("metalhit" + (EnemyController.randomNumber.Next(4) + 1), 0.5f, 0f, 0.3f, Position);
+            if (EnemyController.randomNumber.Next(20) == 1)
+                AudioController.PlaySFX("ricochet", 0.4f, 0f, 0.3f, Position);
             base.DoHit(pos, speed);
         }
 
@@ -90,14 +106,19 @@ namespace GravWalker
         {
             if (gunCooldown > 1000) return;
 
-            Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - gunPos;
-            vect.Normalize();
+            if ((GameManager.Hero.Position - Position).Length() < 600)
+            {
+                Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - gunPos;
+                vect.Normalize();
 
-            Vector2 speed = vect * 10f;
-            Vector2 pos = gunPos + (speed);
+                Vector2 speed = vect * 10f;
+                Vector2 pos = gunPos + (speed);
 
-            GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
-            AudioController.PlaySFX("smg", 0.5f, 0.3f, 0.6f, Position);
+                GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
+                AudioController.PlaySFX("smg", 0.5f, 0.3f, 0.6f, Position);
+
+                muzzleAlpha = 1f;
+            }
 
             base.DoFire();
         }
@@ -109,6 +130,9 @@ namespace GravWalker
             GameManager.ParticleController.AddChopperGibs(centerPosition);
             GameManager.ParticleController.AddExplosion(centerPosition);
             AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, Position);
+
+            chopperSound.Stop();
+
             base.Die();
         }
     }

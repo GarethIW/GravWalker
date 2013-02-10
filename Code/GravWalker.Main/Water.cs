@@ -126,6 +126,8 @@ namespace GravWalker
 				columns[index].Speed = -speed;
 
 			CreateSplashParticles(xPosition, -speed);
+
+            
 		}
 
 		private void CreateSplashParticles(float xPosition, float speed)

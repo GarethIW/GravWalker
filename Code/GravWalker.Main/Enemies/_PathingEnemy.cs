@@ -4,23 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TiledLib;
 
 namespace GravWalker
 {
     public class PathingEnemy : Enemy
     {
         public List<Point> Path;
-
+        public bool pathLoops;
         internal int forwardNode;
         internal int backwardNode;
         internal int currentDirection = -1;
 
         internal bool hasStopped = false;
 
-        public PathingEnemy(EnemyType type, Vector2 position, Texture2D sheet, List<Point> path, int pathnode, int scene)
+        public PathingEnemy(EnemyType type, Vector2 position, Texture2D sheet, List<Point> path, bool loop, int pathnode, int scene)
             : base(type, position, sheet, scene)
         {
             Path = path;
+            pathLoops = loop;
             if (currentDirection == -1)
             {
                 backwardNode = pathnode - 1;
@@ -46,6 +48,20 @@ namespace GravWalker
                     MoveForward();
 
                 SpriteRot = Helper.TurnToFace(Position, Target, SpriteRot, currentDirection, 0.1f);
+            }
+
+            var layer = GameManager.Map.Layers.Where(l => l.Name == "EnemyBarriers").First();
+            if (layer != null)
+            {
+                MapObjectLayer objectlayer = layer as MapObjectLayer;
+
+                foreach (MapObject o in objectlayer.Objects)
+                {
+                    if (o.Location.Contains(Helper.VtoP(Position)) && (GameManager.Hero.Position - Position).Length() < 600)
+                    {
+                        if (EnemyController.randomNumber.Next(5) == 1) hasStopped = true;
+                    }
+                }
             }
 
             base.Update(gameTime);

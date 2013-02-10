@@ -45,6 +45,8 @@ namespace GravWalker
 
         public int Scene = 0;
 
+        internal float muzzleAlpha = 0f;
+
         public Enemy(EnemyType type, Vector2 position, Texture2D sheet, int scene)
         {
             Type = type;
@@ -63,6 +65,7 @@ namespace GravWalker
         public virtual void Update(GameTime gameTime)
         {
             if (spawnAlpha < 1f) spawnAlpha += 0.1f;
+            if (muzzleAlpha > 0f) muzzleAlpha -= 0.1f;
 
             fireCountdown -= gameTime.ElapsedGameTime.TotalMilliseconds;
             if (fireCountdown <= 0)
@@ -97,6 +100,7 @@ namespace GravWalker
 
         public virtual void Die()
         {
+            GameManager.HUD.AddScore(Type);
             Active = false;
         }
 
@@ -120,7 +124,7 @@ namespace GravWalker
 
         public virtual void DoFire()
         {
-
+           
         }
     }
 }

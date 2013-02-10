@@ -16,13 +16,16 @@ namespace GravWalker
     public static class AudioController
     {
         public static float sfxvolume = 1f;
-        public static float musicvolume = 0.1f;
+        public static float musicvolume = 0.5f;
 
         public static Random randomNumber = new Random();
 
         public static Dictionary<string, SoundEffect> effects;
 
-        public static Song musicInstance;
+        public static Dictionary<string, SoundEffectInstance> songs;
+
+        static string playingTrack = "";
+        static bool isPlaying;
 
         public static string currentlyPlaying = "";
 
@@ -38,40 +41,66 @@ namespace GravWalker
             effects.Add("pistol", content.Load<SoundEffect>("sfx/pistol"));
             effects.Add("shotgun", content.Load<SoundEffect>("sfx/shotgun"));
             effects.Add("sniper", content.Load<SoundEffect>("sfx/sniper"));
+            effects.Add("walk", content.Load<SoundEffect>("sfx/walk"));
+            effects.Add("chopper", content.Load<SoundEffect>("sfx/chopper"));
+            effects.Add("gunclick", content.Load<SoundEffect>("sfx/gunclick"));
+            effects.Add("death1", content.Load<SoundEffect>("sfx/death1"));
+            effects.Add("death2", content.Load<SoundEffect>("sfx/death2"));
+            effects.Add("death3", content.Load<SoundEffect>("sfx/death3"));
+            effects.Add("death4", content.Load<SoundEffect>("sfx/death4"));
+            effects.Add("splash", content.Load<SoundEffect>("sfx/splash"));
+            effects.Add("gravflip", content.Load<SoundEffect>("sfx/gravflip"));
+            effects.Add("metalhit1", content.Load<SoundEffect>("sfx/metalhit1"));
+            effects.Add("metalhit2", content.Load<SoundEffect>("sfx/metalhit2"));
+            effects.Add("metalhit3", content.Load<SoundEffect>("sfx/metalhit3"));
+            effects.Add("metalhit4", content.Load<SoundEffect>("sfx/metalhit4"));
+            effects.Add("ricochet", content.Load<SoundEffect>("sfx/ricochet"));
+            effects.Add("scorestinger", content.Load<SoundEffect>("sfx/scorestinger"));
 
+            songs = new Dictionary<string, SoundEffectInstance>();
+            songs.Add("0", content.Load<SoundEffect>("music/1").CreateInstance());
+            songs.Add("1", content.Load<SoundEffect>("music/2").CreateInstance());
+            songs.Add("2", content.Load<SoundEffect>("music/3").CreateInstance());
         }
 
         public static void LoadMusic(string piece, ContentManager content)
         {
-            if (currentlyPlaying.ToLower() == piece.ToLower()) return;
-            currentlyPlaying = piece;
+            //if (currentlyPlaying.ToLower() == piece.ToLower()) return;
+            //currentlyPlaying = piece;
 
-            if (!MediaPlayer.GameHasControl) return;
+            //if (!MediaPlayer.GameHasControl) return;
 
-            if (MediaPlayer.State != MediaState.Stopped) MediaPlayer.Stop();
-            //if (musicInstance != null)
-            //{
-            //    musicInstance.Dispose();
-            //}
+            //if (MediaPlayer.State != MediaState.Stopped) MediaPlayer.Stop();
+            ////if (musicInstance != null)
+            ////{
+            ////    musicInstance.Dispose();
+            ////}
 
-            musicInstance = content.Load<Song>("audio/music/" + piece);
-            MediaPlayer.IsRepeating = true;
-            // MediaPlayer.Volume = musicvolume;
-            MediaPlayer.Play(musicInstance);
+            //musicInstance = content.Load<Song>("audio/music/" + piece);
+            //MediaPlayer.IsRepeating = true;
+            //// MediaPlayer.Volume = musicvolume;
+            //MediaPlayer.Play(musicInstance);
 
             //if (!OptionsMenuScreen.music) MediaPlayer.Pause();
         }
 
+        public static void PlayMusic(string track)
+        {
+            playingTrack = track;
+            isPlaying = true;
+            songs[track].IsLooped = true;
+            songs[track].Volume = 0f;
+            songs[track].Play();
+        }
+
         public static void StopMusic()
         {
-            if (!MediaPlayer.GameHasControl) return;
 
-            MediaPlayer.Stop();
+            isPlaying = false;
         }
 
         public static void ToggleMusic()
         {
-            if (!MediaPlayer.GameHasControl) return;
 
             //if (OptionsMenuScreen.music)
             //{
@@ -114,7 +143,15 @@ namespace GravWalker
 
         public static void Update(GameTime gameTime)
         {
-            //if (!MediaPlayer.GameHasControl) return;
+
+            if (playingTrack == "") return;
+
+            if(isPlaying)
+                if (songs[playingTrack].Volume < musicvolume) songs[playingTrack].Volume += 0.01f;
+
+             if (!isPlaying)
+                 if (songs[playingTrack].Volume > 0) songs[playingTrack].Volume -= 0.01f;
+                 else songs[playingTrack].Stop();
 
             // if (MediaPlayer.Volume > musicvolume) MediaPlayer.Volume = musicvolume;
         }

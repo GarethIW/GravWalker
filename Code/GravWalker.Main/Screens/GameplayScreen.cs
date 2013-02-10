@@ -37,6 +37,7 @@ namespace GravWalker
         Camera gameCamera;
 
         SpawnerController gameSpawnerController;
+        GravPadController gameGravPadController;
         EnemyController gameEnemyController;
         ProjectileManager gameProjectileManager;
         ParticleController gameParticleController;
@@ -52,6 +53,8 @@ namespace GravWalker
         RenderTarget2D gameRenderTarget;
 
         Vector2 mousePos;
+
+        
 
         #endregion
 
@@ -82,6 +85,8 @@ namespace GravWalker
 
             //+ (int)(ScreenManager.GraphicsDevice.Viewport.Width/4)
             //gameRenderTarget = new RenderTarget2D(ScreenManager.GraphicsDevice, ScreenManager.GraphicsDevice.Viewport.Width + (int)(ScreenManager.GraphicsDevice.Viewport.Width / 1.2), ScreenManager.GraphicsDevice.Viewport.Height + (int)(ScreenManager.GraphicsDevice.Viewport.Width / 1.2));
+
+            
 
             gameFont = content.Load<SpriteFont>("menufont");
           
@@ -116,10 +121,14 @@ namespace GravWalker
             gameWaterController = new WaterController(ScreenManager.GraphicsDevice, gameMap);
             GameManager.WaterController = gameWaterController;
 
+            gameGravPadController = new GravPadController(gameMap);
+            GameManager.GravPadController = gameGravPadController;
+
             gameHUD = new HUD(ScreenManager.GraphicsDevice.Viewport);
             gameHUD.LoadContent(content);
 
             parallaxManager = new ParallaxManager(ScreenManager.GraphicsDevice.Viewport);
+            parallaxManager.Layers.Add(new ParallaxLayer(content.Load<Texture2D>("bg/bg1"), new Vector2(0, 0), 0.4f, false));
 
             AudioController.LoadContent(content);
 
@@ -167,6 +176,7 @@ namespace GravWalker
                 gameHero.Update(gameTime, mousePos);
                 gameProjectileManager.Update(gameTime);
                 gameParticleController.Update(gameTime);
+                gameGravPadController.Update(gameTime);
 
                 gameHUD.Update(gameTime);
 
@@ -174,6 +184,8 @@ namespace GravWalker
            
             parallaxManager.Update(gameTime, gameCamera.Position);
             gameWaterController.Update(gameTime);
+
+            AudioController.Update(gameTime);
         }
 
 
@@ -260,6 +272,8 @@ namespace GravWalker
                 if (input.CurrentKeyboardStates[0].IsKeyDown(Keys.A)) gameHero.MoveBackward();
                 if (input.CurrentKeyboardStates[0].IsKeyDown(Keys.D)) gameHero.MoveForward();
 
+                if (input.IsNewKeyPress(Keys.Space, null, out player)) gameHero.DoGravFlip();
+
                 if (Math.Abs(input.AccelerometerVect.X) > 0.15f)
                 {
                     if (input.AccelerometerVect.X<0) gameHero.MoveBackward();
@@ -288,10 +302,16 @@ namespace GravWalker
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             //Matrix transform = Matrix.CreateTranslation(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height / 2, 0) * Matrix.CreateRotationZ(-gameCamera.Rotation);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, null, null, null, Matrix.CreateTranslation(-(int)gameCamera.Position.X, -(int)gameCamera.Position.Y, 0) * Matrix.CreateRotationZ(-gameCamera.Rotation) * Matrix.CreateTranslation(gameCamera.Width/2, gameCamera.Height/2, 0));
+            parallaxManager.Draw(spriteBatch);           
+            spriteBatch.End();
+
+
+
 
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied , SamplerState.PointClamp, null, null, null, gameCamera.CameraMatrix);
 
-            parallaxManager.Draw(spriteBatch);
+            
 
             gameMap.DrawLayer(spriteBatch, "Collision", gameCamera);
             gameMap.DrawLayer(spriteBatch, "Non-Collision", gameCamera);

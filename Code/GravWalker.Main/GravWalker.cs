@@ -28,7 +28,7 @@ namespace GravWalker
         {
             graphics = new GraphicsDeviceManager(this);
 
-            IsMouseVisible = true;
+            IsMouseVisible = false;
 
 #if WINDOWS_PHONE || WINRT
             graphics.IsFullScreen = true;
@@ -42,7 +42,7 @@ namespace GravWalker
             //TargetElapsedTime = TimeSpan.FromSeconds(1 / 60);
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
-           // graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             
 #endif
             Content.RootDirectory = "GravWalker.Content";
