@@ -29,6 +29,8 @@ namespace GravWalker
 
         public static string currentlyPlaying = "";
 
+        public static int currentTrack = 0;
+
         public static void LoadContent(ContentManager content)
         {
             effects = new Dictionary<string, SoundEffect>();
@@ -82,6 +84,13 @@ namespace GravWalker
             //MediaPlayer.Play(musicInstance);
 
             //if (!OptionsMenuScreen.music) MediaPlayer.Pause();
+        }
+
+        public static void PlayMusic()
+        {
+            PlayMusic(currentTrack.ToString());
+            currentTrack++;
+            if (currentTrack == 3) currentTrack = 0;
         }
 
         public static void PlayMusic(string track)

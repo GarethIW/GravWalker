@@ -34,7 +34,7 @@
  </layer>
  <layer name="Non-Collision" width="150" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3dTYvTUBSA4dtRUBlRdyqKG1fi51Z040JB9y7c+B8ERX++CToQYz5603tyO+nzwGFA25vWviadkrYpAQAAAAAAAAAAAAAAwOHOZgaWmOtKbyyhKyIs7SpyuPxqN6Sxbardjca251r683idN3Mj1e9mas6D/g0Ydsj/99vN/Fi4lqa2K+f4MNTX3WZejVzmWEZT68ppat/r1W5IU3UtbWru+jmP+admnjVzq3P9m808z1xHU8fh0Ka664ytPTdfZ9Zu+3razMeJNaa2q6l1lWpqbK19u7qXsZ37zbxO/zc2tl1NrWvsMTl0zbFtDM3bZh4U3H6re+zU1LoimuquO7at7vwqvO2uXdLU2qKa2neba2x77vkaZdVoim3TFBE0RWmaAgCg72rtGwCcvHY/9LiZd70/zzkHBrouzodPqcw5Vhqj9TmV60lfXIhqSl+nbY2udHZ6anQ11duHwPvKen6m+j3Zn23Pt1S/o6G5HnmnCfcy1W+oO+///rwTeadZxfdUv6f+6OryO7Z9lq62Y+w9gbqilGP4fCNdbVf7/tInzbxJ44//i/Tv5zl0HbIPzHn/NacrZx/o/azkeJim913t59k8qnbrgC3ZZV7+LORWEKn0719zdguv273clX3vHFVEvA4wZaqpnH2Sto7fPq8BlGhrrqncY522tmOfBseUOIYOramtbRk7ho6J6IptGjp/oa/kc35Ow5ekK8prv5OixPFPV/TNdaErltAVEc56P4f+Xlfk0gURdEUEXRFh7vkVLGF/RQRdEUFXRNAVEXRFBF0RwesMRNAVERwHKa3/XQBQwth3AcAhnEtFBE0Rwf6K0jRFBE0RQUuUpiUA2I7f57rQ/WDqAAA=
+   H4sIAAAAAAAAC+3dT4vTQBjA4dlVUFlRbyqKF0/i36voxYOC3j148TsIin58E7QQYyZp0nkz3fR54GVB20lrfybdkrYpAQAAAAAAAAAAAAAAwOHOJwaWmOpKbyyhKyIs7SpyuPxqN6Sxbardjca251r683hdNHMj1e9mbC6C/g0Ydsj/99vN/Fi4lqa2a87xYaivu828ylzmWEZT65rT1L7Xq92Qpupa2tTU9ec85p+aedbMrc71bzbzfOY6mjoOhzbVXSe39tR8nVi77etpMx9H1hjbrqbWVaqp3Fr7dnVvxnbuN/M6/d9YbruaWlfuMTl0zdw2huZtMw8Kbr/VPXZqal0RTXXXzW2rO78Kb7vrLGlqbVFN7bvNNbY99XyNsmo0xbZpigiaojRNAQDQd7X2DQBOXrsfetzMu96fzzkHBrp258OnVOYcK43R+pzK9aQvdqKa0tdpW6MrnZ2eGl2N9fYh8L6ynp+pfk/2Z9vzLdXvaGiuR95pwr1M9Rvqzvu/P+9E3mlW8T3V76k/urr8jm2fpavtyL0nUFeUcgyfb6Sr7WrfX/qkmTcp//i/SP9+nkPXkn3g7nn7nPdfc7rm7AO9n5U5HqbxfVf7eTaPqt06YEvOZl7+PORWEKn0719TzhZet3u5K/veOaqIeB1gzFhTc/ZJ2jp++7wGUKKtqabmHuu0tR37NJhT4hg6tKa2tiV3DM2J6IptGjp/oa/kc35Ow5ekK8prv5OixPFPV/RNdaErltAVEc57P4f+XlfMpQsi6IoIuiLC1PMrWML+igi6IoKuiKArIuiKCLoigtcZiKArIjgOUlr/uwCghNx3AcAhnEtFBE0Rwf6K0jRFBE0RQUuUpiUA2I7fvXxIpWDqAAA=
   </data>
  </layer>
  <layer name="Decals" width="150" height="100">
@@ -166,7 +166,6 @@
  </objectgroup>
  <objectgroup name="Spawn" width="150" height="100">
   <object x="7920" y="11842" width="40" height="64"/>
-  <object x="11117" y="8096" width="40" height="64"/>
  </objectgroup>
  <objectgroup name="EnemySpawns" width="150" height="100">
   <object type="Dude" x="9934" y="11667" width="78" height="74">
@@ -1367,7 +1366,7 @@
     <property name="Rate" value="3000"/>
    </properties>
   </object>
-  <object type="Dude" x="17829" y="7494" width="36" height="61">
+  <object type="Dude" x="17830" y="7499" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
     <property name="Number" value="10"/>
@@ -1384,16 +1383,16 @@
   <object type="Dude" x="17350" y="7753" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="15"/>
+    <property name="Number" value="20"/>
     <property name="Rate" value="1000"/>
     <property name="Scene" value="10"/>
     <property name="SceneDelay" value="0"/>
    </properties>
   </object>
-  <object type="Dude" x="17192" y="7755" width="36" height="61">
+  <object type="Dude" x="17193" y="7756" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
+    <property name="Number" value="15"/>
     <property name="Rate" value="1500"/>
     <property name="Scene" value="10"/>
     <property name="SceneDelay" value="0"/>
@@ -1453,7 +1452,7 @@
     <property name="SceneDelay" value="8000"/>
    </properties>
   </object>
-  <object type="RopeDude" x="16800" y="7879" width="33" height="36">
+  <object type="RopeDude" x="16795" y="7883" width="33" height="36">
    <properties>
     <property name="Distance" value="1000"/>
     <property name="Number" value="1"/>
@@ -1462,7 +1461,7 @@
     <property name="SceneDelay" value="5000"/>
    </properties>
   </object>
-  <object type="Boat" x="18871" y="8089" width="92" height="71">
+  <object type="Boat" x="18714" y="8112" width="93" height="55">
    <properties>
     <property name="Distance" value="1200"/>
     <property name="Number" value="1"/>
@@ -1471,7 +1470,7 @@
     <property name="SceneDelay" value="3000"/>
    </properties>
   </object>
-  <object type="Boat" x="18935" y="8089" width="92" height="71">
+  <object type="Boat" x="18611" y="8109" width="93" height="58">
    <properties>
     <property name="Distance" value="1200"/>
     <property name="Number" value="1"/>
@@ -1480,7 +1479,7 @@
     <property name="SceneDelay" value="8000"/>
    </properties>
   </object>
-  <object type="Boat" x="18808" y="8088" width="92" height="71">
+  <object type="Boat" x="18815" y="8108" width="93" height="58">
    <properties>
     <property name="Distance" value="1200"/>
     <property name="Number" value="1"/>
@@ -1489,7 +1488,7 @@
     <property name="SceneDelay" value="10000"/>
    </properties>
   </object>
-  <object type="Boat" x="16983" y="8088" width="92" height="71">
+  <object type="Boat" x="16963" y="8104" width="92" height="71">
    <properties>
     <property name="Distance" value="1200"/>
     <property name="Number" value="1"/>
@@ -1498,11 +1497,38 @@
     <property name="SceneDelay" value="0"/>
    </properties>
   </object>
-  <object type="Dude" x="17828" y="6597" width="36" height="61">
+  <object type="Dude" x="17828" y="6604" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
     <property name="Number" value="10"/>
     <property name="Rate" value="3000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="17472" y="7876" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+    <property name="Scene" value="10"/>
+    <property name="SceneDelay" value="5000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="17656" y="7868" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="5000"/>
+    <property name="Scene" value="10"/>
+    <property name="SceneDelay" value="3000"/>
+   </properties>
+  </object>
+  <object type="RopeDude" x="17566" y="7864" width="33" height="36">
+   <properties>
+    <property name="Distance" value="1000"/>
+    <property name="Number" value="1"/>
+    <property name="Rate" value="4000"/>
+    <property name="Scene" value="10"/>
+    <property name="SceneDelay" value="12000"/>
    </properties>
   </object>
  </objectgroup>
@@ -1513,7 +1539,7 @@
     <property name="TopColor" value="50,128,255"/>
    </properties>
   </object>
-  <object x="13951" y="8145" width="5238" height="857">
+  <object x="13952" y="8141" width="5238" height="857">
    <properties>
     <property name="BottomColor" value="0,0,0"/>
     <property name="TopColor" value="50,128,255"/>
@@ -1562,7 +1588,7 @@
   <object x="12687" y="11436" width="113" height="251"/>
   <object x="10752" y="8156" width="148" height="136"/>
   <object x="16267" y="8029" width="148" height="136"/>
-  <object x="16566" y="8064" width="80" height="125"/>
-  <object x="19106" y="8060" width="80" height="125"/>
+  <object x="16506" y="8119" width="101" height="45"/>
+  <object x="18926" y="8067" width="255" height="128"/>
  </objectgroup>
 </map>

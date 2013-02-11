@@ -324,6 +324,7 @@ namespace GravWalker
             //spriteBatch.Draw(gameEnemyController.SpriteSheets[EnemyType.Dude], mousePos, Color.Red);
 
             gameProjectileManager.Draw(spriteBatch);
+            gameParticleController.Draw(spriteBatch);
 
             spriteBatch.End();
 
@@ -331,9 +332,9 @@ namespace GravWalker
 
             
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, null, null, null, gameCamera.CameraMatrix);
-            gameParticleController.Draw(spriteBatch);
-            spriteBatch.End();
+            //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, null, null, null, gameCamera.CameraMatrix);
+            
+            //spriteBatch.End();
 
             //spriteBatch.Begin();
             //spriteBatch.Draw(gameEnemyController.SpriteSheets[EnemyType.Dude], mousePos, Color.White);

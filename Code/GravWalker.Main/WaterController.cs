@@ -83,10 +83,24 @@ namespace GravWalker
                     if (p.Position.Y > w.bounds.Top && p.Position.Y < w.bounds.Top + 15)
                     {
                         AudioController.PlaySFX("splash", 0.2f, 0f, 0.1f, p.Position);
-                        w.Splash(p.Position.X, 130);
+                        w.Splash(p.Position.X, 50);
                     }
 
                     p.Active = false;
+                }
+            }
+        }
+
+        public void BoatSplash(Vector2 pos)
+        {
+            foreach (Water w in Waters)
+            {
+                if (w.bounds.Contains(Helper.VtoP(pos)))
+                {
+                    if (pos.Y > w.bounds.Top && pos.Y < w.bounds.Top + 15)
+                    {
+                        w.CreateSplashParticles(pos.X, -10);
+                    }
                 }
             }
         }

@@ -125,24 +125,26 @@ namespace GravWalker
 			for (int i = Math.Max(0, index - 0); i < Math.Min(columns.Length - 1, index + 1); i++)
 				columns[index].Speed = -speed;
 
-			CreateSplashParticles(xPosition, -speed);
+            if (speed > 40)
+			{
+			    CreateSplashParticles(xPosition, -speed);
+            }
 
             
 		}
 
-		private void CreateSplashParticles(float xPosition, float speed)
+		public void CreateSplashParticles(float xPosition, float speed)
 		{
 			float y = bounds.Bottom - GetHeight(xPosition);
 
-			if (speed < -120)
+			
+			for (int i = 0; i < -speed / 8; i++)
 			{
-				for (int i = 0; i < -speed / 8; i++)
-				{
-					Vector2 pos = new Vector2(xPosition, y) + GetRandomVector2(40);
-					Vector2 vel = FromPolar(MathHelper.ToRadians(GetRandomFloat(-120, -60)), GetRandomFloat(0, 0.5f * (float)Math.Sqrt(-speed)));
-					GameManager.ParticleController.Add(pos, vel*0.8f, 200, true, false, new Rectangle(8,0,8,8), 0f, topColor);
-				}
+				Vector2 pos = new Vector2(xPosition, y) + GetRandomVector2(40);
+				Vector2 vel = FromPolar(MathHelper.ToRadians(GetRandomFloat(-120, -60)), GetRandomFloat(0, 0.5f * (float)Math.Sqrt(-speed)));
+				GameManager.ParticleController.Add(pos, vel*0.8f, 200, true, false, new Rectangle(8,0,8,8), 0f, topColor);
 			}
+		
 		}
 
 		private void CreateParticle(Vector2 pos, Vector2 velocity)

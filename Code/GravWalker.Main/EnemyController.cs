@@ -16,9 +16,11 @@ namespace GravWalker
     public enum EnemyType
     {
         Dude,
-        Tank,
+        Jeep,
         Chopper,
-        RopeDude
+        RopeDude,
+        Boat,
+        Spider
     }
 
     /// <summary>
@@ -62,6 +64,9 @@ namespace GravWalker
                     break;
                 case EnemyType.Chopper:
                     Enemies.Add(new Chopper(type, position, SpriteSheets[type], scene));
+                    break;
+                case EnemyType.Boat:
+                    Enemies.Add(new Boat(type, position, SpriteSheets[type], scene));
                     break;
             }
         }

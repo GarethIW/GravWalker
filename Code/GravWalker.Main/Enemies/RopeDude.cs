@@ -34,7 +34,7 @@ namespace GravWalker
 
             HP = 2;
 
-            ropeLengthMax = 100f + ((float)EnemyController.randomNumber.NextDouble() * 200f);
+            ropeLengthMax = 100f + ((float)EnemyController.randomNumber.NextDouble() * 150f);
             ropeLength = 0;
 
             Target = Position + new Vector2(0, ropeLengthMax);

@@ -5,35 +5,41 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TiledLib;
 
 namespace GravWalker
 {
-    public class Chopper : Enemy
+    public class Boat : Enemy
     {
         Vector2 gunPos;
         float gunAngle;
         double gunCooldown = 5000;
 
+        Vector2 spawnPosition;
+
         SoundEffectInstance chopperSound;
 
-        public Chopper(EnemyType type, Vector2 position, Texture2D sheet, int scene)
+        bool inBarrier = false;
+
+        public Boat(EnemyType type, Vector2 position, Texture2D sheet, int scene)
             : base(type, position, sheet, scene)
         {
-            numFrames = 2;
+            spawnPosition = position;
+            numFrames = 1;
             animTime = 50;
             isAnimating = true;
             animFrame = 0;
 
-            Speed = 0.005f;
+            Speed = 0.003f;
 
             frameSize = new Vector2(64,64);
-            frameOffset = new Vector2(32, 32);
+            frameOffset = new Vector2(32, 20);
             hitRadius = 25;
 
             centerOffestLength = 0;
 
-            fireRate = 100;
-            fireCountdown = 100;
+            fireRate = 50;
+            fireCountdown = 50;
 
             HP = 20;
 
@@ -49,34 +55,82 @@ namespace GravWalker
         {
             if (!Active) return;
 
-            gunCooldown -= gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (gunCooldown <= 0) gunCooldown = 5000;
+            base.Update(gameTime);
 
-            if(EnemyController.randomNumber.Next(100)==1)
-                Target = GameManager.Hero.Position + Helper.AngleToVector(((GameManager.Hero.spriteRot-MathHelper.PiOver2) - (MathHelper.Pi * 0.4f)) + ((float)EnemyController.randomNumber.NextDouble() * (MathHelper.Pi *0.8f)), 400f);
+            gunCooldown -= gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (gunCooldown <= 0) gunCooldown = 3000;
+
+            
+            Target.Y = spawnPosition.Y;
+
+            if (Target.X < Position.X) faceDirection = -1;
+            else faceDirection = 1;
+
+            bool found = false;
+
+            var layer = GameManager.Map.Layers.Where(l => l.Name == "EnemyBarriers").First();
+            if (layer != null)
+            {
+                MapObjectLayer objectlayer = layer as MapObjectLayer;
+
+                foreach (MapObject o in objectlayer.Objects)
+                {
+                    if (o.Location.Contains(Helper.VtoP(Position)) && !inBarrier)
+                    {
+                        Target.X = Position.X + ((o.Location.Width * 5) * -faceDirection);
+                        //inBarrier = true;
+                        found = true;
+                    }
+                }
+            }
+
+            //if (!found) inBarrier = false;
+
+            //if(!inBarrier)
+            //{
+            if ((Position - Target).Length() < 200f && Speed <= 0.1f)
+            {
+                Target = GameManager.Hero.Position + Helper.AngleToVector(((GameManager.Hero.spriteRot - MathHelper.PiOver2) - (MathHelper.Pi * 0.4f)) + ((float)EnemyController.randomNumber.NextDouble() * (MathHelper.Pi * 0.8f)), (float)EnemyController.randomNumber.Next(400));
+                //inBarrier = false;
+            }
+            //}
 
             if ((Target - Position).Length() > 200f)
             {
-                if (Target.X < Position.X) SpriteRot -= 0.01f;
-                if (Target.X > Position.X) SpriteRot += 0.01f;
+                if (Target.X < Position.X) SpriteRot += 0.01f;
+                if (Target.X > Position.X) SpriteRot -= 0.01f;
+
+                Speed += 0.01f;
+
+                GameManager.WaterController.BoatSplash(Position + (Helper.AngleToVector(Helper.WrapAngle(((SpriteRot - ((MathHelper.PiOver2 + 0.3f) * faceDirection)) - MathHelper.PiOver2)), 20f)));
+
+                //SpriteRot += (0.01f);
                 SpriteRot = MathHelper.Clamp(SpriteRot, -0.2f, 0.2f);
             }
             else
             {
+                Speed -= 0.1f;
+
                 SpriteRot = MathHelper.Lerp(SpriteRot, 0f, 0.1f);
             }
 
-            if(spawnAlpha>=1f)
-                Position = Vector2.Lerp(Position, Target, Speed);
+            Speed = MathHelper.Clamp(Speed, 0f, 3f);
 
-            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((SpriteRot + ((MathHelper.PiOver2 + 0.3f) * faceDirection)) - MathHelper.PiOver2)), 20f));
+            if (Target.X < Position.X) faceDirection = -1;
+            else faceDirection = 1;
+
+            if (spawnAlpha >= 1f)
+                //Position = Vector2.Lerp(Position, Target, Speed);
+                Position.X += Speed * faceDirection;
+
+            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((SpriteRot - ((MathHelper.PiOver2 - 0.3f) * faceDirection)) - MathHelper.PiOver2)), 20f));
             gunAngle = Helper.V2ToAngle((GameManager.Hero.Position - gunPos));
 
             Vector2 screenPos = Vector2.Transform(Position, GameManager.Camera.CameraMatrix);
             chopperSound.Pan = MathHelper.Clamp((screenPos.X - (GameManager.Camera.Width / 2)) / (GameManager.Camera.Width / 2), -1f, 1f);
             chopperSound.Volume = MathHelper.Clamp(((1f / 1200) * (1200 - (GameManager.Hero.Position - Position).Length())), 0f, 1f);
 
-            base.Update(gameTime);
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -84,14 +138,15 @@ namespace GravWalker
 
             if (!Active) return;
 
-            base.Draw(spriteBatch);
+            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(animFrame * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White * spawnAlpha, SpriteRot, frameOffset, 1f, Target.X < Position.X ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
+
 
             Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle + ((float)EnemyController.randomNumber.NextDouble() * 0.2f) - 0.1f)), 15f);
             spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X * 1, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
 
             spriteBatch.Draw(spriteSheet, gunPos, new Rectangle(0,64,64,64), Color.White, gunAngle, new Vector2(32, 32), 1f, SpriteEffects.None, 1);
 
-            
+
         }
 
         public override void DoHit(Vector2 pos, Vector2 speed)

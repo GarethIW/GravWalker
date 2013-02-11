@@ -68,6 +68,8 @@ namespace GravWalker
                     return "Nice Catch!";
                 case ScorePartType.Flip:
                     return "Flippin'eck";
+                case ScorePartType.Boat:
+                    return "Abandon Ship";
                 default:
                     return "-undefined-";
             }
@@ -189,6 +191,10 @@ namespace GravWalker
                 case EnemyType.Chopper:
                     Score += 20 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Chopper);
+                    break;
+                case EnemyType.Boat:
+                    Score += 30 * scoreParts[0].Number;
+                    AddOrIncrement(ScorePartType.Boat);
                     break;
             }
         }

@@ -203,7 +203,7 @@ namespace GravWalker
                                 ScenesTriggered.Add(scene);
                                 GameManager.CurrentScene = scene;
                                 GameManager.SceneTime = 0;
-                                AudioController.PlayMusic(randomNumber.Next(3).ToString());
+                                AudioController.PlayMusic();
 
                             }
                         }
