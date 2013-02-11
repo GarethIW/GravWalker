@@ -61,7 +61,7 @@ namespace GravWalker
 
         public Vector3 AccelerometerVect;
 
-#if WINRT
+#if WINRT || WINDOWS_PHONE
         private Accelerometer accelerometer;
         private uint getReadingInterval = 0;
 #endif
@@ -85,7 +85,7 @@ namespace GravWalker
 
             GamePadWasConnected = new bool[MaxInputs];
 
-#if WINRT
+#if WINRT || WINDOWS_PHONE
             initAccel();
 #endif
         }
@@ -341,6 +341,22 @@ namespace GravWalker
         {
             AccelerometerReading ar = sender.GetCurrentReading();
             AccelerometerVect = new Vector3((float)ar.AccelerationX, (float)ar.AccelerationY, (float)ar.AccelerationZ);
+        }
+
+    
+#endif
+
+#if WINDOWS_PHONE
+        private void initAccel()
+        {
+            accelerometer = new Accelerometer();
+            accelerometer.Start();
+            accelerometer.CurrentValueChanged += acc_CurrentValueChanged;
+        }
+
+        void acc_CurrentValueChanged(object sender, SensorReadingEventArgs<AccelerometerReading> e)
+        {
+            AccelerometerVect = e.SensorReading.Acceleration;
         }
 #endif
 

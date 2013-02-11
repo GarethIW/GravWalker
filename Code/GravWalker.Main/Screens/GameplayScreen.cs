@@ -274,10 +274,10 @@ namespace GravWalker
 
                 if (input.IsNewKeyPress(Keys.Space, null, out player)) gameHero.DoGravFlip();
 
-                if (Math.Abs(input.AccelerometerVect.X) > 0.15f)
+                if (Math.Abs(input.AccelerometerVect.Y) > 0.15f)
                 {
-                    if (input.AccelerometerVect.X<0) gameHero.MoveBackward();
-                    if (input.AccelerometerVect.X>0) gameHero.MoveForward();
+                    if (input.AccelerometerVect.Y>0) gameHero.MoveBackward();
+                    if (input.AccelerometerVect.Y<0) gameHero.MoveForward();
                 }
 
 

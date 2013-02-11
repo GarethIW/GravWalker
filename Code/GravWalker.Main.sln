@@ -93,6 +93,7 @@ Global
 		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|ARM.ActiveCfg = Debug|Windows Phone
 		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
 		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
+		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|Mixed Platforms.Deploy.0 = Debug|Windows Phone
 		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
 		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
 		{A53E1AD9-D444-4113-B752-BA8264BA8611}.Debug|x64.ActiveCfg = Debug|Windows Phone

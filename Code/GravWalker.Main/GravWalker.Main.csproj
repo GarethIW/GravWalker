@@ -15,8 +15,21 @@
     <XnaPlatform>Windows Phone</XnaPlatform>
     <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>99f87f32-96a9-43a3-a646-af32a16d4400</XnaCrossPlatformGroupID>
-    <XnaOutputType>Library</XnaOutputType>
+    <XnaOutputType>Game</XnaOutputType>
     <GameStartupType>GravWalker.GravWalker</GameStartupType>
+    <WPTombstoneEnabled>false</WPTombstoneEnabled>
+    <XapFilename>$(AssemblyName).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <XnaWindowsPhoneManifestTemplate>Properties\WMAppManifest.xml</XnaWindowsPhoneManifestTemplate>
+    <TileImage>
+    </TileImage>
+    <TileTitle>GravWalker</TileTitle>
+    <SupportedCultures>
+    </SupportedCultures>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <Thumbnail>
+    </Thumbnail>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -107,6 +120,10 @@
       <Project>{09FA048F-F6A1-4611-8765-6FD6A9792136}</Project>
       <Name>TiledLib %28TiledLib\TiledLib%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AppManifest.xml" />
+    <Content Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

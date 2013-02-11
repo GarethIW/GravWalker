@@ -31,6 +31,8 @@ namespace GravWalker
             IsMouseVisible = false;
 
 #if WINDOWS_PHONE || WINRT
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 768;
             graphics.IsFullScreen = true;
 #endif
 #if WINRT
