@@ -38,14 +38,23 @@
     <Compile Include="..\GravWalker.Main\AudioController.cs">
       <Link>AudioController.cs</Link>
     </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Boat.cs">
+      <Link>Enemies\Boat.cs</Link>
+    </Compile>
     <Compile Include="..\gravwalker.main\enemies\Chopper.cs">
       <Link>Enemies\Chopper.cs</Link>
     </Compile>
     <Compile Include="..\gravwalker.main\enemies\Dude.cs">
       <Link>Enemies\Dude.cs</Link>
     </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Jeep.cs">
+      <Link>Enemies\Jeep.cs</Link>
+    </Compile>
     <Compile Include="..\gravwalker.main\enemies\RopeDude.cs">
       <Link>Enemies\RopeDude.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Spider.cs">
+      <Link>Enemies\Spider.cs</Link>
     </Compile>
     <Compile Include="..\gravwalker.main\enemies\_Enemy.cs">
       <Link>Enemies\_Enemy.cs</Link>
