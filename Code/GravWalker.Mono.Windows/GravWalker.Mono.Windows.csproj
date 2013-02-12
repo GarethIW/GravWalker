@@ -263,8 +263,14 @@
     <Compile Include="..\GravWalker.Main\Enemies\Dude.cs">
       <Link>Enemies\Dude.cs</Link>
     </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Jeep.cs">
+      <Link>Enemies\Jeep.cs</Link>
+    </Compile>
     <Compile Include="..\GravWalker.Main\Enemies\RopeDude.cs">
       <Link>Enemies\RopeDude.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Spider.cs">
+      <Link>Enemies\Spider.cs</Link>
     </Compile>
     <Compile Include="..\GravWalker.Main\Enemies\_Enemy.cs">
       <Link>Enemies\_Enemy.cs</Link>

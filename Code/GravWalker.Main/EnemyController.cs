@@ -68,6 +68,12 @@ namespace GravWalker
                 case EnemyType.Boat:
                     Enemies.Add(new Boat(type, position, SpriteSheets[type], scene));
                     break;
+                case EnemyType.Jeep:
+                    Enemies.Add(new Jeep(type, position, SpriteSheets[type], path, pathLoops, pathNode, scene));
+                    break;
+                case EnemyType.Spider:
+                    Enemies.Add(new Spider(type, position, SpriteSheets[type], scene));
+                    break;
             }
         }
 

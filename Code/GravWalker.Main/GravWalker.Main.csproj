@@ -75,6 +75,8 @@
   <ItemGroup>
     <Compile Include="AudioController.cs" />
     <Compile Include="Enemies\Boat.cs" />
+    <Compile Include="Enemies\Jeep.cs" />
+    <Compile Include="Enemies\Spider.cs" />
     <Compile Include="GravPadController.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="Enemies\Chopper.cs" />
