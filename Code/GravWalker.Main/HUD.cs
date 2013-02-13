@@ -195,18 +195,22 @@ namespace GravWalker
                 case EnemyType.Chopper:
                     Score += 20 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Chopper);
+                    scoreTime += 2000;
                     break;
                 case EnemyType.Boat:
                     Score += 30 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Boat);
+                    scoreTime += 2000;
                     break;
                 case EnemyType.Spider:
                     Score += 25 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Spider);
+                    scoreTime += 1000;
                     break;
                 case EnemyType.Jeep:
                     Score += 30 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Jeep);
+                    scoreTime += 2000;
                     break;
             }
         }

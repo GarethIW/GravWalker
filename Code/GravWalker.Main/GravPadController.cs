@@ -114,9 +114,9 @@ namespace GravWalker
             switch (dir)
 	        {
 		        case GravDirection.Left:
-                    return 0f;
+                    return MathHelper.Pi;
                 case GravDirection.Right:
-                    return Helper.WrapAngle(MathHelper.Pi);
+                    return 0f;
                 case GravDirection.Up:
                      return -MathHelper.PiOver2;
                 case GravDirection.Down:

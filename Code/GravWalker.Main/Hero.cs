@@ -406,16 +406,20 @@ namespace GravWalker
                 {
                     isFlipping = true;
 
-                    MoveBackward();
+                    if (g.UpAngle == MathHelper.Pi || g.UpAngle == 0f)
+                     
+                        MoveBackward();
 
                     GravPad target = GameManager.GravPadController.GravPads[g.Opposite];
                     currentPath = target.Path;
                     currentPathLoops = target.pathLoops;
-                    Target = Helper.PtoV(currentPath[target.PathNode]);
-                    forwardNode = target.PathNode+1;
-                    backwardNode = target.PathNode;
 
-                    currentDirection = 1;
+                   
+                        Target = Helper.PtoV(currentPath[target.PathNode]);
+                        forwardNode = target.PathNode + 1;
+                        backwardNode = target.PathNode;
+                        currentDirection = 1;
+                  
 
                     if (!g.hasHealed)
                     {
