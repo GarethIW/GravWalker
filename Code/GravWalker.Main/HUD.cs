@@ -70,6 +70,10 @@ namespace GravWalker
                     return "Flippin'eck";
                 case ScorePartType.Boat:
                     return "Abandon Ship";
+                case ScorePartType.Spider:
+                    return "Arachnophobia";
+                case ScorePartType.Jeep:
+                    return "Truck Trasher";
                 default:
                     return "-undefined-";
             }
@@ -196,6 +200,14 @@ namespace GravWalker
                     Score += 30 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Boat);
                     break;
+                case EnemyType.Spider:
+                    Score += 25 * scoreParts[0].Number;
+                    AddOrIncrement(ScorePartType.Spider);
+                    break;
+                case EnemyType.Jeep:
+                    Score += 30 * scoreParts[0].Number;
+                    AddOrIncrement(ScorePartType.Jeep);
+                    break;
             }
         }
         public void AddScore(ScorePartType type)
@@ -209,18 +221,7 @@ namespace GravWalker
             AddOrIncrement(type);
             
 
-            switch (type)
-            {
-                case ScorePartType.Stomped:
-                    Score += 3 * (scoreParts[0].Number>0?scoreParts[0].Number:1);
-                    break;
-                case ScorePartType.Grenade:
-                    Score += 5 * (scoreParts[0].Number > 0 ? scoreParts[0].Number : 1);
-                    break;
-                case ScorePartType.Flip:
-                    Score += 10 * (scoreParts[0].Number > 0 ? scoreParts[0].Number : 1);
-                    break;
-            }
+            
         }
 
         public void AddOrIncrement(ScorePartType type)
@@ -239,6 +240,19 @@ namespace GravWalker
             {
                 scoreParts.Add(type, new ScorePart(type));
                 if (type != ScorePartType.Combo) AudioController.PlaySFX("scorestinger", 0.8f, 0f, 0f);
+            }
+
+            switch (type)
+            {
+                case ScorePartType.Stomped:
+                    Score += 3 * (scoreParts[0].Number > 0 ? scoreParts[0].Number : 1);
+                    break;
+                case ScorePartType.Grenade:
+                    Score += 5 * (scoreParts[0].Number > 0 ? scoreParts[0].Number : 1);
+                    break;
+                case ScorePartType.Flip:
+                    Score += 10 * (scoreParts[0].Number > 0 ? scoreParts[0].Number : 1);
+                    break;
             }
 
             lastAddedScore = type;

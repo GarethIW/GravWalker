@@ -18,6 +18,7 @@ namespace GravWalker
         public Vector2 SpawnOffset;
         public int Scene;
         public double SceneDelay;
+        public Rectangle Location;
 
         List<Point> Path;
         bool pathLoops;
@@ -28,7 +29,7 @@ namespace GravWalker
 
         double currentDelay;
 
-        public Spawner(EnemyType type, Vector2 position, List<Point> path, bool loop, int pathnode, float distance, double rate, int number, bool pathspawn, bool otherpath, Vector2 offset, int scene, double scenedelay)
+        public Spawner(EnemyType type, Vector2 position, Rectangle loc, List<Point> path, bool loop, int pathnode, float distance, double rate, int number, bool pathspawn, bool otherpath, Vector2 offset, int scene, double scenedelay)
         {
             Type = type;
             Position = position;
@@ -41,6 +42,7 @@ namespace GravWalker
             OtherPath = otherpath;
             IsPathSpawn = pathspawn;
             SpawnOffset = offset;
+            Location = loc;
 
             Scene = scene;
             SceneDelay = scenedelay;
@@ -55,23 +57,36 @@ namespace GravWalker
             {
                 if (currentNumber > 0)
                 {
-                    if (!OtherPath || (Path != GameManager.Hero.currentPath) || Scene >0)
+                    if (!IsPathSpawn || Path==GameManager.Hero.currentPath || (OtherPath && Path != GameManager.Hero.currentPath) || Scene >0)
                     {
                         if ((!IsPathSpawn && (Position - GameManager.Hero.Position).Length() <= Distance) ||
-                            (IsPathSpawn && (Math.Abs(PathNode - GameManager.Hero.forwardNode) < Distance || Math.Abs(GameManager.Hero.backwardNode - PathNode) < Distance)) ||
+                            (IsPathSpawn && (Math.Abs(PathNode - GameManager.Hero.forwardNode) < Distance || ActualPathDistance() < Distance)) ||
                             Scene > 0)
                         {
                             currentTime += gameTime.ElapsedGameTime.TotalMilliseconds;
                             if (currentTime >= Rate - EnemyController.randomNumber.Next(100))
                             {
                                 currentTime = 0;
-                                GameManager.EnemyController.Spawn(Type, Position + SpawnOffset, Path, pathLoops, PathNode, Scene);
+                                GameManager.EnemyController.Spawn(Type, Position + SpawnOffset, Location, Path, pathLoops, PathNode, Scene);
                                 currentNumber--;
                             }
                         }
                     }
                 }
             }
+        }
+
+        int ActualPathDistance()
+        {
+            if (pathLoops)
+            {
+                if (Math.Abs(GameManager.Hero.backwardNode - PathNode) > (Path.Count / 2))
+                    return ((Path.Count) - Math.Abs(GameManager.Hero.backwardNode - PathNode));
+                else
+                    return Math.Abs(GameManager.Hero.backwardNode - PathNode);
+            }
+            else
+                return Math.Abs(GameManager.Hero.backwardNode - PathNode);
         }
     }
 }

@@ -13,7 +13,8 @@ namespace GravWalker
     {
         WalkerGun,
         DudePistol,
-        Grenade
+        Grenade,
+        Rocket
     }
 
     public class Projectile
@@ -109,7 +110,7 @@ namespace GravWalker
                             Projectiles[p].Life -= gameTime.ElapsedGameTime.TotalMilliseconds;
                             if (Projectiles[p].Life <= 0)
                             {
-                                if (Projectiles[p].Type == ProjectileType.Grenade) ExplodeGrenade(Projectiles[p], false);
+                                if (Projectiles[p].Type == ProjectileType.Grenade || Projectiles[p].Type == ProjectileType.Rocket) ExplodeGrenade(Projectiles[p], false);
 
                                 Projectiles[p].alpha -= 0.1f;
                                 if (Projectiles[p].alpha <= 0f) Projectiles[p].Active = false;
@@ -121,6 +122,15 @@ namespace GravWalker
                                 {
                                     Projectiles[p].Speed.Y += 0.1f;
                                     GameManager.ParticleController.Add(Projectiles[p].Position + new Vector2(((float)randomNumber.NextDouble() * 5f) - 2.5f, ((float)randomNumber.NextDouble() * 5f) - 2.5f), Vector2.Zero, 100f, false, false, new Rectangle(8,0,8,8), 0f, Color.Gray);
+
+                                    for (int i = 0; i < Projectiles.Count; i++)
+                                        if (Projectiles[i].OwnedByHero && Projectiles[i].Active)
+                                            if ((Projectiles[i].Position - Projectiles[p].Position).Length() <= 8) ExplodeGrenade(Projectiles[p], true);
+                                }
+
+                                if (Projectiles[p].Type == ProjectileType.Rocket)
+                                {
+                                    GameManager.ParticleController.Add(Projectiles[p].Position + new Vector2(((float)randomNumber.NextDouble() * 5f) - 2.5f, ((float)randomNumber.NextDouble() * 5f) - 2.5f), Vector2.Zero, 100f, false, false, new Rectangle(8, 0, 8, 8), 0f, Color.Gray);
 
                                     for (int i = 0; i < Projectiles.Count; i++)
                                         if (Projectiles[i].OwnedByHero && Projectiles[i].Active)

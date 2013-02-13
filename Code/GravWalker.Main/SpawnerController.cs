@@ -45,6 +45,7 @@ namespace GravWalker
                     Vector2 offset = Vector2.Zero;
                     int scene = 0;
                     double scenedelay = 0;
+                    Rectangle loc = o.Location;
 
                     try
                     {
@@ -85,7 +86,7 @@ namespace GravWalker
                         position = Helper.PtoV(o.Location.Center);
                     }
 
-                    Spawners.Add(new Spawner(type, position, path, pathLoops, pathnode, distance, rate, number, isPathSpawn, otherpath, offset, scene, scenedelay));
+                    Spawners.Add(new Spawner(type, position, loc, path, pathLoops, pathnode, distance, rate, number, isPathSpawn, otherpath, offset, scene, scenedelay));
 
                     if (!RequiredTypes.Contains(type)) RequiredTypes.Add(type);
                 }

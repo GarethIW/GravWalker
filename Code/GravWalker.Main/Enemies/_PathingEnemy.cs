@@ -18,19 +18,23 @@ namespace GravWalker
 
         internal bool hasStopped = false;
 
+        internal bool stoppedOnBarrier = false;
+
         public PathingEnemy(EnemyType type, Vector2 position, Texture2D sheet, List<Point> path, bool loop, int pathnode, int scene)
             : base(type, position, sheet, scene)
         {
             Path = path;
             pathLoops = loop;
-            if (currentDirection == -1)
+            if (GameManager.Hero.Position.X < Position.X) //if (currentDirection == -1)
             {
+                currentDirection = -1;
                 backwardNode = pathnode - 1;
                 forwardNode = pathnode;
                 Target = GetPathVector(backwardNode);
             }
-            if (currentDirection == 1)
+            else //if (currentDirection == 1)
             {
+                currentDirection = 1;
                 backwardNode = pathnode;
                 forwardNode = pathnode + 1;
                 Target = GetPathVector(forwardNode);
@@ -40,15 +44,7 @@ namespace GravWalker
 
         public override void Update(GameTime gameTime)
         {
-            if (!hasStopped)
-            {
-                if (GameManager.Hero.Position.X < Position.X)
-                    MoveBackward();
-                else
-                    MoveForward();
-
-                SpriteRot = Helper.TurnToFace(Position, Target, SpriteRot, currentDirection, 0.1f);
-            }
+            
 
             var layer = GameManager.Map.Layers.Where(l => l.Name == "EnemyBarriers").First();
             if (layer != null)
@@ -57,11 +53,25 @@ namespace GravWalker
 
                 foreach (MapObject o in objectlayer.Objects)
                 {
-                    if (o.Location.Contains(Helper.VtoP(Position)) && (GameManager.Hero.Position - Position).Length() < 600)
+                    if (o.Location.Contains(Helper.VtoP(Position)))
                     {
-                        if (EnemyController.randomNumber.Next(5) == 1) hasStopped = true;
+                        if (EnemyController.randomNumber.Next(5) == 1)
+                        {
+                            hasStopped = true;
+                            stoppedOnBarrier = true;
+                        }
                     }
                 }
+            }
+
+            if (!hasStopped)
+            {
+                if (GameManager.Hero.Position.X < Position.X)
+                    MoveBackward();
+                else
+                    MoveForward();
+
+                SpriteRot = Helper.TurnToFace(Position, Target, SpriteRot, currentDirection, 0.1f);
             }
 
             base.Update(gameTime);
@@ -90,6 +100,17 @@ namespace GravWalker
 
                     moveVect = Target - Position;
                     moveVect.Normalize();
+                    Position += moveVect * Speed;
+                }
+                else if (pathLoops)
+                {
+                    backwardNode = forwardNode;
+                    forwardNode = 0;
+                    Target = GetPathVector(forwardNode);
+
+                    moveVect = Target - Position;
+                    moveVect.Normalize();
+
                     Position += moveVect * Speed;
                 }
                 else
@@ -125,6 +146,16 @@ namespace GravWalker
                 {
                     forwardNode = backwardNode;
                     backwardNode--;
+                    Target = GetPathVector(backwardNode);
+
+                    moveVect = Target - Position;
+                    moveVect.Normalize();
+                    Position += moveVect * Speed;
+                }
+                else if (pathLoops)
+                {
+                    forwardNode = backwardNode;
+                    backwardNode = Path.Count - 1;
                     Target = GetPathVector(backwardNode);
 
                     moveVect = Target - Position;

@@ -184,7 +184,7 @@ namespace GravWalker
         {
             GameManager.ParticleController.AddGSW(Position + Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 10f), Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 1f));
             GameManager.ParticleController.AddGibs(centerPosition);
-            GameManager.ParticleController.AddChopperGibs(centerPosition);
+            GameManager.ParticleController.AddBoatGibs(centerPosition);
             GameManager.ParticleController.AddExplosion(centerPosition);
             AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, Position);
 

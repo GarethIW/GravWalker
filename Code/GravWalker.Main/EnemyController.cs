@@ -52,7 +52,7 @@ namespace GravWalker
             }
         }
 
-        internal void Spawn(EnemyType type, Vector2 position, List<Point> path, bool pathLoops, int pathNode, int scene)
+        internal void Spawn(EnemyType type, Vector2 position, Rectangle loc, List<Point> path, bool pathLoops, int pathNode, int scene)
         {
             switch(type)
             {
@@ -72,7 +72,7 @@ namespace GravWalker
                     Enemies.Add(new Jeep(type, position, SpriteSheets[type], path, pathLoops, pathNode, scene));
                     break;
                 case EnemyType.Spider:
-                    Enemies.Add(new Spider(type, position, SpriteSheets[type], scene));
+                    Enemies.Add(new Spider(type, position, loc, SpriteSheets[type], scene));
                     break;
             }
         }

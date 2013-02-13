@@ -63,7 +63,26 @@ namespace GravWalker
                     AudioController.PlaySFX("mortar");
                     rpgTime = 1000;
                 }
+
+                if ((GameManager.Hero.Position - Position).Length() > 450f && !stoppedOnBarrier)
+                {
+                    if (EnemyController.randomNumber.Next(10) == 1)
+                    {
+                        isAnimating = true;
+                        animFrame = 0;
+                        hasStopped = false;
+                        if (GameManager.Hero.Position.X < Position.X)
+                        {
+                            currentDirection = 1;
+                        }
+                        else
+                        {
+                            currentDirection = -1;
+                        }
+                    }
+                }
             }
+            
 
             base.Update(gameTime);
         }
