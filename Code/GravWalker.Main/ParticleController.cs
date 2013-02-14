@@ -102,6 +102,7 @@ namespace GravWalker
                     p.Active = true;
                     p.RotationSpeed = rot;
                     p.Color = col;
+                    p.Rotation = rot;
                     break;
                 }
         }

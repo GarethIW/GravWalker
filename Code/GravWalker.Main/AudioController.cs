@@ -58,11 +58,20 @@ namespace GravWalker
             effects.Add("metalhit4", content.Load<SoundEffect>("sfx/metalhit4"));
             effects.Add("ricochet", content.Load<SoundEffect>("sfx/ricochet"));
             effects.Add("scorestinger", content.Load<SoundEffect>("sfx/scorestinger"));
+            effects.Add("boat", content.Load<SoundEffect>("sfx/boat"));
+            effects.Add("truck", content.Load<SoundEffect>("sfx/truck"));
+            effects.Add("spider", content.Load<SoundEffect>("sfx/spider"));
+            effects.Add("repair", content.Load<SoundEffect>("sfx/repair"));
+
+
+
 
             songs = new Dictionary<string, SoundEffectInstance>();
             songs.Add("0", content.Load<SoundEffect>("music/1").CreateInstance());
             songs.Add("1", content.Load<SoundEffect>("music/2").CreateInstance());
             songs.Add("2", content.Load<SoundEffect>("music/3").CreateInstance());
+            songs.Add("3", content.Load<SoundEffect>("music/4").CreateInstance());
+            songs.Add("4", content.Load<SoundEffect>("music/5").CreateInstance());
         }
 
         public static void LoadMusic(string piece, ContentManager content)
@@ -90,7 +99,7 @@ namespace GravWalker
         {
             PlayMusic(currentTrack.ToString());
             currentTrack++;
-            if (currentTrack == 3) currentTrack = 0;
+            if (currentTrack == 5) currentTrack = 0;
         }
 
         public static void PlayMusic(string track)

@@ -62,6 +62,11 @@ namespace GravWalker
             if (spawnAlpha >= 1f)
                 Position += normDirection * Speed;
 
+            if ((animFrame == 1 || animFrame == 4) && currentFrameTime==0 && (Position-GameManager.Hero.Position).Length()<800f)
+            {
+                AudioController.PlaySFX("spider", 0.4f, 0f, 0.3f, Position);
+            }
+
             SpriteRot = Helper.TurnToFace(Position, Target, SpriteRot, 1f, 0.1f);
 
             gunPos = Position;// +(Helper.AngleToVector(Helper.WrapAngle(((SpriteRot - ((MathHelper.PiOver2 - 0.3f) * faceDirection)) - MathHelper.PiOver2)), 20f));

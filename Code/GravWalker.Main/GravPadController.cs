@@ -23,6 +23,7 @@ namespace GravWalker
         public Rectangle Location;
         public int Id;
         public GravDirection Direction;
+        public bool isHealthPad;
         public int Opposite;
 
         public float UpAngle = 0f;
@@ -33,7 +34,9 @@ namespace GravWalker
 
         public bool hasHealed = false;
 
-        public GravPad(int id, Rectangle rect, GravDirection dir, int opp, List<Point> path, bool loop, int pathNode)
+        public float RemainingHealth = 100f;
+
+        public GravPad(int id, Rectangle rect, GravDirection dir, int opp, List<Point> path, bool loop, int pathNode, bool health)
         {
             Id = id;
             Location = rect;
@@ -43,6 +46,7 @@ namespace GravWalker
             Path = path;
             pathLoops = loop;
             PathNode = pathNode;
+            isHealthPad = health;
         }
     }
 
@@ -66,28 +70,37 @@ namespace GravWalker
                     bool pathLoops = false;
                     int pathnode = 0;
                     int opp = 0;
+                    int id = 0;
+                    bool health = false;
 
-                    int id = int.Parse(o.Name);
-                    if (o.Properties.Contains("Direction")) dir = (GravDirection)Enum.Parse(typeof(GravDirection), o.Properties["Direction"], true); 
-                    if (o.Properties.Contains("Opposite")) opp = int.Parse(o.Properties["Opposite"]);
+                    
+                    if (o.Properties.Contains("HealthPad")) health = true;
+                    id = int.Parse(o.Name);
 
-                    var pathLayer = GameManager.Map.Layers.Where(l => l.Name == "Paths").First();
-                    MapObjectLayer pathObjectLayer = pathLayer as MapObjectLayer;
-                    foreach (MapObject mappath in pathObjectLayer.Objects)
+                    if (health == false)
                     {
-                        foreach (Point p in mappath.LinePoints)
-                        {
-                            if (o.Location.Contains(p))
-                            {
-                                path = mappath.LinePoints;
-                                pathnode = mappath.LinePoints.IndexOf(p);
+                        
+                        if (o.Properties.Contains("Direction")) dir = (GravDirection)Enum.Parse(typeof(GravDirection), o.Properties["Direction"], true);
+                        if (o.Properties.Contains("Opposite")) opp = int.Parse(o.Properties["Opposite"]);
 
-                                pathLoops = bool.Parse(mappath.Properties["Looping"]);
+                        var pathLayer = GameManager.Map.Layers.Where(l => l.Name == "Paths").First();
+                        MapObjectLayer pathObjectLayer = pathLayer as MapObjectLayer;
+                        foreach (MapObject mappath in pathObjectLayer.Objects)
+                        {
+                            foreach (Point p in mappath.LinePoints)
+                            {
+                                if (o.Location.Contains(p))
+                                {
+                                    path = mappath.LinePoints;
+                                    pathnode = mappath.LinePoints.IndexOf(p);
+
+                                    pathLoops = bool.Parse(mappath.Properties["Looping"]);
+                                }
                             }
                         }
                     }
 
-                    GravPads.Add(id, new GravPad(id, o.Location, dir, opp, path, pathLoops, pathnode));
+                    GravPads.Add(id, new GravPad(id, o.Location, dir, opp, path, pathLoops, pathnode, health));
                 }
             }
         }
@@ -104,7 +117,19 @@ namespace GravWalker
                     Vector2 loc = new Vector2((float)GameManager.ParticleController.Rand.Next(g.Location.Width), (float)GameManager.ParticleController.Rand.Next(g.Location.Height));
                     loc += Helper.PtoV(new Point(g.Location.Left, g.Location.Top));
 
-                    GameManager.ParticleController.Add(loc, Helper.AngleToVector(g.UpAngle, 2f), 1500, false, false, new Rectangle(0, 64, 40, 40), 0f, Color.White * 0.7f);
+                    if (!g.isHealthPad)
+                    {
+                        GameManager.ParticleController.Add(loc, Helper.AngleToVector(g.UpAngle, 2f), 1500, false, false, new Rectangle(0, 64, 40, 40), 0f, Color.White * 0.7f);
+                    }
+                    else
+                    {
+                        Vector2 normal;
+
+                        normal = (Helper.PtoV(new Point(g.Location.Left, g.Location.Top)) + new Vector2((float)GameManager.ParticleController.Rand.Next(g.Location.Width), (float)GameManager.ParticleController.Rand.Next(g.Location.Height))) - loc;
+                        normal.Normalize();
+                        if(g.RemainingHealth>0f) GameManager.ParticleController.Add(loc, normal * 1f, (20 * g.RemainingHealth), false, false, new Rectangle(6, 134, 33, 16), (float)GameManager.ParticleController.Rand.NextDouble()*0.05f, Color.White * 0.7f);
+                        
+                    }
                 }
             }
         }

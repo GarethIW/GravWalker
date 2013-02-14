@@ -67,6 +67,8 @@ namespace GravWalker
 
         float scale = 1.5f;
 
+        SoundEffectInstance repairSound;
+
         public Hero()
         {
 
@@ -120,6 +122,12 @@ namespace GravWalker
         public void LoadContent(ContentManager content)
         {
             spriteSheet = content.Load<Texture2D>("walker");
+
+            repairSound = AudioController.effects["repair"].CreateInstance();
+            repairSound.Volume = 0.5f;
+            repairSound.IsLooped = true;
+            //repairSound.Play();
+            //repairSound.Pause();
         }
 
 
@@ -179,6 +187,7 @@ namespace GravWalker
 
             
             CheckSceneTriggers(gameTime);
+            CheckHealthPads();
             
         }
 
@@ -398,11 +407,33 @@ namespace GravWalker
             }
         }
 
+        void CheckHealthPads()
+        {
+            bool found = false;
+            foreach (GravPad g in GameManager.GravPadController.GravPads.Values)
+            {
+                if (g.Location.Contains(Helper.VtoP(Position)) && g.isHealthPad)
+                {
+                    if (g.RemainingHealth > 0f && HP<100f)
+                    {
+                        found = true;
+
+                        HP += 0.5f;
+                        g.RemainingHealth -= 0.5f;
+
+                        if(repairSound.State == SoundState.Stopped) repairSound.Play();
+                    }
+                }
+            }
+
+            if (!found && repairSound.State == SoundState.Playing) repairSound.Stop();
+        }
+
         public void DoGravFlip()
         {
             foreach (GravPad g in GameManager.GravPadController.GravPads.Values)
             {
-                if(g.Location.Contains(Helper.VtoP(Position)))
+                if(g.Location.Contains(Helper.VtoP(Position)) && !g.isHealthPad)
                 {
                     isFlipping = true;
 
@@ -423,7 +454,8 @@ namespace GravWalker
 
                     if (!g.hasHealed)
                     {
-                        HP = 100f;
+                        HP += 50f;
+                        if (HP > 100f) HP = 100f;
                         g.hasHealed = true;
                         target.hasHealed = true;
                     }

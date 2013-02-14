@@ -86,7 +86,7 @@ namespace GravWalker
             //+ (int)(ScreenManager.GraphicsDevice.Viewport.Width/4)
             //gameRenderTarget = new RenderTarget2D(ScreenManager.GraphicsDevice, ScreenManager.GraphicsDevice.Viewport.Width + (int)(ScreenManager.GraphicsDevice.Viewport.Width / 1.2), ScreenManager.GraphicsDevice.Viewport.Height + (int)(ScreenManager.GraphicsDevice.Viewport.Width / 1.2));
 
-            
+            AudioController.LoadContent(content);
 
             gameFont = content.Load<SpriteFont>("menufont");
           
@@ -129,8 +129,6 @@ namespace GravWalker
 
             parallaxManager = new ParallaxManager(ScreenManager.GraphicsDevice.Viewport);
             parallaxManager.Layers.Add(new ParallaxLayer(content.Load<Texture2D>("bg/bg1"), new Vector2(0, 0), 0.4f, false));
-
-            AudioController.LoadContent(content);
 
             ScreenManager.Game.ResetElapsedTime();
         }

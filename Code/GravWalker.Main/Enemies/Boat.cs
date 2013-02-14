@@ -45,7 +45,7 @@ namespace GravWalker
 
             Target = GameManager.Hero.Position + Helper.AngleToVector(GameManager.Hero.spriteRot, 400f);
 
-            chopperSound = AudioController.effects["chopper"].CreateInstance();
+            chopperSound = AudioController.effects["boat"].CreateInstance();
             chopperSound.Volume = 0f;
             chopperSound.IsLooped = true;
             chopperSound.Play();

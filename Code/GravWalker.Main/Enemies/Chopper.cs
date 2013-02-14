@@ -74,7 +74,7 @@ namespace GravWalker
 
             Vector2 screenPos = Vector2.Transform(Position, GameManager.Camera.CameraMatrix);
             chopperSound.Pan = MathHelper.Clamp((screenPos.X - (GameManager.Camera.Width / 2)) / (GameManager.Camera.Width / 2), -1f, 1f);
-            chopperSound.Volume = MathHelper.Clamp(((1f / 1200) * (1200 - (GameManager.Hero.Position - Position).Length())), 0f, 1f);
+            chopperSound.Volume = MathHelper.Clamp(((1f / 800) * (800 - (GameManager.Hero.Position - Position).Length())), 0.3f, 1f);
 
             base.Update(gameTime);
         }

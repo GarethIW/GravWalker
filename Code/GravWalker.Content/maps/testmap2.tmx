@@ -29,17 +29,17 @@
    <property name="Collision" value="On"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3cSW7bMAAFUCYd0l0ndNimwwHS9ALNHbrs/Vc+QDqhFGoBsqGJshRS8nvAhxEYCRjoh0QsUiEAAAAAAAAAMJeXMa8auYl508iXmNfZRtftRe4BnJHHMR9jviV8z6OFxjKVviyn6sd1zG3M5Qk/p6TO6Mv8qp58zj2IhejLPJpzydZcNrLlvlyEw9+1L/cxP2N+xfyO+RPzd8R7dbZsjX1JufbncA3pdpF7AByo/haf5R5EB10px1X4vx79CGWuS7pSlncx72Oeh/L6oivlqntTCl0BAADm0txn0fY5+V3Mp5inuQbIg6vvmafeUzlOSXsrmFffvDGGzpyPq/3rnPdedWa7vu9fl7hPX3fmayhzjzFlalurdIix2vqzCzrEeLvcA2CV9AaAEliPgKWYX4ClmF9IoS8c23WE7ar3zDSfdVXvn7nbf/022+g4dvycsmbq5w6dkjHPmhizZ6a6h/gh2KOZ0xLn9DyzghT6Qgp9oU3X/yH6Qp/j3ugLKfSFIc05Rl9IoS8MMb8wlb6QQl8YYj1iKn1hiPmFqfSFIeYXptIXUugLQ6xHTKUvDDG/MJW+kEJfGGI9Yip9YUjfnm+oztDe9ryvL+vRdh76JhyeZ2+eaT8lXfQln+r5BU9ach2WOR+vL+tVnYd/yOuvL+tVeld0oRxr6Iq+lGENXaEMJXeFspTaFcpTYlfOyT/FdITH8LkAAA==
+   H4sIAAAAAAAAC+3cSW7bMAAFUCYd0l0ndNimwwHS9ALNHbrsMXssH6AjSqEWIAvWQFkKKfk94MMIjAQM9EMiFqkQAAAAAAAAAJjL85gXjdzEvGrkU8zLbKPr9iz3AM7Iw5j3MV8SvufBQmOZSl+WU/XjOuY25vKEn1NSZ/RlflVPPuYexEL0ZR7NuWRrLhvZcl8uwuHv2pcfMT9jfsX8jvkT83fEe3W2bI19Sbn253AN6XaRewAcqP4Wn+QeRAddKcdV+L8efQtlrku6UpY3MW9jnoby+qIr5ap7UwpdAQAA5tLcZ3Hsc/K7mA8xj3MNkHtX3zNPvafSTkl7K5hX37wxhs6cj6v965z3XnVmu77uX5e4T1935nMoc48xZTq2VukQY7W7s9vne9AhxtnlHgCrpDcAlMB6BCzF/AIsxfxCCn2hbdcRtqveM9N81lW9f+Zu//XrbKOjrf2csmbq5w6dkjHPmhizZ6a6D/0u2KOZ0xLn9DyzghT6Qgp94Ziu/0P0hT7t3ugLKfSFIc05Rl9IoS8MMb8wlb6QQl8YYj1iKn1hiPmFqfSFIeYXptIXUugLQ6xHTKUvDDG/MJW+kEJfGGI9Yip9YUjfnm+oztDe9ryvL+tx7Dz0TTg8z948035KuuhLPtXzCx4dyXVY5ny8vqxXdR7+Pq+/vqxX6V3RhXKsoSv6UoY1dIUylNwVylJqVyhPiV05J/8ApkDoW/C5AAA=
   </data>
  </layer>
  <layer name="Non-Collision" width="140" height="85">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3cS2/UMBSGYc+ARKsiYAeoqKrECnFdguiGBUiwZ9EN/6ALJBD8fGyVSCbElxPbOfb0faSjqp2ZxG6+OJdJYgwAAAAAAPXsEwX4UnkhR/CRF0iszUvLQr+0s0F2xqKdB7Izjjvmejmc2Do2+nmI1Umj/wHy3bf10/tdOxNkZVvScf2hrTcrPk9WxlSyHGpPj6z0qebyKJn2F1svbN3zPn/X1stKbSMrZVqsv2vn8S3RVpeb57Y+Z86brMSFtgfTa1uV446RjoTzfiTo62Nb78z/2Qn1+dCyUrL++tOoMf3Semvrq60HmfO+sHUaafsa/jas96xssf6G5qvVptR4EXrP70ibS+3MdVaOUm9UtMVyiM1bs11TvTL/7q/G2tBSan9I21bLIzb/krbV6FfvY38vtlx/Y21Y075a/SQrebbMSs28ACHkBAAAQMdt7QYAGI4bN57a+jD7e43zDDgs0/W+xrQ/R4Xxue+ytz63iXFpnhPHeLb+PiWUn0/Ve4YWNPISK5eb85YdRpFfRj8j87pq2mOU+G7087FUPV+Xd5O9NvrZ8Ovj35/T9cfozw+jn5N5kZd+9TbGkJf+he4pIi9I6eE5IORlPO6+s2e23pvwcg3dv+KsGbOm/V3J/ZY4PJIxi3sd4Dwx8bHGPR/iTK11ADTthO/fN2kF1qh9PJKyW/lZ/323cjuHqloc78bEsiIZQ8iMnpxj3RqZSWVFus0hM/3LyVZIjW3Z0jTJzBhC27KQFnnBWJa+j56rua+MsV0a8oJ87hngNbZD5OXmSC1v8gIfeYHEfvZz6XXyggnLGxLkBRLkBRKp/RfAx/gCCfICCfICCfICCfICCfICCY6nIUFeIMH2CLnmz2gGYkLPaAaWcC0LJMgKJBhfkIusQIKsQIKMIBcZAQCgvj/9Cj8u8LkAAA==
+   H4sIAAAAAAAAC+3cS4vUQBSG4epRcGRE3akoIrgSrwsXim5cKOjehRv/gQtB0Z9vFWOgjKnLSV1O1fT7wKGZ7nRSmXypXDqJMQAAAAAA1HOSKMCXygs5go+8QGJvXloWxqWdDbIzF+08kJ15XDHny+HM1lWjn4dYnTX6HyDfDVs/vb+1M0FW+pL267dsvdjxfbIyp5LlUHt8ZGVMNZdHybg/2Xpi67r3/Wu2nlZqG1kp02L93TuNr4m2utw8tvUxc9pkJS60PVg+61WOO0Y6FU77tmBe79h6bf7PTmieL1pWStZffxw1xl9ar2x9tnUzc9pvbd2NtH0Pfxs2elZ6rL+h6Wq1KdVfhIb5HWlzqYM5z8ppakBFPZZDbNqa7Vrqmfl3fzXWhpZS+0Paei2P2PRL2lZjvkbv+0fRc/2NtWFP+2rNJ1nJ0zMrNfMChJATAAAAHZe1GwBgOq7feGjr3er9GucZcLEs1/sa0/4cFebnfsvufW4T89I8J4759P49ZSs/7r0Ptl42mD/UpZGXWLncPGg5wyjyy+hnZF3fms4xSnw3+vnYqpGvyztmz41+Nvx6//d1uf4Y4/lh9HOyLvIyrtH6GFeS+1vQX+ieIq3CPEZ4Dgj7u/Nx9509svXGhJdr6P4VZ0+ftezvsj06bpI+i3sd4Nwz8b7GPR/ivlrrAGg6CIfnOGccvY9fDzu/6w93KXfmUFWL492YWFYkfQiZ0ZNzrFsjM6msSLc5ZGZ8OdkKqbEt2xonmZlDaFsW0iIvmMvW79FrNfeVMbcvhrwgn3sGeI3tEHk5HqnlTV7gIy+QOFm9bn1OXrBgeUOCvECCvEAitf8C+OhfIEFeIEFeIEFeIEFeIEFeIMHxNCTICyTYHiHX+hnNQEzoGc3AFq5lgQRZgQT9C3KRFUiQFUiQEeQiIwAA1PcHTxG8OvC5AAA=
   </data>
  </layer>
  <layer name="Decals" width="140" height="85">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3dWU7DMBSFYSu8Arti2BBiLVAhhFgBqCyCcRFFTA8FMT7jKxpwo7ixEzfG8f9JVy2kolfKqZukdlEKAAAAAAAAAAAAAAAAQK4Oa3533HsXABDGUewGAESzu2DbTm9dIBVbugrLtu0+G0EyVnWtVWo9akcAAAAAAOTjUdeVrn1d01kdGPdHuq51PcVqEL2TTNyovwyY9eH4Nz513S6lO/wH5rjhmokmL4rMDFWojFSRGfiSzJzpeojdCJLyruaPhcgQfJEhtDWd3UqGvmI2gqRMmx8C/NqI3QCSwvgCH+QFPjZjN4CkML7kpev6NcYX+GB8gY2MJdXzZ/KCqrq5NeRk2Mo5M3tGyfwZmW83mv18F607VN3rOrHUWNlfw65VZ2JsN+fMFJZ6VT+fIV4q5mjGJPvtLcJzPlu22fJiFnM087EoK8IlL1LMt0uP7+d5TVkRrnkhM+kpj01CfQ7skxUyk64Q569tsmLWSoAe0J9yjLF9n1CTrnlp+7yIQ8aYtvsuRFbIS1rkenyIfUdW8tBlfDGRlzyE2n/kJQ/m8W7XvGD4ynNqXu9wUc5lIy9oIvkwxxdgEclI1+t1yAfjC3wUlvtAHd6P4Iv3I/hgfIEPxhf4KCq3gA3Hu/DB9Rf4kIyY86WAJuZ8KaBK1tCOYzeBIOrWQ5+q+fXs5Zr2tmui+15DC3fy/QXnNXWh6tfHsy/zNVHL+58fGBbJStN6Y0CQFbgiK3BFVuCKrMAVWYnrG5rN4+vwuQAA
+   H4sIAAAAAAAAC+3dW07cMBTGcWv6StlVSzdUdS0UoapiBVC6iNLLIqjK5aFUpZfn+ohaOkR2xk7OxHHy/0lHDAzMWMqHJ5McZ5wDAAAAAAAAAAAAAFi58nWq6szXoap3vq6rjQ5zcOPrk6/Xvu4zfv+Xr687HRHmRPJx4evc13dfvwc8xg9nm5m3ho8FG5KTL25YPmLeRH52YvTYqEPPJVY5wbQu3cPrQE6lHPfcp/9+aRlp/XWrZNuHuqsyUtQmWWHbP/aq576Xk41ifshK3IGvTeK+F1MOZEbISr89X087tV91RPWQFeQiKwAAAACs6D6LcGz8WN0+8vXZ122tAWJy4Zx57LxJ7rmvP45+nCXT84bV+VDrfhzMx67OmZMZlJLMvHf0GKOM9BjrfSEy1Kaa/ZpkCEOF3kXJ0N+aA0FT+npega5ntQeApjC/oAR5QYnntQeApsj8EluniWUau36N+QUl2H9Biswl3ffP5AVdpWvT0b7QM6OvdSX9M9Jvd/T/+2/VRoeu7nXKdIXrDo2pGH0tA90zs0nUT/dwDvGjo0ezJtluOdcps37O1NrAVF500aO5HtvWkebkRYp+u/lKHQcpPZ+Xs+Y4Ny9kpj1h38TqPHBJVshMuyzevw7Jiq4nBmPAdMIck7qe0DZj8zL0eVGHzDFDt51FVshLW+R4vMW2IyvrMGZ+0cjLOlhtP/KyDnp/d2xesHzhPTX/78gRetnIC7aRfOj5BegjGRl7vA7rwfyCEpvEbSCG1yOU4vUIJZhfUIL5BSU2na9ACvu7KMHxF5SQjOh+KWAb3S8FdMka2vPag4CJ2HroM/d4PXtY0166Fjp85szUa2iRT65f8CFSFy6+Pp5tuV6Xbnef+YFlkazwGcfIQVaQi6wgF1lBLrKCXGSlrn8pnnq/8LkAAA==
   </data>
  </layer>
  <objectgroup name="Paths" width="140" height="85">
@@ -119,7 +119,7 @@
    <properties>
     <property name="Looping" value="True"/>
    </properties>
-   <polyline points="0,0 64,-1 129,0 194,0 387,0 513,32 641,97 767,128 960,320 1152,511 1278,576 1404,640 1501,640 1599,640 1793,640 2048,769 2241,770 2337,771 2433,771 2465,787 2497,803 2529,818 2561,834 2592,850 2624,866 2656,881 2688,897 2819,1156 2849,1277 2847,1917 2814,2048 2687,2174 2559,2273 2429,2306 2033,2305 1664,2304 1537,2273 1411,2177 1283,2048 1025,1984 899,1920 579,1919 260,1919 129,1952 1,2048 -382,2048 -765,2048 -895,1984 -1152,1923 -1279,1923 -1407,1792 -1663,1728 -1788,1665 -1983,1279 -2047,1025 -2045,639 -1949,509 -1919,384 -1791,355 -1660,288 -1536,257 -1408,225 -1281,128 -960,128 -640,127 -512,96 -380,31 -256,0 -2,0"/>
+   <polyline points="0,0 64,-1 129,0 194,0 387,0 513,32 641,97 767,128 960,320 1152,511 1278,576 1404,640 1501,640 1599,640 1793,640 2048,769 2241,770 2337,771 2433,771 2465,787 2656,881 2688,897 2819,1156 2849,1277 2846,1533 2813,1667 2813,1791 2847,1917 2814,2048 2687,2174 2559,2273 2429,2306 2033,2305 1664,2304 1537,2273 1411,2177 1283,2048 1025,1984 899,1920 579,1919 260,1919 129,1952 1,2048 -382,2048 -765,2048 -895,1984 -1152,1923 -1279,1923 -1407,1792 -1663,1728 -1788,1665 -1983,1279 -2047,1025 -2045,639 -1949,509 -1919,384 -1791,355 -1660,288 -1536,257 -1408,225 -1281,128 -960,128 -640,127 -512,96 -380,31 -256,0 -2,0"/>
   </object>
   <object x="16518" y="4989">
    <properties>
@@ -175,22 +175,15 @@
    </properties>
    <polyline points="0,0 46,1 84,2 118,2"/>
   </object>
-  <object x="10295" y="2577">
+  <object x="2253" y="2481">
    <properties>
     <property name="Looping" value="False"/>
    </properties>
-   <polyline points="0,0 -71,-95 -71,-351 -71,-417 -71,-479 -199,-605 -326,-733 -454,-797 -582,-829 -710,-829 -838,-829 -966,-829 -1093,-797 -1221,-797 -1349,-797 -1477,-797 -1605,-733 -1733,-701 -1861,-637 -1989,-605 -2119,-605 -2246,-541 -2374,-509 -2501,-478 -2630,-381 -2757,-349 -2885,-285 -3013,-253 -3141,-221 -3269,-221 -3397,-221 -3525,-221 -3654,-209 -3783,-203 -3911,-203 -4037,-203 -4166,-208 -4293,-220 -4421,-220 -4550,-208 -4678,-202 -4806,-201 -4934,-203 -5062,-207 -5190,-220 -5318,-220 -5446,-220 -5574,-220 -5702,-220 -5830,-220 -5958,-220 -6086,-220 -6214,-220 -6342,-220 -6470,-220 -6599,-91 -6727,-91 -6855,-91 -6983,-91 -7111,-91 -7239,-91 -7367,-91 -7495,-91 -7623,-91 -7751,-91 -7879,-91 -8007,-91 -8133,-91 -8173,-53"/>
-  </object>
-  <object x="10112" y="1791">
-   <properties>
-    <property name="Looping" value="False"/>
-   </properties>
-   <polyline points="0,0 253,256 255,324 257,385 256,639 325,733"/>
+   <polyline points="0,0 52,-49 307,-49 563,-49 817,-48 1075,-48 1464,-48 1587,-49 1715,-177 2104,-177 2493,-177 2869,-177 2993,-180 3123,-164 3249,-159 3376,-157 3504,-157 3635,-163 3761,-177 3891,-177 4017,-163 4145,-156 4273,-156 4403,-159 4529,-164 4656,-176 5043,-176 5301,-241 5425,-304 5553,-336 5683,-432 5941,-497 6069,-563 6192,-560 6323,-592 6452,-656 6579,-688 6707,-752 6963,-752 7091,-752 7219,-785 7347,-784 7476,-784 7603,-785 7732,-752 7859,-688 7985,-561 8114,-435 8113,-369 8112,-307 8112,-177 8112,-49 8190,52"/>
   </object>
  </objectgroup>
  <objectgroup name="Spawn" width="140" height="85">
   <object x="6640" y="9922" width="40" height="64"/>
-  <object x="10350" y="2386" width="40" height="64"/>
  </objectgroup>
  <objectgroup name="EnemySpawns" width="140" height="85">
   <object type="Dude" x="8654" y="9747" width="78" height="74">
@@ -238,27 +231,19 @@
     <property name="Rate" value="300"/>
    </properties>
   </object>
-  <object type="Dude" x="11461" y="6603" width="36" height="61">
-   <properties>
-    <property name="Distance" value="800"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="3000"/>
-    <property name="Scene" value="5"/>
-   </properties>
-  </object>
   <object type="Dude" x="11848" y="6987" width="36" height="61">
    <properties>
     <property name="Distance" value="800"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="3000"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="5"/>
    </properties>
   </object>
   <object type="Dude" x="11812" y="7245" width="36" height="61">
    <properties>
     <property name="Distance" value="800"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="3000"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="5"/>
    </properties>
   </object>
@@ -308,7 +293,7 @@
   <object type="Dude" x="11816" y="9416" width="36" height="61">
    <properties>
     <property name="Distance" value="800"/>
-    <property name="Number" value="7"/>
+    <property name="Number" value="5"/>
     <property name="Rate" value="3000"/>
     <property name="Scene" value="3"/>
     <property name="SceneDelay" value="0"/>
@@ -515,7 +500,7 @@
     <property name="Rate" value="300"/>
    </properties>
   </object>
-  <object type="Dude" x="10781" y="9686" width="78" height="74">
+  <object type="Dude" x="10782" y="9674" width="78" height="74">
    <properties>
     <property name="Distance" value="4"/>
     <property name="IsPathSpawn" value="True"/>
@@ -826,27 +811,18 @@
    <properties>
     <property name="Distance" value="800"/>
     <property name="Number" value="5"/>
-    <property name="Rate" value="1000"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="5"/>
     <property name="SceneDelay" value="7000"/>
    </properties>
   </object>
-  <object type="Dude" x="11715" y="6731" width="36" height="61">
+  <object type="Dude" x="11717" y="6730" width="36" height="61">
    <properties>
     <property name="Distance" value="800"/>
     <property name="Number" value="5"/>
-    <property name="Rate" value="500"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="5"/>
-    <property name="SceneDelay" value="8000"/>
-   </properties>
-  </object>
-  <object type="Dude" x="11841" y="6987" width="36" height="61">
-   <properties>
-    <property name="Distance" value="800"/>
-    <property name="Number" value="5"/>
-    <property name="Rate" value="1000"/>
-    <property name="Scene" value="5"/>
-    <property name="SceneDelay" value="7000"/>
+    <property name="SceneDelay" value="2000"/>
    </properties>
   </object>
   <object type="RopeDude" x="11038" y="6620" width="33" height="36">
@@ -1394,15 +1370,15 @@
   <object type="Dude" x="16550" y="5579" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="3000"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
    </properties>
   </object>
   <object type="Dude" x="16582" y="4938" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="2500"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="11"/>
     <property name="SceneDelay" value="0"/>
    </properties>
@@ -1527,8 +1503,8 @@
   <object type="Dude" x="16549" y="4682" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="3000"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
    </properties>
   </object>
   <object type="RopeDude" x="16192" y="5956" width="33" height="36">
@@ -1558,11 +1534,11 @@
     <property name="SceneDelay" value="12000"/>
    </properties>
   </object>
-  <object type="Dude" x="11816" y="9420" width="36" height="61">
+  <object type="Dude" x="11824" y="9420" width="36" height="61">
    <properties>
     <property name="Distance" value="800"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="3000"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
    </properties>
@@ -1606,8 +1582,8 @@
   <object type="Dude" x="16548" y="5321" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="2500"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="11"/>
     <property name="SceneDelay" value="0"/>
    </properties>
@@ -1615,8 +1591,8 @@
   <object type="Dude" x="16584" y="5065" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="2000"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="11"/>
     <property name="SceneDelay" value="0"/>
    </properties>
@@ -1624,13 +1600,13 @@
   <object type="Dude" x="16558" y="5581" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="2500"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="11"/>
     <property name="SceneDelay" value="0"/>
    </properties>
   </object>
-  <object type="Chopper" x="16899" y="5140" width="102" height="91">
+  <object type="Chopper" x="16880" y="5085" width="102" height="91">
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
@@ -1640,7 +1616,7 @@
     <property name="SceneDelay" value="5000"/>
    </properties>
   </object>
-  <object type="Chopper" x="16905" y="5304" width="102" height="91">
+  <object type="Chopper" x="16873" y="5221" width="102" height="91">
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
@@ -1717,8 +1693,8 @@
   <object type="Dude" x="16292" y="4559" width="36" height="61">
    <properties>
     <property name="Distance" value="600"/>
-    <property name="Number" value="10"/>
-    <property name="Rate" value="2500"/>
+    <property name="Number" value="5"/>
+    <property name="Rate" value="4000"/>
     <property name="Scene" value="12"/>
     <property name="SceneDelay" value="0"/>
    </properties>
@@ -1743,7 +1719,7 @@
   </object>
   <object type="Dude" x="13645" y="3662" width="78" height="74">
    <properties>
-    <property name="Distance" value="7"/>
+    <property name="Distance" value="8"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="5"/>
     <property name="OtherPath" value="False"/>
@@ -1752,7 +1728,7 @@
   </object>
   <object type="Dude" x="13668" y="3674" width="78" height="74">
    <properties>
-    <property name="Distance" value="7"/>
+    <property name="Distance" value="8"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="10"/>
     <property name="OtherPath" value="False"/>
@@ -1880,7 +1856,7 @@
   </object>
   <object type="Dude" x="13542" y="3725" width="78" height="74">
    <properties>
-    <property name="Distance" value="6"/>
+    <property name="Distance" value="8"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="15"/>
     <property name="OtherPath" value="False"/>
@@ -1891,7 +1867,7 @@
   </object>
   <object type="Dude" x="13532" y="3701" width="78" height="74">
    <properties>
-    <property name="Distance" value="6"/>
+    <property name="Distance" value="8"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="10"/>
     <property name="OtherPath" value="False"/>
@@ -1968,7 +1944,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="100"/>
     <property name="Scene" value="15"/>
     <property name="SceneDelay" value="10000"/>
@@ -1978,7 +1954,7 @@
    <properties>
     <property name="Distance" value="400"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="200,-200"/>
+    <property name="Offset" value="300,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -1988,7 +1964,7 @@
    <properties>
     <property name="Distance" value="400"/>
     <property name="Number" value="4"/>
-    <property name="Offset" value="200,0"/>
+    <property name="Offset" value="300,0"/>
     <property name="Rate" value="4000"/>
     <property name="Scene" value="16"/>
     <property name="SceneDelay" value="0"/>
@@ -2052,7 +2028,7 @@
    <properties>
     <property name="Distance" value="400"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="200,-200"/>
+    <property name="Offset" value="300,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -2241,7 +2217,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="100"/>
     <property name="Scene" value="15"/>
     <property name="SceneDelay" value="8000"/>
@@ -2251,7 +2227,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="100"/>
     <property name="Scene" value="15"/>
     <property name="SceneDelay" value="8000"/>
@@ -2361,7 +2337,7 @@
   </object>
   <object type="Dude" x="14887" y="3999" width="78" height="74">
    <properties>
-    <property name="Distance" value="5"/>
+    <property name="Distance" value="9"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="10"/>
     <property name="OtherPath" value="False"/>
@@ -2370,7 +2346,7 @@
   </object>
   <object type="Dude" x="14864" y="3987" width="78" height="74">
    <properties>
-    <property name="Distance" value="5"/>
+    <property name="Distance" value="9"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="5"/>
     <property name="OtherPath" value="False"/>
@@ -2379,7 +2355,7 @@
   </object>
   <object type="Dude" x="15501" y="4307" width="78" height="74">
    <properties>
-    <property name="Distance" value="5"/>
+    <property name="Distance" value="7"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="10"/>
     <property name="OtherPath" value="False"/>
@@ -2388,7 +2364,7 @@
   </object>
   <object type="Dude" x="15515" y="4323" width="78" height="74">
    <properties>
-    <property name="Distance" value="5"/>
+    <property name="Distance" value="7"/>
     <property name="IsPathSpawn" value="True"/>
     <property name="Number" value="5"/>
     <property name="OtherPath" value="False"/>
@@ -2647,7 +2623,7 @@
     <property name="SceneDelay" value="0"/>
    </properties>
   </object>
-  <object type="RopeDude" x="12731" y="2007" width="33" height="36">
+  <object type="RopeDude" x="12869" y="2010" width="33" height="36">
    <properties>
     <property name="Distance" value="600"/>
     <property name="Number" value="1"/>
@@ -2930,7 +2906,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -2940,7 +2916,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -2950,7 +2926,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -2960,7 +2936,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -2970,7 +2946,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -2980,7 +2956,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -3000,7 +2976,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="200,-200"/>
+    <property name="Offset" value="300,-100"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -3010,7 +2986,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -3020,7 +2996,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="-100,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -3030,7 +3006,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="1"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="-100,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -3050,7 +3026,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="17"/>
     <property name="SceneDelay" value="0"/>
@@ -3204,7 +3180,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="18"/>
     <property name="SceneDelay" value="0"/>
@@ -3214,7 +3190,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="18"/>
     <property name="SceneDelay" value="0"/>
@@ -3305,7 +3281,7 @@
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="3"/>
-    <property name="Offset" value="0,-200"/>
+    <property name="Offset" value="0,-300"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="19"/>
     <property name="SceneDelay" value="0"/>
@@ -3321,11 +3297,11 @@
     <property name="SceneDelay" value="0"/>
    </properties>
   </object>
-  <object type="Spider" x="10904" y="1750" width="250" height="457">
+  <object type="Spider" x="10892" y="1726" width="250" height="457">
    <properties>
     <property name="Distance" value="200"/>
     <property name="Number" value="2"/>
-    <property name="Offset" value="200,0"/>
+    <property name="Offset" value="300,0"/>
     <property name="Rate" value="5000"/>
     <property name="Scene" value="0"/>
     <property name="SceneDelay" value="0"/>
@@ -3363,12 +3339,12 @@
   <object name="8" x="12526" y="6108" width="36" height="62"/>
   <object name="9" x="14510" y="5597" width="36" height="62"/>
   <object name="10" x="15982" y="6005" width="36" height="62"/>
-  <object name="11" x="16760" y="5249" width="88" height="32"/>
-  <object name="12" x="16258" y="4435" width="32" height="80"/>
-  <object name="13" x="14578" y="3763" width="32" height="80"/>
+  <object name="11" x="16764" y="5181" width="88" height="32"/>
+  <object name="12" x="16246" y="4439" width="32" height="80"/>
+  <object name="13" x="14680" y="3787" width="32" height="80"/>
   <object name="14" x="12915" y="3797" width="32" height="80"/>
   <object name="15" x="12876" y="5629" width="36" height="62"/>
-  <object name="16" x="11860" y="4601" width="84" height="44"/>
+  <object name="16" x="11846" y="4529" width="84" height="44"/>
   <object name="17" x="13355" y="2209" width="32" height="80"/>
   <object name="18" x="12228" y="2197" width="32" height="80"/>
   <object name="19" x="11389" y="2804" width="32" height="80"/>
@@ -3408,6 +3384,36 @@
    <properties>
     <property name="Direction" value="Right"/>
     <property name="Opposite" value="5"/>
+   </properties>
+  </object>
+  <object name="20" x="10628" y="6650" width="118" height="126">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
+  <object name="21" x="11790" y="4484" width="118" height="126">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
+  <object name="22" x="16761" y="5378" width="118" height="126">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
+  <object name="23" x="12676" y="2036" width="118" height="126">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
+  <object name="24" x="6024" y="2180" width="118" height="126">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
+  <object name="25" x="11011" y="9607" width="118" height="126">
+   <properties>
+    <property name="HealthPad" value="True"/>
    </properties>
   </object>
  </objectgroup>

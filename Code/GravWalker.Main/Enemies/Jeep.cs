@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace GravWalker
 
         bool braking = false;
 
+        SoundEffectInstance jeepSound;
+
         public Jeep(EnemyType type, Vector2 position, Texture2D sheet, List<Point> path, bool loop, int pathnode, int scene)
             : base(type, position, sheet, path, loop, pathnode, scene)
         {
@@ -38,6 +41,11 @@ namespace GravWalker
             fireCountdown = 50;
 
             HP = 25;
+
+            jeepSound = AudioController.effects["truck"].CreateInstance();
+            jeepSound.Volume = 0f;
+            jeepSound.IsLooped = true;
+            jeepSound.Play();
         }
 
         public override void Update(GameTime gameTime)
@@ -163,6 +171,10 @@ namespace GravWalker
 
             //faceDirection = GameManager.Hero.Position.X < Position.X ? -1 : 1;
 
+            Vector2 screenPos = Vector2.Transform(Position, GameManager.Camera.CameraMatrix);
+            jeepSound.Pan = MathHelper.Clamp((screenPos.X - (GameManager.Camera.Width / 2)) / (GameManager.Camera.Width / 2), -1f, 1f);
+            jeepSound.Volume = MathHelper.Clamp(((1f / 1200) * (1200 - (GameManager.Hero.Position - Position).Length())), 0f, 0.4f);
+
             if (HP <= 0) Die();
         }
 
@@ -214,6 +226,8 @@ namespace GravWalker
             GameManager.ParticleController.AddJeepGibs(centerPosition);
             GameManager.ParticleController.AddExplosion(centerPosition);
             AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, Position);
+
+            jeepSound.Stop();
 
             base.Die();
         }
