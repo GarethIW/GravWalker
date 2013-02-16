@@ -126,5 +126,10 @@ namespace GravWalker
         {
            
         }
+
+        public virtual void Unload()
+        {
+
+        }
     }
 }

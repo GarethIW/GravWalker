@@ -260,6 +260,18 @@
       <Link>GravWalker.Content\music\5.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\title.xnb">
+      <Link>GravWalker.Content\title.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\complete.xnb">
+      <Link>GravWalker.Content\complete.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\gameover.xnb">
+      <Link>GravWalker.Content\gameover.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +361,9 @@
     </Compile>
     <Compile Include="..\GravWalker.Main\Screens\BackgroundScreen.cs">
       <Link>Screens\BackgroundScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\GameOverScreen.cs">
+      <Link>Screens\GameOverScreen.cs</Link>
     </Compile>
     <Compile Include="..\GravWalker.Main\Screens\GameplayScreen.cs">
       <Link>Screens\GameplayScreen.cs</Link>

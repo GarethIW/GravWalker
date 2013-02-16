@@ -163,7 +163,7 @@ namespace GravWalker
            
             string scoreTex = Score.ToString("00000000");
             Vector2 scoreSize = fontHUD.MeasureString(scoreTex);
-            ShadowText(spriteBatch, scoreTex, new Vector2(viewport.Width - 280, 10), Color.White, Vector2.Zero, 1f);
+            ShadowText(spriteBatch, scoreTex, new Vector2(viewport.Width - 280, 10), Color.White * Alpha, Vector2.Zero, 1f);
 
             float y = 75;
             foreach (ScorePart sp in scoreParts.Values)

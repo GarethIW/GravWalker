@@ -54,7 +54,12 @@ namespace GravWalker
 
         Vector2 mousePos;
 
-        
+        Vector2 spawnPos;
+
+        float startingTransition = 800f;
+
+        double gameOverTime = 0;
+        bool gameOverShown;
 
         #endregion
 
@@ -97,6 +102,8 @@ namespace GravWalker
             gameHero.Initialize();
             gameHero.LoadContent(content);
             GameManager.Hero = gameHero;
+            spawnPos = gameHero.Position;
+            
 
             gameSpawnerController = new SpawnerController(gameMap);
             gameEnemyController = new EnemyController();
@@ -107,6 +114,7 @@ namespace GravWalker
             //gameCamera.Position = gameHero.Position - (new Vector2(ScreenManager.GraphicsDevice.Viewport.Width, ScreenManager.GraphicsDevice.Viewport.Height) / 2);
             gameCamera.Position = gameHero.Position;
             gameCamera.Target = gameCamera.Position;
+            gameCamera.Update(ScreenManager.GraphicsDevice.Viewport.Bounds);
             GameManager.Camera = gameCamera;
 
             gameProjectileManager = new ProjectileManager();
@@ -125,10 +133,13 @@ namespace GravWalker
             GameManager.GravPadController = gameGravPadController;
 
             gameHUD = new HUD(ScreenManager.GraphicsDevice.Viewport);
+            gameHUD.Alpha = 0f;
             gameHUD.LoadContent(content);
 
             parallaxManager = new ParallaxManager(ScreenManager.GraphicsDevice.Viewport);
             parallaxManager.Layers.Add(new ParallaxLayer(content.Load<Texture2D>("bg/bg1"), new Vector2(0, 0), 0.4f, false));
+
+            gameHero.Position.Y = spawnPos.Y - startingTransition;
 
             ScreenManager.Game.ResetElapsedTime();
         }
@@ -139,6 +150,7 @@ namespace GravWalker
         /// </summary>
         public override void UnloadContent()
         {
+            gameEnemyController.Unload();
             content.Unload();
         }
 
@@ -160,24 +172,60 @@ namespace GravWalker
 
             if (IsActive)
             {
-                gameSpawnerController.Update(gameTime);
-                gameEnemyController.Update(gameTime);
 
-                if (GameManager.CurrentScene == 0)
+                if(startingTransition>0f)
                 {
-                    //gameCamera.Position = gameHero.Position;
-                    gameCamera.Target = gameHero.Position;// -(new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height - 200));
-                    gameCamera.RotationTarget = gameHero.spriteRot;
-                }
-                gameCamera.Update(new Rectangle(0, 0, ScreenManager.GraphicsDevice.Viewport.Width, ScreenManager.GraphicsDevice.Viewport.Height));
+                    startingTransition -= 7f;
+                    if (startingTransition <= 2f) startingTransition = 0f;
+                    gameHero.Position.Y = spawnPos.Y - startingTransition;
 
-                gameHero.Update(gameTime, mousePos);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Vector2 speed = ((gameHero.Position - spawnPos)/2) + new Vector2(30f - ((float)gameParticleController.Rand.NextDouble() * 60f), 0);
+                        gameParticleController.AddSpark(gameHero.Position+ new Vector2(20f - ((float)gameParticleController.Rand.NextDouble() * 40f),0) , speed * 0.01f);
+                    }
+
+                    gameHUD.Alpha = 1f - ((1f / 800f) * startingTransition);
+
+                    if ((spawnPos - gameHero.Position).Length() < 10f) AudioController.PlaySFX("scorestinger");
+                }
+
+                if (startingTransition <= 0f)
+                {
+                    gameSpawnerController.Update(gameTime);
+                    gameEnemyController.Update(gameTime);
+
+                    if (GameManager.CurrentScene == 0)
+                    {
+                        //gameCamera.Position = gameHero.Position;
+                        gameCamera.Target = gameHero.Position;// -(new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height - 200));
+                        gameCamera.RotationTarget = gameHero.spriteRot;
+                    }
+                    gameCamera.Update(new Rectangle(0, 0, ScreenManager.GraphicsDevice.Viewport.Width, ScreenManager.GraphicsDevice.Viewport.Height));
+                }
+
+
+                if(startingTransition<=0f) gameHero.Update(gameTime, mousePos);
                 gameProjectileManager.Update(gameTime);
                 gameParticleController.Update(gameTime);
                 gameGravPadController.Update(gameTime);
 
                 gameHUD.Update(gameTime);
 
+                if (gameHero.HP <= 0 || gameHero.lastSceneComplete==23)
+                {
+                    if (!gameOverShown)
+                    {
+                        gameOverTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+                        if (gameOverTime >= 2000)
+                        {
+                            gameOverShown = true;
+                            AudioController.StopMusic();
+
+                            ScreenManager.AddScreen(new GameOverScreen(gameHero.lastSceneComplete==23), null);
+                        }
+                    }
+                }
             }
            
             parallaxManager.Update(gameTime, gameCamera.Position);
@@ -197,6 +245,9 @@ namespace GravWalker
         {
             if (input == null)
                 throw new ArgumentNullException("input");
+
+            if (startingTransition > 0f) return;
+              
 
             // Look up inputs for the active player profile.
             int playerIndex = 0;

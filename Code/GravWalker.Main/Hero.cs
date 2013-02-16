@@ -69,6 +69,8 @@ namespace GravWalker
 
         SoundEffectInstance repairSound;
 
+        public int lastSceneComplete = 0;
+
         public Hero()
         {
 
@@ -134,6 +136,8 @@ namespace GravWalker
 
         public void Update(GameTime gameTime, Vector2 mousePos)
         {
+            if (HP <= 0) return;
+
             updateTime += gameTime.ElapsedGameTime.TotalMilliseconds;
             fireRateCooldown -= gameTime.ElapsedGameTime.TotalMilliseconds;
 
@@ -188,6 +192,8 @@ namespace GravWalker
             
             CheckSceneTriggers(gameTime);
             CheckHealthPads();
+
+            
             
         }
 
@@ -225,8 +231,12 @@ namespace GravWalker
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (HP <= 0) return;
+
             spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle((isAnimating?animFrame:5) * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White, spriteRot , frameOffset, scale, faceDirection==-1?SpriteEffects.FlipHorizontally:SpriteEffects.None, 1);
             spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(0, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 10), Color.White, spriteRot, new Vector2(32, 59), scale, faceDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
+
+            gunPos = Position + ((Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f))) * scale;
 
             Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle+((float)randomNumber.NextDouble()*0.2f)-0.1f)), 15f);
             spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X*2, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), scale, SpriteEffects.None, 1);
@@ -238,6 +248,7 @@ namespace GravWalker
         public void MoveForward()
         {
             if (isFlipping) return;
+            if (HP <= 0) return;
 
             if (currentDirection == -1)
             {
@@ -291,6 +302,7 @@ namespace GravWalker
         public void MoveBackward()
         {
             if (isFlipping) return;
+            if (HP <= 0) return;
 
             if (currentDirection == 1)
             {
@@ -470,6 +482,7 @@ namespace GravWalker
         public bool CheckHit(Vector2 pos, Vector2 speed, ProjectileType type, bool grenade)
         {
             //if (!Active) return false;
+            if (HP <= 0) return false;
 
             bool isHit = false;
 
@@ -485,12 +498,19 @@ namespace GravWalker
                 if(randomNumber.Next(20)==1)
                     AudioController.PlaySFX("ricochet", 0.4f, 0f, 0.3f, Position);
 
+                if (HP <= 0) Die();
 
             }
 
             return isHit;
         }
 
-       
+        void Die()
+        {
+            GameManager.ParticleController.AddHeroGibs(CenterPosition);
+            GameManager.ParticleController.AddExplosion(CenterPosition);
+            GameManager.ParticleController.AddExplosion(Position);
+            AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, CenterPosition);
+        }
     }
 }

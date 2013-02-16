@@ -123,6 +123,7 @@ namespace GravWalker
 
                 if (!found)
                 {
+                    GameManager.Hero.lastSceneComplete = GameManager.CurrentScene;
                     GameManager.CurrentScene = 0;
                     AudioController.StopMusic();
                 }

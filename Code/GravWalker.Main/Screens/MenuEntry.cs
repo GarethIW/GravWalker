@@ -148,7 +148,7 @@ namespace GravWalker
             }
 
             // Draw the selected entry in yellow, otherwise white.
-            Color color = isSelected ? Color.Yellow : Color.White;
+            Color color = isSelected ? Color.White : Color.DarkGray;
 
             // Modify the alpha to fade text out during transitions.
             color *= screen.TransitionAlpha;

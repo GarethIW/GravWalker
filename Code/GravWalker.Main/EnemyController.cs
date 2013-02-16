@@ -51,6 +51,15 @@ namespace GravWalker
                 SpriteSheets.Add(t, content.Load<Texture2D>("enemies/" + t.ToString().ToLower()));
             }
         }
+        public void Unload()
+        {
+            for (int e = 0; e < Enemies.Count; e++)
+            {
+                Enemies[e].Unload();
+                Enemies[e] = null;
+            }
+        }
+
 
         internal void Spawn(EnemyType type, Vector2 position, Rectangle loc, List<Point> path, bool pathLoops, int pathNode, int scene)
         {

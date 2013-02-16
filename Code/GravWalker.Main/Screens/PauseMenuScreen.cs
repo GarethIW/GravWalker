@@ -81,7 +81,7 @@ namespace GravWalker
         /// </summary>
         void ExitMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new BackgroundScreen(),
+            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new GameplayScreen(),
                                new MainMenuScreen());
         }
 

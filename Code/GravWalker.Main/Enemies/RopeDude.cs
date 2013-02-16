@@ -86,7 +86,7 @@ namespace GravWalker
 
         public override void DoFire()
         {
-            if ((GameManager.Hero.Position - Position).Length() < 600)
+            if ((GameManager.Hero.Position - Position).Length() < 600 && GameManager.Hero.HP > 0)
             {
                 Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - centerPosition;
                 vect.Normalize();

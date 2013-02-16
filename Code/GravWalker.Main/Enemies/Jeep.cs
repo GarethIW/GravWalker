@@ -73,7 +73,7 @@ namespace GravWalker
                 
                 //if (GameManager.Hero.Position.X < Position.X) currentDirection = -1; else currentDirection = 1;
 
-                if (EnemyController.randomNumber.Next(GameManager.EnemyController.grenadeProbability) == 1 && (Position-GameManager.Hero.Position).Length()<800)
+                if (EnemyController.randomNumber.Next(GameManager.EnemyController.grenadeProbability) == 1 && (Position - GameManager.Hero.Position).Length() < 800 && GameManager.Hero.HP > 0)
                 {
                     Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - gunPos;
                     vect.Normalize();
@@ -202,7 +202,7 @@ namespace GravWalker
         {
             if (gunCooldown > 1000) return;
 
-            if ((GameManager.Hero.Position - Position).Length() < 600)
+            if ((GameManager.Hero.Position - Position).Length() < 600 && GameManager.Hero.HP > 0)
             {
                 Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - gunPos;
                 vect.Normalize();
@@ -230,6 +230,11 @@ namespace GravWalker
             jeepSound.Stop();
 
             base.Die();
+        }
+        public override void Unload()
+        {
+            jeepSound.Stop();
+            base.Unload();
         }
     }
 }

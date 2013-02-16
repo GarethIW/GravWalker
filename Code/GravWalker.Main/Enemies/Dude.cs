@@ -53,7 +53,7 @@ namespace GravWalker
                     animFrame = 4;
                 if (GameManager.Hero.Position.X < Position.X) currentDirection = -1; else currentDirection = 1;
 
-                if (EnemyController.randomNumber.Next(GameManager.EnemyController.grenadeProbability) == 1 && (Position-GameManager.Hero.Position).Length()<600 && GameManager.EnemyController.totalGameTime>2000)
+                if (EnemyController.randomNumber.Next(GameManager.EnemyController.grenadeProbability) == 1 && (Position - GameManager.Hero.Position).Length() < 600 && GameManager.Hero.HP > 0 && GameManager.EnemyController.totalGameTime > 200000)
                 {
                     Vector2 grenTarget = GameManager.Hero.Position + new Vector2(0, -250f);
                     if (grenTarget.Y > Position.Y) grenTarget.Y = GameManager.Hero.Position.Y;
@@ -107,7 +107,7 @@ namespace GravWalker
         {
             if (hasStopped)
             {
-                if ((GameManager.Hero.Position - Position).Length() < 600)
+                if ((GameManager.Hero.Position - Position).Length() < 600 && GameManager.Hero.HP > 0)
                 {
                     Vector2 vect = (GameManager.Hero.CenterPosition + new Vector2(10f - ((float)EnemyController.randomNumber.NextDouble() * 20f), 10f - ((float)EnemyController.randomNumber.NextDouble() * 20f))) - centerPosition;
                     vect.Normalize();

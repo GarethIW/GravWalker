@@ -80,6 +80,7 @@
     <Compile Include="GravPadController.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="Enemies\Chopper.cs" />
+    <Compile Include="Screens\GameOverScreen.cs" />
     <Compile Include="WaterController.cs" />
     <Compile Include="Enemies\RopeDude.cs" />
     <Compile Include="Enemies\Dude.cs" />

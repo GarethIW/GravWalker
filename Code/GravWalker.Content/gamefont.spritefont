@@ -2,7 +2,7 @@
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
 	<Asset Type="Graphics:FontDescription">
 		<FontName>Tunga</FontName>
-		<Size>24</Size>
+		<Size>18</Size>
 		<Spacing>2</Spacing>
 		<Style>Regular</Style>
 		<CharacterRegions>

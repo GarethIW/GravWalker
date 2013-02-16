@@ -9,6 +9,9 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 #endregion
 
 namespace GravWalker
@@ -20,23 +23,36 @@ namespace GravWalker
     {
         #region Initialization
 
+        ContentManager content;
+
+        float bgAlpha = 1f;
+
+        double bgFadeTime = 0;
+
+        Texture2D texLogo;
+        SpriteFont gameFont;
 
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
         public MainMenuScreen()
-            : base("Main Menu", 350)
+            : base("Main Menu", 0)
         {
-            
+            this.IsPopup = true;
+            this.TransitionOnTime = TimeSpan.FromMilliseconds(2000);
+            this.TransitionOffTime = TimeSpan.FromMilliseconds(1000);
         }
 
         public override void LoadContent()
         {
+            if (content == null)
+                content = new ContentManager(ScreenManager.Game.Services, "GravWalker.Content");
+
             // Create our menu entries.
-            MenuEntry campaignGameMenuEntry = new MenuEntry("Start Game");
-            MenuEntry aboutGameMenuEntry = new MenuEntry("Readme.txt");
+            MenuEntry campaignGameMenuEntry = new MenuEntry("Let's Go");
+            MenuEntry aboutGameMenuEntry = new MenuEntry("Rea");
             MenuEntry optionsMenuEntry = new MenuEntry("OPTIONS");
-            MenuEntry exitMenuEntry = new MenuEntry("Exit");
+            MenuEntry exitMenuEntry = new MenuEntry("I'm Out");
 
             // Hook up menu event handlers.
             campaignGameMenuEntry.Selected += CampaignGameMenuEntrySelected;
@@ -46,18 +62,33 @@ namespace GravWalker
 
             // Add entries to the menu.
             MenuEntries.Add(campaignGameMenuEntry);
-            MenuEntries.Add(aboutGameMenuEntry);
+           // MenuEntries.Add(aboutGameMenuEntry);
             //MenuEntries.Add(optionsMenuEntry);
             if (!ScreenManager.IsPhone)
             {
                 MenuEntries.Add(exitMenuEntry);
             }
 
+            texLogo = content.Load<Texture2D>("title");
+            gameFont = content.Load<SpriteFont>("gamefont");
+
             base.LoadContent();
         }
 
 
         #endregion
+
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
+        {
+            bgFadeTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (bgFadeTime > 1000)
+                if (bgAlpha > 0f) bgAlpha -= 0.001f;
+
+            if(IsExiting)
+                if (bgAlpha > 0f) bgAlpha -= 0.05f;
+
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
 
         #region Handle Input
 
@@ -67,8 +98,7 @@ namespace GravWalker
         /// </summary>
         void CampaignGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex,
-                               new GameplayScreen());
+            ExitScreen();
         }
 
         void AboutGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
@@ -100,6 +130,19 @@ namespace GravWalker
         protected override void OnCancel(PlayerIndex playerIndex)
         {
             ScreenManager.Game.Exit();
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            ScreenManager.FadeBackBufferToBlack(bgAlpha);
+
+            ScreenManager.SpriteBatch.Begin();
+            ScreenManager.SpriteBatch.Draw(texLogo, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width/2, ScreenManager.GraphicsDevice.Viewport.Height/3) , null, Color.White * TransitionAlpha, 0f, new Vector2(texLogo.Width, texLogo.Height) / 2, 1f, SpriteEffects.None, 1);
+            ScreenManager.SpriteBatch.DrawString(gameFont, "One-level Prototype for #1GAM 2013", new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height / 3) + new Vector2(0, 40), Color.White * TransitionAlpha, 0f, gameFont.MeasureString("One-level Prototype for #1GAM 2013") / 2, 1f, SpriteEffects.None, 1);
+            ScreenManager.SpriteBatch.DrawString(gameFont, "onegameamonth.com/garethiw", new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height / 3) + new Vector2(0, 60), Color.White * TransitionAlpha, 0f, gameFont.MeasureString("onegameamonth.com/garethiw") / 2, 1f, SpriteEffects.None, 1);
+            ScreenManager.SpriteBatch.End();
+
+            base.Draw(gameTime);
         }
 
 

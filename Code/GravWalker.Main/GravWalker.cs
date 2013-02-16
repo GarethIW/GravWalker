@@ -93,6 +93,7 @@ namespace GravWalker
 
             // TODO: use this.Content to load your game content here
             screenManager.AddScreen(new GameplayScreen(), null);
+            screenManager.AddScreen(new MainMenuScreen(), null);
             //screenManager.AddScreen(new BackgroundScreen(), null);
             //screenManager.AddScreen(new MainMenuScreen(), null);
         }

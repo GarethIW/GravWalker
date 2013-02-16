@@ -210,6 +210,27 @@ namespace GravWalker
 
         }
 
+        public void AddHeroGibs(Vector2 pos)
+        {
+            Add(pos + new Vector2(0, 0), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(64, 128, 26, 15), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(0, -10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(91, 128, 37, 23), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(68, 148, 9, 9), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(-10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(68, 148, 9, 9), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(10, 15), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(82, 150, 5, 5), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(-10, 15), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(82, 150, 5, 5), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(64, 169, 4, 23), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(-10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(64, 169, 4, 23), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(-10, 15), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(72, 174, 4, 23), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(10, 15), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(72, 174, 4, 23), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(-10, 20), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(114, 187, 14, 5), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(10, 20), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(114, 187, 14, 5), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+        }
+
         internal void Reset()
         {
             foreach (Particle p in Particles)

@@ -18,7 +18,7 @@ using Windows.System.Threading;
 #endif
 #endregion
 
-namespace HeroBash
+namespace GravWalker
 {
     /// <summary>
     /// The background screen sits behind all the other menu screens.
@@ -31,18 +31,10 @@ namespace HeroBash
 
         ContentManager content;
         Texture2D texBG;
-        Texture2D texScoreBG;
 
-        ScoreBoard TopTenOverall;
-        ScoreBoard TopTenWeekly;
-        ScoreBoard MyScores;
+        double delayTime;
 
-        public static bool overallScoreSubmitted = false;
-        public static bool weeklyScoreSubmitted = false;
-
-        float scoresOffset;
-
-        bool shownENS;
+        bool isComplete;
 
         #endregion
 
@@ -52,8 +44,10 @@ namespace HeroBash
         /// <summary>
         /// Constructor.
         /// </summary>
-        public GameOverScreen()
+        public GameOverScreen(bool win)
         {
+            isComplete = win;
+
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -71,54 +65,20 @@ namespace HeroBash
         public override void LoadContent()
         {
             if (content == null)
-                content = new ContentManager(ScreenManager.Game.Services, "HeroBashContent");
+                content = new ContentManager(ScreenManager.Game.Services, "Gravwalker.Content");
 
-            texBG = content.Load<Texture2D>("blank-white");
-            texScoreBG = content.Load<Texture2D>("blank");
+            if(isComplete)
+                texBG = content.Load<Texture2D>("complete");
+            else
+                texBG = content.Load<Texture2D>("gameover");
+            
 
-            ScoreBoard.LastSubmittedOverallRank = -1;
-            ScoreBoard.LastSubmittedWeeklyRank = -1;
-
-            overallScoreSubmitted = false;
-            weeklyScoreSubmitted = false;
-
-            shownENS = false;
-
-            GameManager.PlayerName = "Player";
-            if (GameManager.PlayerName != "Player")
-            {
-#if !WINRT
-                BackgroundWorker bw = new BackgroundWorker();
-                bw.DoWork += bw_DoWork;
-                bw.RunWorkerAsync();
-#endif
-#if WINRT
-                ThreadPool.RunAsync(async delegate { ScoreBoard.Submit(GameManager.CurrentPlaythrough, GameManager.CurrentStage, GameManager.Hero.Level, GameManager.CurrentTime); });
-#endif
-            }
-
+           
             
            
         }
 
-        void ens_Done(object sender, PlayerIndexEventArgs e)
-        {
-#if !WINRT
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-            bw.RunWorkerAsync();
-#endif
-#if WINRT
-            ThreadPool.RunAsync(async delegate { ScoreBoard.Submit(GameManager.CurrentPlaythrough, GameManager.CurrentStage, GameManager.Hero.Level, GameManager.CurrentTime); });
-#endif
-        }
-
-#if !WINRT
-        void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            ScoreBoard.Submit(GameManager.CurrentPlaythrough, GameManager.CurrentStage, GameManager.Hero.Level, GameManager.CurrentTime);
-        }
-#endif
+      
 
         /// <summary>
         /// Unloads graphics content for this screen.
@@ -146,84 +106,17 @@ namespace HeroBash
         {
             if (IsActive)
             {
-                if (GameManager.PlayerName == "Player")
+                delayTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (delayTime > 5000)
                 {
-                    bool found=false;
-                    foreach (GameScreen screen in ScreenManager.GetScreens())
-                        if (screen.GetType() == typeof(EnterNameScreen)) found = true;
-
-                    if (!found && !shownENS)
-                    {
-                        EnterNameScreen ens = new EnterNameScreen();
-                        ens.Accepted += ens_Done;
-                        ens.Cancelled += ens_Done;
-                        ScreenManager.AddScreen(ens, null);
-
-                        shownENS = true;
-                    }
+                    delayTime = 0;
+                    LoadingScreen.Load(ScreenManager, false, null, new GameplayScreen(), new MainMenuScreen());
                 }
             }
 
-            if (overallScoreSubmitted)
-            {
-                if (ScoreBoard.LastSubmittedOverallRank > -1)
-                {
-                    if (TopTenOverall == null)
-                    {
-                        TopTenOverall = new ScoreBoard(ScoreBoardType.NearbyOverall, ScreenManager.Font, texScoreBG, texBG, ScoreBoard.LastSubmittedOverallRank);
-                        TopTenOverall.Position = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width + 220, scoresOffset + 70);
-                    }
-                    if (MyScores == null)
-                    {
-                        MyScores = new ScoreBoard(ScoreBoardType.MyNearbyScores, ScreenManager.Font, texScoreBG, texBG, ScoreBoard.LastSubmittedOverallRank);
-                        MyScores.Position = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width + 220, scoresOffset + 460);
-                    }
-                }
-                else
-                {
-                    if (TopTenOverall == null)
-                    {
-                        if (TopTenOverall == null) TopTenOverall = new ScoreBoard(ScoreBoardType.TopTen, ScreenManager.Font, texScoreBG, texBG);
-                        TopTenOverall.Position = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width + 220, scoresOffset + 70);
-                    }
-                    if (MyScores == null)
-                    {
-                        if (MyScores == null) MyScores = new ScoreBoard(ScoreBoardType.MyScores, ScreenManager.Font, texScoreBG, texBG);
-                        MyScores.Position = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width + 220, scoresOffset + 460);
+            
 
-                    }
-                }
-            }
-
-            if(weeklyScoreSubmitted)
-            {
-                if (ScoreBoard.LastSubmittedWeeklyRank > -1)
-                {
-
-
-                    if (TopTenWeekly == null)
-                    {
-                        TopTenWeekly = new ScoreBoard(ScoreBoardType.NearbyWeekly, ScreenManager.Font, texScoreBG, texBG, ScoreBoard.LastSubmittedWeeklyRank);
-                        TopTenWeekly.Position = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width + 220, scoresOffset + 265);
-                    }
-
-                }
-                else
-                {
-                    if (TopTenWeekly == null)
-                    {
-                        TopTenWeekly = new ScoreBoard(ScoreBoardType.WeeklyTopTen, ScreenManager.Font, texScoreBG, texBG);
-                        TopTenWeekly.Position = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width + 220, scoresOffset + 265);
-                    }
-
-                }
-            }
-
-            scoresOffset = (ScreenManager.GraphicsDevice.Viewport.Height / 2) - 315;
-            if (TopTenOverall != null && TopTenOverall.Position.X > ScreenManager.GraphicsDevice.Viewport.Width - 220) TopTenOverall.Position = Vector2.Lerp(TopTenOverall.Position, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 220, TopTenOverall.Position.Y), 0.1f);
-            if (TopTenWeekly != null && TopTenWeekly.Position.X > ScreenManager.GraphicsDevice.Viewport.Width - 220) TopTenWeekly.Position = Vector2.Lerp(TopTenWeekly.Position, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 220, TopTenWeekly.Position.Y), 0.1f);
-            if (MyScores != null && MyScores.Position.X > ScreenManager.GraphicsDevice.Viewport.Width - 220) MyScores.Position = Vector2.Lerp(MyScores.Position, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 220, MyScores.Position.Y), 0.1f);
-
+           
             base.Update(gameTime, otherScreenHasFocus, false);
         }
 
@@ -231,9 +124,9 @@ namespace HeroBash
         {
             PlayerIndex playerIndex;
 
-            if (input.IsMenuSelect(ControllingPlayer, out playerIndex) || input.IsMenuCancel(ControllingPlayer, out playerIndex) || input.TapPosition.HasValue)
+            if (input.IsMenuSelect(ControllingPlayer, out playerIndex) || input.IsMenuCancel(ControllingPlayer, out playerIndex) || input.TapPosition.HasValue || input.MouseLeftClick)
             {
-                LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(), new MainMenuScreen());
+                LoadingScreen.Load(ScreenManager, false, null, new GameplayScreen(), new MainMenuScreen());
             }
            
 
@@ -250,28 +143,15 @@ namespace HeroBash
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
-            ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
+            ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 0.2f);
 
             spriteBatch.Begin();
 
             //spriteBatch.Draw(texBG, fullscreen,
               //               Color.White * TransitionAlpha * (0.5f + (0.5f * TransitionPosition)));
 
-            BackgroundBox.Draw(spriteBatch, texScoreBG, new Rectangle(fullscreen.Width - 430, (int)scoresOffset, 420, 50), Color.White * 0.8f);
-            spriteBatch.DrawString(ScreenManager.Font, "Final Standings", new Vector2(fullscreen.Width - 220, scoresOffset + 27), Color.White, 0f, ScreenManager.Font.MeasureString("Final Standings") / 2, 1f, SpriteEffects.None, 1);
-
-            spriteBatch.DrawString(ScreenManager.Font, "GAME OVER", new Vector2((viewport.Width-350) / 2, (viewport.Height / 2) / 2), Color.White * TransitionAlpha, 0f, ScreenManager.Font.MeasureString("GAME OVER")/2, 2f, SpriteEffects.None, 1);
-
-            if (overallScoreSubmitted == false && weeklyScoreSubmitted == false)
-            {
-                spriteBatch.DrawString(ScreenManager.Font, "Submitting High Score...", new Vector2((viewport.Width-350) / 2, ((viewport.Height / 2) / 2)+50), Color.White * TransitionAlpha, 0f, ScreenManager.Font.MeasureString("Submitting High Score...") / 2, 1f, SpriteEffects.None, 1);
-            }
-            else
-            {
-                if(TopTenOverall!=null) TopTenOverall.Draw(spriteBatch, TransitionAlpha);
-                if (TopTenWeekly != null) TopTenWeekly.Draw(spriteBatch, TransitionAlpha);
-                if (MyScores != null) MyScores.Draw(spriteBatch, TransitionAlpha);
-            }
+            ScreenManager.SpriteBatch.Draw(texBG, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height / 2), null, Color.White * TransitionAlpha, 0f, new Vector2(texBG.Width, texBG.Height) / 2, 1f + (5f * (!IsExiting?TransitionPosition:0f)), SpriteEffects.None, 1);
+           
 
             spriteBatch.End();
 
