@@ -41,6 +41,9 @@
     <Compile Include="..\GravWalker.Main\Enemies\Boat.cs">
       <Link>Enemies\Boat.cs</Link>
     </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Boss.cs">
+      <Link>Enemies\Boss.cs</Link>
+    </Compile>
     <Compile Include="..\gravwalker.main\enemies\Chopper.cs">
       <Link>Enemies\Chopper.cs</Link>
     </Compile>
@@ -109,6 +112,9 @@
     </Compile>
     <Compile Include="..\gravwalker.main\screens\BackgroundScreen.cs">
       <Link>Screens\BackgroundScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Screens\GameOverScreen.cs">
+      <Link>Screens\GameOverScreen.cs</Link>
     </Compile>
     <Compile Include="..\gravwalker.main\screens\GameplayScreen.cs">
       <Link>Screens\GameplayScreen.cs</Link>

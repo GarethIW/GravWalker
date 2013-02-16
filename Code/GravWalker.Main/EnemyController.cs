@@ -20,7 +20,8 @@ namespace GravWalker
         Chopper,
         RopeDude,
         Boat,
-        Spider
+        Spider,
+        Boss
     }
 
     /// <summary>
@@ -82,6 +83,9 @@ namespace GravWalker
                     break;
                 case EnemyType.Spider:
                     Enemies.Add(new Spider(type, position, loc, SpriteSheets[type], scene));
+                    break;
+                case EnemyType.Boss:
+                    Enemies.Add(new Boss(type, position, SpriteSheets[type], path, pathLoops, pathNode, scene));
                     break;
             }
         }

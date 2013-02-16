@@ -141,6 +141,9 @@ namespace GravWalker
 
             gameHero.Position.Y = spawnPos.Y - startingTransition;
 
+            GameManager.CurrentScene = 0;
+            GameManager.SceneTime = 0;
+
             ScreenManager.Game.ResetElapsedTime();
         }
 
@@ -329,6 +332,14 @@ namespace GravWalker
                     if (input.AccelerometerVect.Y<0) gameHero.MoveForward();
                 }
 
+                if (input.CurrentMouseState.Y < 150)
+                {
+                    if(gameHUD.Alpha>0.2f) gameHUD.Alpha -= 0.02f;
+                }
+                else
+                {
+                    if(gameHUD.Alpha<1f) gameHUD.Alpha += 0.02f;
+                }
 
             }
         }

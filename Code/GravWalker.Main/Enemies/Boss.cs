@@ -9,7 +9,7 @@ using TiledLib;
 
 namespace GravWalker
 {
-    public class Jeep : PathingEnemy
+    public class Boss : PathingEnemy
     {
         double rpgTime = 0;
 
@@ -22,7 +22,9 @@ namespace GravWalker
 
         SoundEffectInstance jeepSound;
 
-        public Jeep(EnemyType type, Vector2 position, Texture2D sheet, List<Point> path, bool loop, int pathnode, int scene)
+        float scale = 1.5f;
+
+        public Boss(EnemyType type, Vector2 position, Texture2D sheet, List<Point> path, bool loop, int pathnode, int scene)
             : base(type, position, sheet, path, loop, pathnode, scene)
         {
             numFrames = 2;
@@ -31,16 +33,16 @@ namespace GravWalker
 
             Speed = 0f;
 
-            frameSize = new Vector2(64,64);
-            frameOffset = new Vector2(32, 36);
-            hitRadius = 20;
+            frameSize = new Vector2(128,128);
+            frameOffset = new Vector2(64, 125);
+            hitRadius = 30 * scale;
 
-            centerOffestLength = 12;
+            centerOffestLength = 32 * scale;
 
             fireRate = 50;
             fireCountdown = 50;
 
-            HP = 25;
+            HP = 150;
 
             jeepSound = AudioController.effects["truck"].CreateInstance();
             jeepSound.Volume = 0f;
@@ -81,7 +83,7 @@ namespace GravWalker
                     Vector2 speed = vect * 5f;
                     Vector2 pos = gunPos + (speed);
 
-                    GameManager.ProjectileManager.Add(pos, speed, 1000, false, ProjectileType.Rocket);
+                    GameManager.ProjectileManager.Add(pos, speed, 2000, false, ProjectileType.Rocket);
                     AudioController.PlaySFX("mortar");
                     rpgTime = 1000;
                 }
@@ -107,7 +109,7 @@ namespace GravWalker
                 }
             }
 
-            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((SpriteRot - ((MathHelper.PiOver2 - 0.9f) * currentDirection)) - MathHelper.PiOver2)), 32f));
+            gunPos = Position + (Helper.AngleToVector(Helper.WrapAngle(((SpriteRot - ((MathHelper.PiOver2 - 1.9f) * currentDirection)) - MathHelper.PiOver2)), 64f)) * scale;
             gunAngle = Helper.V2ToAngle(GameManager.Hero.CenterPosition - gunPos);  //Helper.V2ToAngle((GameManager.Hero.Position - gunPos));
 
             var layer = GameManager.Map.Layers.Where(l => l.Name == "EnemyBarriers").First();
@@ -134,7 +136,7 @@ namespace GravWalker
                 if (Speed > 0f) Speed -= 0.02f;
             }
             else
-                if (Speed < 3f) Speed += 0.02f;
+                if (Speed < 2f) Speed += 0.02f;
 
             if (!hasStopped || braking == true)
             {
@@ -167,25 +169,32 @@ namespace GravWalker
                 }
             }
 
-            centerPosition = Position + (Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), centerOffestLength));
+            centerPosition = Position + (Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), centerOffestLength)) * scale;
 
             //faceDirection = GameManager.Hero.Position.X < Position.X ? -1 : 1;
 
             Vector2 screenPos = Vector2.Transform(Position, GameManager.Camera.CameraMatrix);
             jeepSound.Pan = MathHelper.Clamp((screenPos.X - (GameManager.Camera.Width / 2)) / (GameManager.Camera.Width / 2), -1f, 1f);
-            jeepSound.Volume = MathHelper.Clamp(((1f / 1200) * (1200 - (GameManager.Hero.Position - Position).Length())), 0f, 0.3f);
+            jeepSound.Volume = MathHelper.Clamp(((1f / 1200) * (1200 - (GameManager.Hero.Position - Position).Length())), 0f, 0.4f);
 
             if (HP <= 0) Die();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            
 
-            Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle + ((float)EnemyController.randomNumber.NextDouble() * 0.2f) - 0.1f)), 15f);
-            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X * 1, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), 1f, SpriteEffects.None, 1);
+            //base.Draw(spriteBatch);
+            //spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(animFrame * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White * spawnAlpha, SpriteRot, frameOffset, scale, GameManager.Hero.Position.X < Position.X ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
+            spriteBatch.Draw(spriteSheet, new Vector2(Position.X, Position.Y), new Rectangle(animFrame * (int)frameSize.X, 0, (int)frameSize.X, (int)frameSize.Y), Color.White * spawnAlpha, SpriteRot, frameOffset, scale, currentDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1);
 
-            spriteBatch.Draw(spriteSheet, gunPos, new Rectangle(0, 64, 64, 64), Color.White, gunAngle, new Vector2(32, 32), 1f, SpriteEffects.None, 1);
+
+            Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle + ((float)EnemyController.randomNumber.NextDouble() * 0.2f) - 0.1f)), 35f * scale);
+            spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X * 1, (int)frameSize.Y + 5, (int)frameSize.X, (int)frameSize.Y - 5), Color.White * muzzleAlpha, gunAngle, new Vector2(64, 59), scale, SpriteEffects.None, 1);
+
+            spriteBatch.Draw(spriteSheet, gunPos, new Rectangle(0, 128, 128, 128), Color.White, gunAngle, new Vector2(64, 64), scale, SpriteEffects.None, 1);
+            
+            
         }
 
         public override void DoHit(Vector2 pos, Vector2 speed)
@@ -210,8 +219,8 @@ namespace GravWalker
                 Vector2 speed = vect * 10f;
                 Vector2 pos = gunPos + (speed);
 
-                GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.DudePistol);
-                AudioController.PlaySFX("smg", 0.5f, 0.3f, 0.6f, Position);
+                GameManager.ProjectileManager.Add(pos, speed, 900, false, ProjectileType.WalkerGun);
+                AudioController.PlaySFX("machinegun", 0.5f, 0.3f, 0.6f, Position);
 
                 muzzleAlpha = 1f;
             }
@@ -221,9 +230,9 @@ namespace GravWalker
 
         public override void Die()
         {
-            GameManager.ParticleController.AddGSW(Position + Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 10f), Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 1f));
-            GameManager.ParticleController.AddGibs(centerPosition);
-            GameManager.ParticleController.AddJeepGibs(centerPosition);
+            //GameManager.ParticleController.AddGSW(Position + Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 10f), Helper.AngleToVector(Helper.WrapAngle(SpriteRot - MathHelper.PiOver2), 1f));
+            //GameManager.ParticleController.AddGibs(centerPosition);
+            GameManager.ParticleController.AddBossGibs(centerPosition);
             GameManager.ParticleController.AddExplosion(centerPosition);
             AudioController.PlaySFX("explode", 0.9f, -0.5f, 0f, Position);
 

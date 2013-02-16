@@ -35,6 +35,7 @@ namespace GravWalker
         {
             effects = new Dictionary<string, SoundEffect>();
 
+            effects.Add("alert", content.Load<SoundEffect>("sfx/alert"));
             effects.Add("explode", content.Load<SoundEffect>("sfx/explode"));
             effects.Add("hit", content.Load<SoundEffect>("sfx/hit"));
             effects.Add("smg", content.Load<SoundEffect>("sfx/smg"));

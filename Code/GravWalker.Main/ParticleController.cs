@@ -115,7 +115,7 @@ namespace GravWalker
             float amount = 0f;
             while (amount<1f)
             {
-                Add(tempV, velocity + new Vector2((float)(Rand.NextDouble()*2)-1f,(float)(Rand.NextDouble()*2)-1f), 5000, true, true, new Rectangle(0, 0, 8, 8), 0f, Color.White);
+                Add(tempV, velocity + new Vector2((float)(Rand.NextDouble()*2)-1f,(float)(Rand.NextDouble()*2)-1f), 3000, true, true, new Rectangle(0, 0, 8, 8), 0f, Color.White);
                 tempV = Vector2.Lerp(pos, pos+velocity, amount);
                 amount += 0.1f;
             }
@@ -128,7 +128,7 @@ namespace GravWalker
             while (amount < 1f)
             {
                 float grey = (float)Rand.NextDouble();
-                Add(tempV, velocity + new Vector2((float)(Rand.NextDouble() * 2) - 1f, (float)(Rand.NextDouble() * 2) - 1f), 5000, true, true, new Rectangle(8, 0, 8, 8), 0f, 
+                Add(tempV, velocity + new Vector2((float)(Rand.NextDouble() * 2) - 1f, (float)(Rand.NextDouble() * 2) - 1f), 3000, true, true, new Rectangle(8, 0, 8, 8), 0f, 
                     new Color(grey, grey, grey));
                 tempV = Vector2.Lerp(pos, pos + velocity, amount);
                 amount += 0.2f;
@@ -229,6 +229,22 @@ namespace GravWalker
 
             Add(pos + new Vector2(-10, 20), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(114, 187, 14, 5), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
             Add(pos + new Vector2(10, 20), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(114, 187, 14, 5), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+        }
+
+        public void AddBossGibs(Vector2 pos)
+        {
+            Add(pos + new Vector2(0, 0), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(192, 128, 44, 29), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(0, -10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(192, 162, 46, 31), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(128, 192, 43, 37), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(-10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(128, 232, 54, 25), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(10, 15), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(192, 192, 41, 38), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(-10, 15), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(206, 232, 50,24), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+
+            Add(pos + new Vector2(10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(238, 128, 18, 18), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(-10, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(238, 128, 18, 18), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
+            Add(pos + new Vector2(0, 10), new Vector2((float)(Rand.NextDouble() * 4) - 2f, (float)(Rand.NextDouble() * 4) - 2f), 20000, true, true, new Rectangle(238, 128, 18, 18), (float)(Rand.NextDouble() / 10) - 0.05f, Color.White);
         }
 
         internal void Reset()

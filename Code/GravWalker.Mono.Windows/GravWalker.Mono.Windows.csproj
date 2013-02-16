@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GravWalker.Mono.Windows</RootNamespace>
-    <AssemblyName>GravWalker.Mono.Windows</AssemblyName>
+    <AssemblyName>GravWalker</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -272,6 +272,14 @@
       <Link>GravWalker.Content\gameover.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\Enemies\boss.xnb">
+      <Link>GravWalker.Content\enemies\boss.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GravWalker.Main\bin\Windows Phone\Debug\GravWalker.Content\sfx\alert.xnb">
+      <Link>GravWalker.Content\sfx\alert.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +300,9 @@
     </Compile>
     <Compile Include="..\GravWalker.Main\Enemies\Boat.cs">
       <Link>Enemies\Boat.cs</Link>
+    </Compile>
+    <Compile Include="..\GravWalker.Main\Enemies\Boss.cs">
+      <Link>Enemies\Boss.cs</Link>
     </Compile>
     <Compile Include="..\GravWalker.Main\Enemies\Chopper.cs">
       <Link>Enemies\Chopper.cs</Link>
@@ -404,6 +415,7 @@
     <Compile Include="..\GravWalker.Main\WaterController.cs">
       <Link>WaterController.cs</Link>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

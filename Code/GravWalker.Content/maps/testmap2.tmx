@@ -29,7 +29,7 @@
    <property name="Collision" value="On"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3cSY7TQBgG0GqmZsckhi3TAVBzAfoOLDkY3ILpEghxCSRgEyEBG0bxW4klJ4rt2B3H5eQ96VPUSisqdb5UqeMqpwQAAAAAAADAtnyKvKzkVeR5Ja8jn0cbXb2rYw/ggHyJvI+8iHzb4Pe/Rz4OOqLu9GU4RT/eRd5EZpEfPV7ja8qrM/qyfUVPPqR+/cidvmxHdS7Zt56cq0Rf5n5GfkV+R/5E/kb+pfnfqO65WSX71pGqKfblKC2PuykctqOxB8CS4jN5eexB1NCVfByn+Xr0LOW5LulKXm5H7kSupPz6oiv5KnuTC10BAAC25ULkfuRJWv99+WnkQeTSWANk54pOPEybX1Opy/ldD5ydaZo3NqEzh+N48bjNa7A6s7+eLh6HuF5fduZx5MYAr89+WrdW6RCbWu1OuZfsbdIhNjMbewBMkt4AkAPrETAU8wswFPMLXegLq2Y1YX+Ve2ZuVlLunzld/HxrtNGx6lrkek1O0tn3xzXdh6LLnqriOvS9ZI/mmIY4p+feFXShL3ShL6xT93+IvtBktTf6Qhf6QpvqHKMvdKEvtDG/0Je+0IW+0MZ6RF/6QhvzC33pC23ML/SlL3ShL7SxHtGXvtDG/EJf+kIX+kIb6xF96QttmvZ8Q3GG9qTheX2ZjnXnoR+l5fPs1TPtZ0kdfRlPcf+Ci2tyNw1zPl5fpqs4D7/L919fpiv3ruhCPqbQFX3JwxS6Qh5y7gp5ybUr5CfHrhyS/8DWquPwuQAA
+   H4sIAAAAAAAAC+3cy04bMRTG8RMohB0tiLZb1Mu+Sl+geQeWPBi8Bb28RIV4CCqVbtJKbTe9ijNKRnKi8XjszMRnJv+f9ClCk0QW+bCVYEcEAAAAAAAAAAAAANCWz5orJ281F07eae6yjc7vYe4BbJEvmmvNpeZ7g/v/0HzqdETx6Et3in581LzXzDQ/E57jm9jqDH1pX9GTG0nrh3X0pR3uXDK0nuw4GXJfbmW+DjTJL81vzR/NX80/zX+Z/45819zHD60jrj72ZSTL465L+Rp+zTJS5DbKPQAsKf4mD3IPwoOu2DGW+Xp0LjbXJbpiyxPNU82h2OsLXbGr7I0VdAUAAABAWx5onmneSPXn5VPNc81+rgFi44pOvJDm/1PxZXfTA8fG1M0bTdCZ7TFe3Mb0I4TODNfZ4ratrrjKzrzWHHfw/BimqrWKDqEp3z6kD0KH0Mws9wDQS/QGAGAB6xGArjC/AOgK8wti0Bes8p1Nx3CVe2ZOnJT7Z6aLnx9nGx1WPdIceTKR9ffH1X0PRcyequL6S2GPZk5dnNNL2VeH7UVfEIO+oIrvfQh9QZ3V3tAXxKAvCHHnGPqCGPQFIcwvSEVfEIO+IIT1CKnoC0KYX5CKviCE+QWp6Ati0BeEsB4hFX1BCPMLUtEXxKAvCGE9Qir6gpC6Pd9AcYZ2UnOdvvRH1XnoV7J8nt09075OfOhLPsX3F+xV5FS6OR9PX/qrOA+/ydefvvSX9a7QBTv60BX6YkMfugIbLHcFtljtCuyx2JVtcg9GS+/T8LkAAA==
   </data>
  </layer>
  <layer name="Non-Collision" width="140" height="85">
@@ -39,7 +39,7 @@
  </layer>
  <layer name="Decals" width="140" height="85">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3dW27UMBTGcWt4BXZFYUOItUBVVYgVUMoiKJdFFHF7AMT1GR8Nlk4tO2Mnnpw4+f+ko7YzbcdqvnoyyXHGOQAAAAAAAAAAAABAKx99PVd14euxqhe+PpmNDkvw2dcbX098/Sz4/l++3h91RNvxtOBza5KPK1+Xvr76+j3id3x3bTOzpL8P9iQn79y4fKScJ2571uh3w4aeS1rlBPO6dvvngZLKORu4T//82jLS+/NWvO3PXHq769u/mYwU1iQrbPubHg3c93C2USwPWUm772uXue/BnANZELIy7LavO1HdNR2RHbKCUmQFAAAAQCu6zyJ1nPzU11tfX6wGiNmFc+apcyil577+OPpx1kzPG63Oh7bux8FyHOucOZlBLcnMS0ePMepIj7HeFyJDfbLs1yRDGCv0LkqG/loOBF0Z6nkFYvesB4CuML+gBnlBjRPrAaArMr+k1mlinaauX2N+QQ32X5Ajc0n8+pm8IFa7Nh39Cz0z+lpX0j8j/Xan/7/+YDY6xOLrlOkK1x2aUin6Wga6Z2aXqR9ufw7xtaNH05Jst5LrlLV+zNzawFxedNGjuR2H1pGW5EWKfrvlyh0HqT2fV7LmuDQvZKY/Yd+k1XngmqyQmX61eP06Jiu6bjUYA+YT5pjc9YQOmZqXsY8LGzLHjN12LbJCXvoix+NbbDuysg1T5heNvGxDq+1HXrZB7+9OzQvWL7ym5v8dJUIvG3nBIZIPPb8AQyQjU4/XYTuYX1Bjl/kcSOH5CLV4PkIN5hfUYH5BjV30Echhfxc1OP6CGpIR3S8FHKL7pYCYrKG9tB4Emkith75wN9ezhzXttWuhw3vOzL2GFuXk+gWvEnXl0uvj2Zbbde2O954fWBfJCu9xjBJkBaXICkqRFZQiKyhFVmz9Aza8yrPwuQAA
+   H4sIAAAAAAAAC+3dW07cMBTGcWv62rKr0m4IsRZACFWsAEoXAaJlD1S9PRQEvTzjo8HSwbIzduKJ4+T/k464DBeLfDiZ5DhjDAAAAAAAAAAAAACglO+2zlSd2zpQ9dHWj47vP932AFHdT1vXtg5tPSZ8/R9bX7c6ouX4kPB+bZKPK1sXtn7b+tvjZ9ybspmZ0t8Ha5KTL6ZfPkJOAp9jf9Q2PZeUygnGdWvW+4GUijnueEx//9wy0vp+y9/2xya83fXn76qMFLVJVtj2L+13PLY32iimh6yEvbO1ijz2fsyBTAhZ6fba1huvdqqOqB6yglRkBQAAAEApus8idJ78yNZnW79qDRCjc9fMQ9dQUq99/TP048yZnjdKXQ8t3Y+D6djWNXMyg1ySmU+mu8cY8EmPsT4WIkNtqtmvSYbQl+tdlAz9rzkQNKWr5xXwva09ADSF+QU5yAty7NYeAJoi80tonSbmaej6NeYX5OD4BTEyl/jPn8kLfLlr09E+1zOj73Ul/TPSb3f0/PG3aqODz79PmS5336EhFaLvZaB7ZlaRejDr/NwYejRrku2Wcp+y0r8ztjYwlhdd9Ggux6Z1pCl5kaLfbrpi50Fyr+elrDlOzQuZaY87Nil1HTgnK2SmXSWev/bJiq5XBcaA8bg5JnY/oU2G5qXv70UdMsf03XYlskJe2iLn40tsO7KyDEPmF428LEOp7UdelkEf7w7NC+bPPafm/x0pXC8becEmkg89vwBdJCNDz9dhOZhfkGMVeR8IYX+EXOyPkIP5BTmYX5Bj5b0FYjjeRQ7OvyCHZET3SwGb6H4pwCdraC9qDwJFhNZDn5uX69ndmvbctdDuNWfGXkOLdHL/gstAXZnw+ni25XLdmu295gfmRbLCaxwjBVlBKrKCVGQFqcgKUpGVup4AAYWePPC5AAA=
   </data>
  </layer>
  <objectgroup name="Paths" width="140" height="85">
@@ -47,7 +47,7 @@
    <properties>
     <property name="Looping" value="False"/>
    </properties>
-   <polyline points="-44,10 77,-21 204,-21 333,-21 461,-21 589,-21 717,-21 845,-53 1357,-53 1612,-182 2124,-182 2253,-214 2763,-214 2892,-245 3341,-245 3789,-245 4238,-245 4686,-245 4815,-310 4943,-375 5037,-499 5071,-628 5071,-1140 5071,-1653 5071,-2165 5071,-2678 5007,-2935 4942,-3062 4815,-3191 4686,-3257 4559,-3289 4431,-3320 3919,-3320 3406,-3320 3278,-3383 3022,-3448 2895,-3574 3021,-3702 3149,-3766 3277,-3766 3598,-3766 3919,-3766 4045,-3829 4557,-3829 4813,-3829 5068,-3829 5324,-3829 5580,-3830 5837,-3831 6093,-3833 6225,-3815 6349,-3812 6476,-3809 6604,-3811 6734,-3817 6862,-3832 6990,-3832 7118,-3832 7245,-3864 7373,-3926 7597,-3926 7760,-3927 7888,-3961 7951,-3961 8013,-3961 8143,-3926 8268,-3926 8399,-3829 8456,-3801 8503,-3776 8559,-3759"/>
+   <polyline points="-44,10 77,-21 204,-21 333,-21 461,-21 589,-21 717,-21 845,-53 1357,-53 1612,-182 2124,-182 2253,-214 2508,-214 2763,-214 2892,-245 3117,-245 3341,-245 3789,-245 4238,-245 4686,-245 4815,-310 4943,-375 5037,-499 5071,-628 5071,-1140 5071,-1653 5071,-2165 5071,-2678 5007,-2935 4942,-3062 4815,-3191 4686,-3257 4559,-3289 4431,-3320 3919,-3320 3406,-3320 3278,-3383 3022,-3448 2895,-3574 3021,-3702 3149,-3766 3277,-3766 3598,-3766 3919,-3766 4045,-3829 4557,-3829 4813,-3829 5068,-3829 5324,-3829 5580,-3830 5837,-3831 6093,-3833 6225,-3815 6349,-3812 6476,-3809 6604,-3811 6734,-3817 6862,-3832 6990,-3832 7118,-3832 7245,-3864 7373,-3926 7597,-3926 7760,-3927 7888,-3961 7951,-3961 8013,-3961 8143,-3926 8268,-3926 8399,-3829 8524,-3830 8572,-3795 8610,-3767"/>
   </object>
   <object x="11780" y="7299">
    <properties>
@@ -190,7 +190,6 @@
  </objectgroup>
  <objectgroup name="Spawn" width="140" height="85">
   <object x="6640" y="9922" width="40" height="64"/>
-  <object x="3308" y="2387" width="40" height="64"/>
  </objectgroup>
  <objectgroup name="EnemySpawns" width="140" height="85">
   <object type="Dude" x="8654" y="9747" width="78" height="74">
@@ -3316,7 +3315,7 @@
   </object>
   <object type="Dude" x="9441" y="1655" width="78" height="74">
    <properties>
-    <property name="Distance" value="800"/>
+    <property name="Distance" value="1200"/>
     <property name="IsPathSpawn" value="False"/>
     <property name="Number" value="10"/>
     <property name="OtherPath" value="False"/>
@@ -3739,9 +3738,9 @@
     <property name="Distance" value="200"/>
     <property name="Number" value="3"/>
     <property name="Offset" value="0,0"/>
-    <property name="Rate" value="6000"/>
+    <property name="Rate" value="10000"/>
     <property name="Scene" value="23"/>
-    <property name="SceneDelay" value="5000"/>
+    <property name="SceneDelay" value="0"/>
    </properties>
   </object>
   <object type="Dude" x="7407" y="2238" width="78" height="74">
@@ -4047,6 +4046,82 @@
     <property name="SceneDelay" value="24000"/>
    </properties>
   </object>
+  <object type="Boss" x="2112" y="2275" width="227" height="227">
+   <properties>
+    <property name="Distance" value="200"/>
+    <property name="Number" value="1"/>
+    <property name="Offset" value="0,0"/>
+    <property name="Rate" value="6000"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="10000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="2264" y="2386" width="78" height="74">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="IsPathSpawn" value="False"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="20000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="2274" y="2391" width="78" height="74">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="IsPathSpawn" value="False"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="25000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="2266" y="2391" width="78" height="74">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="IsPathSpawn" value="False"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="30000"/>
+   </properties>
+  </object>
+  <object type="Dude" x="3925" y="2262" width="78" height="74">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="IsPathSpawn" value="False"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="17500"/>
+   </properties>
+  </object>
+  <object type="Dude" x="3919" y="2262" width="78" height="74">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="IsPathSpawn" value="False"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="22500"/>
+   </properties>
+  </object>
+  <object type="Dude" x="3923" y="2267" width="78" height="74">
+   <properties>
+    <property name="Distance" value="500"/>
+    <property name="IsPathSpawn" value="False"/>
+    <property name="Number" value="20"/>
+    <property name="OtherPath" value="False"/>
+    <property name="Rate" value="200"/>
+    <property name="Scene" value="23"/>
+    <property name="SceneDelay" value="27500"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Water" width="140" height="85">
   <object x="5424" y="10015" width="7554" height="738">
@@ -4091,7 +4166,7 @@
   <object name="20" x="9769" y="1635" width="32" height="80"/>
   <object name="21" x="8561" y="1829" width="32" height="80"/>
   <object name="22" x="6381" y="2253" width="32" height="80"/>
-  <object name="23" x="3096" y="2360" width="32" height="80"/>
+  <object name="23" x="3102" y="2002" width="35" height="525"/>
  </objectgroup>
  <objectgroup name="GravPads" width="140" height="85">
   <object name="1" x="14470" y="5959" width="117" height="58">
@@ -4189,6 +4264,16 @@
     <property name="HealthPad" value="True"/>
    </properties>
   </object>
+  <object name="27" x="10772" y="1667" width="117" height="117">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
+  <object name="28" x="14982" y="6033" width="117" height="117">
+   <properties>
+    <property name="HealthPad" value="True"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="EnemyBarriers" width="140" height="85">
   <object x="11407" y="9516" width="113" height="251"/>
@@ -4200,5 +4285,6 @@
   <object x="11965" y="4037" width="97" height="191"/>
   <object x="6779" y="2420" width="255" height="128"/>
   <object x="5131" y="2432" width="255" height="128"/>
+  <object x="10223" y="1909" width="148" height="136"/>
  </objectgroup>
 </map>

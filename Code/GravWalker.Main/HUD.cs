@@ -20,7 +20,8 @@ namespace GravWalker
         Jeep,
         Spider,
         Repair,
-        Flip
+        Flip,
+        Boss
     }
 
     public class ScorePart
@@ -74,6 +75,8 @@ namespace GravWalker
                     return "Arachnophobia";
                 case ScorePartType.Jeep:
                     return "Truck Trasher";
+                case ScorePartType.Boss:
+                    return "Bad Robot";
                 default:
                     return "-undefined-";
             }
@@ -103,6 +106,9 @@ namespace GravWalker
         ScorePartType lastAddedScore;
 
         static Random randomNumber = new Random();
+
+        double lowHealthBlinkTime = 0;
+        bool lowHealthBlink = false;
 
         public HUD(Viewport vp)
         {
@@ -145,7 +151,21 @@ namespace GravWalker
                 heatColor = Color.Lerp(heatColor, Color.Yellow, 0.02f);
             else if (GameManager.Hero.Heat <= 105f)
                 heatColor = Color.Lerp(heatColor, Color.Red, 0.02f);
-          
+
+
+            if (GameManager.Hero.HP <= 25f)
+            {
+                lowHealthBlinkTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (lowHealthBlinkTime > 500)
+                {
+                    lowHealthBlinkTime = 0;
+                    lowHealthBlink = !lowHealthBlink;
+                    if (lowHealthBlink) AudioController.PlaySFX("alert", 0.8f, 0f, 0f);
+                }
+            }
+            else
+                lowHealthBlink = false;
+
         }
 
 
@@ -153,8 +173,8 @@ namespace GravWalker
         {
             Vector2 barsPanelPos = new Vector2(viewport.Width / 2, 0);
 
-            spriteBatch.Draw(texHUD, barsPanelPos + new Vector2(-302, 3), new Rectangle(46, 128, 608, 21), new Color(100, 0, 0) * Alpha);
-            spriteBatch.Draw(texHUD, barsPanelPos + new Vector2(-302, 3), new Rectangle(46, 128, (int)healthWidth, 21), new Color(250, 0, 0) * Alpha);
+            spriteBatch.Draw(texHUD, barsPanelPos + new Vector2(-302, 3), new Rectangle(46, 128, 608, 21), (lowHealthBlink?new Color(20,0,0):new Color(100, 0, 0)) * Alpha);
+            spriteBatch.Draw(texHUD, barsPanelPos + new Vector2(-302, 3), new Rectangle(46, 128, (int)healthWidth, 21), (lowHealthBlink ? new Color(50, 0, 0) : new Color(250, 0, 0)) * Alpha);
 
             spriteBatch.Draw(texHUD, barsPanelPos + new Vector2(-277, 26), new Rectangle(72, 160, 608, 21), new Color((int)(heatColor.R * 0.4), (int)(heatColor.G * 0.4), (int)(heatColor.B * 0.4)) * Alpha);
             spriteBatch.Draw(texHUD, barsPanelPos + new Vector2(-277, 26), new Rectangle(72, 160, (int)heatWidth, 21), heatColor * Alpha);
@@ -171,9 +191,9 @@ namespace GravWalker
                 if (sp.Type != ScorePartType.Combo || sp.Number > 1)
                 {
                     Vector2 rand = sp.ShakeTime > 0 ? new Vector2(((float)randomNumber.NextDouble() * 10f) - 5f, ((float)randomNumber.NextDouble() * 10f) - 5f) : Vector2.Zero;
-                    ShadowText(spriteBatch, sp.Text(), new Vector2(viewport.Width - 120 - ((fontHUD.MeasureString(sp.Text()).X * 0.75f) / 2), y), Color.LightGray * scoreAlpha, fontHUD.MeasureString(sp.Text()) / 2, sp.Zoom * 0.75f);
+                    ShadowText(spriteBatch, sp.Text(), new Vector2(viewport.Width - 120 - ((fontHUD.MeasureString(sp.Text()).X * 0.75f) / 2), y), Color.LightGray * scoreAlpha * Alpha, fontHUD.MeasureString(sp.Text()) / 2, sp.Zoom * 0.75f);
                     //ShadowText(spriteBatch, "x", new Vector2(viewport.Width - 100 - ((fontHUD.MeasureString("x").X *0.75f) / 2), y), Color.White * scoreAlpha, fontHUD.MeasureString("x") / 2, sp.Zoom * 0.75f);
-                    ShadowText(spriteBatch, "x" + sp.Number.ToString(), new Vector2(viewport.Width - 100, y) + rand, Color.LightGray * scoreAlpha, fontHUD.MeasureString("x" + sp.Number.ToString()) * new Vector2(0,0.5f), sp.Zoom * 0.75f);
+                    ShadowText(spriteBatch, "x" + sp.Number.ToString(), new Vector2(viewport.Width - 100, y) + rand, Color.LightGray * scoreAlpha * Alpha, fontHUD.MeasureString("x" + sp.Number.ToString()) * new Vector2(0,0.5f), sp.Zoom * 0.75f);
                 }
                 y += 20;
             }
@@ -211,6 +231,11 @@ namespace GravWalker
                     Score += 30 * scoreParts[0].Number;
                     AddOrIncrement(ScorePartType.Jeep);
                     scoreTime += 2000;
+                    break;
+                case EnemyType.Boss:
+                    Score += 50 * scoreParts[0].Number;
+                    AddOrIncrement(ScorePartType.Boss);
+                    scoreTime += 3000;
                     break;
             }
         }

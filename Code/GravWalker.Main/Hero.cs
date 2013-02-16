@@ -164,7 +164,7 @@ namespace GravWalker
             if (isFlipping)
             {
                 Position = Vector2.Lerp(Position, Target, 0.05f);
-                if ((Position - Target).Length() < 1f)
+                if ((Position - Target).Length() < 5f)
                 {
                     Target = GetPathVector(forwardNode);
                     isFlipping = false;
@@ -238,7 +238,7 @@ namespace GravWalker
 
             gunPos = Position + ((Helper.AngleToVector(Helper.WrapAngle(((spriteRot + (0.36f * faceDirection)) - MathHelper.PiOver2)), 42f))) * scale;
 
-            Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle+((float)randomNumber.NextDouble()*0.2f)-0.1f)), 15f);
+            Vector2 barrelPos = gunPos + Helper.AngleToVector(Helper.WrapAngle((gunAngle+((float)randomNumber.NextDouble()*0.2f)-0.1f)), 15f * scale);
             spriteBatch.Draw(spriteSheet, barrelPos, new Rectangle((int)frameSize.X*2, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White * muzzleAlpha, gunAngle, new Vector2(32, 27), scale, SpriteEffects.None, 1);
 
             spriteBatch.Draw(spriteSheet, gunPos, new Rectangle((int)frameSize.X, (int)frameSize.Y+5, (int)frameSize.X, (int)frameSize.Y-5), Color.White, gunAngle, new Vector2(32, 27), scale, SpriteEffects.None, 1);
@@ -464,13 +464,13 @@ namespace GravWalker
                         currentDirection = 1;
                   
 
-                    if (!g.hasHealed)
-                    {
-                        HP += 50f;
-                        if (HP > 100f) HP = 100f;
-                        g.hasHealed = true;
-                        target.hasHealed = true;
-                    }
+                    //if (!g.hasHealed)
+                    //{
+                    //    HP += 50f;
+                    //    if (HP > 100f) HP = 100f;
+                    //    g.hasHealed = true;
+                    //    target.hasHealed = true;
+                    //}
 
                     AudioController.PlaySFX("gravflip");
 
